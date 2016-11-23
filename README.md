@@ -29,10 +29,13 @@
 		#exec_process
 			#trytoexec
 				#if il reste des cycles
-					#exec
+					#exec_op (op == live/zjmp etc..)
+						#get_param
+							get_pcode
+							get_size_param
+						#check_param
 				#sinon
 					stop
-				
 		#update_cycle
 		#if graphics == 1
 			update l'affichage
