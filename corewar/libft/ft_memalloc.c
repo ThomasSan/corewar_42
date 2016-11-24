@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.h                                          :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/24 11:59:44 by cchameyr         ###   ########.fr       */
+/*   Created: 2016/02/15 13:45:10 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/02/15 13:45:13 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COREWAR_H
-# define COREWAR_H
+#include "libft.h"
+#include <stdlib.h>
 
-# include <fcntl.h>
-# include <stdlib.h>
-# include <unistd.h>
+void	*ft_memalloc(size_t size)
+{
+	void	*ret;
 
-# include "../libft/libft.h"
-
-# include "debug.h"
-
-#endif
+	ret = (void *)malloc(size);
+	if (!ret)
+		return (NULL);
+	ft_bzero(ret, size);
+	return (ret);
+}

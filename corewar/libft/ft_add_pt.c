@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.h                                          :+:      :+:    :+:   */
+/*   ft_add_pt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/24 11:59:44 by cchameyr         ###   ########.fr       */
+/*   Created: 2016/02/15 13:47:34 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/02/15 13:47:39 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COREWAR_H
-# define COREWAR_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include <stdlib.h>
-# include <unistd.h>
+t_pt	ft_add_pt(t_pt pt1, t_pt pt2)
+{
+	t_pt pt3;
 
-# include "../libft/libft.h"
-
-# include "debug.h"
-
-#endif
+	pt3.x = pt1.x + pt2.x;
+	pt3.y = pt1.y + pt2.y;
+	return (pt3);
+}

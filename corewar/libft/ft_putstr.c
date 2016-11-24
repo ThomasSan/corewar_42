@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.h                                          :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/24 11:59:44 by cchameyr         ###   ########.fr       */
+/*   Created: 2016/09/05 14:28:45 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/09/05 14:28:46 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COREWAR_H
-# define COREWAR_H
+#include "libft.h"
+#include <unistd.h>
 
-# include <fcntl.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-# include "../libft/libft.h"
-
-# include "debug.h"
-
-#endif
+void	ft_putstr(char const *s)
+{
+	write(1, s, ft_strlen(s));
+}

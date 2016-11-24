@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.h                                          :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/24 11:59:44 by cchameyr         ###   ########.fr       */
+/*   Created: 2016/02/15 13:45:24 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/02/15 13:45:26 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COREWAR_H
-# define COREWAR_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include <stdlib.h>
-# include <unistd.h>
+void	*ft_memset(void *b, int c, size_t len)
+{
+	unsigned char *t;
 
-# include "../libft/libft.h"
-
-# include "debug.h"
-
-#endif
+	t = (unsigned char *)b;
+	while (len > 0)
+	{
+		len--;
+		t[len] = (unsigned char)c;
+	}
+	b = (void *)t;
+	return (b);
+}

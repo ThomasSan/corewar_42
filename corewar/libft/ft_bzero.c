@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.h                                          :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/24 11:59:44 by cchameyr         ###   ########.fr       */
+/*   Created: 2015/11/29 12:39:37 by cchameyr          #+#    #+#             */
+/*   Updated: 2015/11/30 12:11:51 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COREWAR_H
-# define COREWAR_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include <stdlib.h>
-# include <unistd.h>
+void	ft_bzero(void *s, size_t n)
+{
+	size_t			i;
+	unsigned char	*c_s;
 
-# include "../libft/libft.h"
-
-# include "debug.h"
-
-#endif
+	c_s = (unsigned char *)s;
+	i = 0;
+	if (n > 0)
+	{
+		while (i < n)
+		{
+			c_s[i] = '\0';
+			i++;
+		}
+	}
+}

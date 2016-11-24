@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.h                                          :+:      :+:    :+:   */
+/*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/24 11:59:44 by cchameyr         ###   ########.fr       */
+/*   Created: 2015/11/27 12:10:04 by cchameyr          #+#    #+#             */
+/*   Updated: 2015/11/27 12:18:21 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COREWAR_H
-# define COREWAR_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include <stdlib.h>
-# include <unistd.h>
+void	ft_striter(char *s, void (*f)(char *))
+{
+	int i;
 
-# include "../libft/libft.h"
-
-# include "debug.h"
-
-#endif
+	i = 0;
+	if (s == NULL || f == NULL)
+		return ;
+	while (s[i])
+	{
+		f(&s[i]);
+		i++;
+	}
+}

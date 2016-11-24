@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.h                                          :+:      :+:    :+:   */
+/*   ft_putnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/24 11:59:44 by cchameyr         ###   ########.fr       */
+/*   Created: 2016/09/05 14:29:33 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/09/05 14:29:34 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COREWAR_H
-# define COREWAR_H
+#include "libft.h"
+#include <unistd.h>
 
-# include <fcntl.h>
-# include <stdlib.h>
-# include <unistd.h>
+int		ft_putnstr(char const *s, size_t len)
+{
+	size_t	i;
 
-# include "../libft/libft.h"
-
-# include "debug.h"
-
-#endif
+	i = -1;
+	while (++i < len)
+		write(1, &s[i], 1);
+	return (i);
+}

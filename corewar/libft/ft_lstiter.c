@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.h                                          :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/24 11:59:44 by cchameyr         ###   ########.fr       */
+/*   Created: 2015/12/01 13:01:40 by cchameyr          #+#    #+#             */
+/*   Updated: 2015/12/01 13:08:22 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COREWAR_H
-# define COREWAR_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include <stdlib.h>
-# include <unistd.h>
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
+{
+	t_list *list;
 
-# include "../libft/libft.h"
-
-# include "debug.h"
-
-#endif
+	if (lst && f)
+	{
+		list = lst;
+		while (list->next)
+		{
+			f(list);
+			list = list->next;
+		}
+		f(list);
+	}
+}

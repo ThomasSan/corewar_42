@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.h                                          :+:      :+:    :+:   */
+/*   ft_charwlen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/24 11:59:44 by cchameyr         ###   ########.fr       */
+/*   Created: 2016/09/05 14:31:25 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/09/05 14:31:26 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COREWAR_H
-# define COREWAR_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-# include "../libft/libft.h"
-
-# include "debug.h"
-
-#endif
+int		ft_charwlen(int c)
+{
+	if (c <= 0x7F)
+		return (1);
+	if (c <= 0x7FF)
+		return (2);
+	if (c <= 0xFFFF)
+		return (3);
+	if (c <= 0x10FFFF)
+		return (4);
+	return (0);
+}

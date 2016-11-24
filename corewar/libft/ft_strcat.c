@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.h                                          :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/24 11:59:44 by cchameyr         ###   ########.fr       */
+/*   Created: 2016/02/15 13:45:38 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/02/15 13:45:40 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COREWAR_H
-# define COREWAR_H
+#include "libft.h"
 
-# include <fcntl.h>
-# include <stdlib.h>
-# include <unistd.h>
+char	*ft_strcat(char *s1, char *s2)
+{
+	int		size;
+	int		cpt;
 
-# include "../libft/libft.h"
-
-# include "debug.h"
-
-#endif
+	cpt = 0;
+	size = ft_strlen(s1);
+	while (s2[cpt])
+		s1[size++] = s2[cpt++];
+	s1[size] = '\0';
+	return (s1);
+}
