@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/24 11:59:44 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/24 14:11:04 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,19 @@
 # include <unistd.h>
 
 # include "../libft/libft.h"
+# include "op.h"
+
+typedef struct	s_chmp
+{
+	int			pc;
+	int			number;
+	header_t	header;
+}				t_chmp;
+
+typedef struct	s_vm
+{
+	
+}				t_vm;
 
 # include "debug.h"
 
