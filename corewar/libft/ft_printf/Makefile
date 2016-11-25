@@ -50,16 +50,16 @@ RM =				rm -f
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
+	@ar rc $(NAME) $(OBJS)
+	@ranlib $(NAME)
 
 $(OBJS):
-	$(CC) $(FLAGS) -c $(SRC)
+	@$(CC) $(FLAGS) -c $(SRC)
 
 clean:
-	$(RM) $(OBJS)
+	@$(RM) $(OBJS)
 
 fclean: clean
-	$(RM) $(NAME) $(LIBFT)
+	@$(RM) $(NAME) $(LIBFT)
 
 re: fclean all
