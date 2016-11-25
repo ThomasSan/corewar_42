@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/25 11:39:15 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/25 11:52:58 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ typedef struct	s_vm
 	int			nb_champ;
 	t_bool		option_graph;
 }				t_vm;
+
+
+void			init_vm(t_vm *vm);
 
 
 #endif
