@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2013/11/06 14:21:46 by zaz              ###   ########.fr       */
+/*   Updated: 2016/11/25 12:47:43 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ typedef char	t_arg_type;
 #define T_IND					4
 #define T_LAB					8
 
+
+
 /*
 **
 */
@@ -67,10 +69,22 @@ typedef char	t_arg_type;
 # define COMMENT_LENGTH			(2048)
 # define COREWAR_EXEC_MAGIC		0xea83f3
 
-typedef struct		header_s
+typedef struct		s_op
+{
+	char		*name;
+	int			nb_arg;
+	int			param_type[4];
+	int			op_code;
+	int			nb_cycle;
+	char		*comment;
+	bool		fcode;
+	bool		idx_machin_a_changer_blabla;
+}					t_op;
+
+typedef struct		s_header
 {
   unsigned int		magic;
   char				prog_name[PROG_NAME_LENGTH + 1];
   unsigned int		prog_size;
   char				comment[COMMENT_LENGTH + 1];
-}					header_t;
+}					t_header;
