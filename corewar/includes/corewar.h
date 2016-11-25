@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/25 12:55:14 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/25 13:02:27 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct	s_vm
 
 void			init_vm(t_vm *vm);
 
-int				get_arg(t_vm *vm);
+int				get_arg(t_vm *vm, int ac, char **av);
 
 void			exit_corewar(t_vm *vm);
 
