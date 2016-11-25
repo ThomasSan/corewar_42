@@ -6,43 +6,45 @@
 #    By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/25 09:52:13 by ybeaure           #+#    #+#              #
-#    Updated: 2016/11/25 15:54:52 by cchameyr         ###   ########.fr        #
+#    Updated: 2016/11/25 17:39:53 by cchameyr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = corewar
+NAME =		corewar
 
-SRCS =	srcs/main.c \
-		srcs/op.c \
-		srcs/init_vm.c \
-		srcs/exit_corewar.c \
-		srcs/get_chmps.c
+FILES =		main.c \
+			op.c \
+			init_vm.c \
+			exit_corewar.c \
+			get_chmps.c
 
-OBJS = $(SRCS:.c=.o)
+SRCS =		$(addprefix srcs/, $(FILES))
 
-FLAG = -Wall -Werror -Wextra
+OBJS =		$(SRCS:.c=.o)
 
-CC = gcc $(FLAG)
+FLAGS =		-Wall -Werror -Wextra
 
-all : libft/libft.a $(NAME)
+CC =		gcc
+
+all: libft/libft.a $(NAME)
 
 libft/libft.a:
 	make -C ./libft/
 
 $(%.o): $(%.c)
-	$(CC) -o $@ -c $^
+	$(CC) $(FLAGS) -o $@ -c $^
 
-$(NAME) : $(OBJS)
-	$(CC) -o $@ $^ -Llibft -lft
+$(NAME): $(OBJS)
+	$(CC) $(FLAGS) -o $@ $^ -Llibft -lft
 
-clean :
+clean:
 	@make -C ./libft/ clean
 	@rm -f $(OBJS)
 
-fclean : clean
+fclean: clean
 	@rm -f $(NAME)
 	@make -C ./libft/ fclean
 
-re : fclean all clean
+re: fclean all clean
 
 .PHONY: clean
