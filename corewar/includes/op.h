@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2016/11/25 12:47:43 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/25 17:42:20 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 ** Toutes les tailles sont en octets.
 ** On part du principe qu'un int fait 32 bits. Est-ce vrai chez vous ?
 */
+
+#include <stdbool.h>
 
 #define IND_SIZE				2
 #define REG_SIZE				4
@@ -77,8 +79,8 @@ typedef struct		s_op
 	int			op_code;
 	int			nb_cycle;
 	char		*comment;
-	bool		fcode;
-	bool		idx_machin_a_changer_blabla;
+	bool		is_param;
+	bool		is_idx;
 }					t_op;
 
 typedef struct		s_header
