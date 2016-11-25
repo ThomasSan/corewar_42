@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/25 10:19:05 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/25 11:39:15 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+# include "debug.h" //pas a la norme
+
 # include "../libft/libft.h"
 # include "op.h"
 
@@ -24,27 +26,37 @@ typedef struct	s_ram
 {
 	unsigned char	value;
 	int				owner;
-	int				executed;
+	t_bool			executed;
 }				t_ram;
 
 typedef struct	s_champ
 {
-	int			pc;
+	int			pos;
 	int			number;
+	int			color;
 	header_t	header;
 }				t_champ;
 
 typedef struct	s_process
 {
-	int			pc;
-}
+	int					pc;
+	int					curr_op;
+	t_bool				carry;
+	struct s_process	*next;
+}				t_process;
+
+typedef struct	s_cycle
+{
+	int		cycles;
+}				t_cycle;
 
 typedef struct	s_vm
 {
 	t_champ		*champs;
+	t_ram		*ram;
 	int			nb_champ;
+	t_bool		option_graph;
 }				t_vm;
 
-# include "debug.h"
 
 #endif
