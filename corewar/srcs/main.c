@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:24 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/25 15:50:52 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/25 17:07:50 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ static int		get_arg(t_vm *vm, int ac, char **av)
 				ft_putstr("Too much champions guy !\n");
 				exit_corewar(vm);
 			}
-			add_champ(vm, av[i]);
+			get_champ(vm, &vm->champs[vm->nb_champ], av[i]);
+			vm->nb_champ++;
 		}
 	}
 }
