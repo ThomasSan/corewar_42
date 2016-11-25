@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/25 11:52:58 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/25 12:55:14 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct	s_ram
 {
 	unsigned char	value;
 	int				owner;
-	t_bool			executed;
+	bool			executed;
 }				t_ram;
 
 typedef struct	s_champ
@@ -34,14 +34,14 @@ typedef struct	s_champ
 	int			pos;
 	int			number;
 	int			color;
-	header_t	header;
+	t_header	header;
 }				t_champ;
 
 typedef struct	s_process
 {
 	int					pc;
 	int					curr_op;
-	t_bool				carry;
+	bool				carry;
 	struct s_process	*next;
 }				t_process;
 
@@ -55,11 +55,14 @@ typedef struct	s_vm
 	t_champ		*champs;
 	t_ram		*ram;
 	int			nb_champ;
-	t_bool		option_graph;
+	bool		option_graph;
 }				t_vm;
 
 
 void			init_vm(t_vm *vm);
 
+int				get_arg(t_vm *vm);
+
+void			exit_corewar(t_vm *vm);
 
 #endif

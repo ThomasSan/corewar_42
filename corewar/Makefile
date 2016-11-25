@@ -6,7 +6,7 @@
 #    By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/25 09:52:13 by ybeaure           #+#    #+#              #
-#    Updated: 2016/11/25 11:58:01 by cchameyr         ###   ########.fr        #
+#    Updated: 2016/11/25 12:56:13 by cchameyr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@ NAME = corewar
 
 SRCS =	srcs/main.c \
 		srcs/op.c \
-		srcs/init_vm.c
+		srcs/init_vm.c \
+		srcs/exit_corewar.c \
+		srcs/get_arg.c
 
 OBJS = $(SRCS:.c=.o)
 

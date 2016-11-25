@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   exit_corewar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/23 16:44:24 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/25 12:54:53 by cchameyr         ###   ########.fr       */
+/*   Created: 2016/11/25 12:55:29 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/11/25 12:59:57 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-int				main(int argc, char **argv)
+void	exit_corewar(t_vm *vm)
 {
-	t_vm	vm;
-
-	init_vm(&vm);
-	if (get_arg(&vm) == -1)
-	{
-		ft_printf("help:\n-n : use displayer\n");
-		exit_corewar(&vm);
-	}
-	return (0);
+	ft_memdel((void **)&vm->ram);
+	exit(0);
 }
