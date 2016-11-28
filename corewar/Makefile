@@ -6,17 +6,27 @@
 #    By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/25 09:52:13 by ybeaure           #+#    #+#              #
-#    Updated: 2016/11/25 17:39:53 by cchameyr         ###   ########.fr        #
+#    Updated: 2016/11/28 17:39:48 by ybeaure          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =		corewar
 
 FILES =		main.c \
-			op.c \
-			init_vm.c \
+			add_sub_and.c \
+			aff.c \
 			exit_corewar.c \
-			get_chmps.c
+			fork_lfork.c \
+			get_chmps.c \
+			init_vm.c \
+			ld_lld_st.c \
+			ldi_lldi_sti.c \
+			live.c \
+			op.c \
+			or_xor.c \
+			param_nfo.c \
+			parse_exec_op.c \
+			zjmp.c \
 
 SRCS =		$(addprefix srcs/, $(FILES))
 

@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/25 17:17:34 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/28 17:29:25 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,31 @@ typedef struct	s_vm
 }				t_vm;
 
 
+void			(*exec_op[17])(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
 void			init_vm(t_vm *vm);
 void			exit_corewar(t_vm *vm);
 void			get_champ(t_vm *vm, t_champ *champ, char *path);
+
+// PARSE / EXEC 
+void		parse_exec_op(t_vm *vm, t_process *pro);
+int		get_p_nfo(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
+
+// OP
+void		ft_live(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
+void		ft_st(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
+void		ft_ld(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
+void		ft_and(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
+void		ft_sub(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
+void		ft_add(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
+void		ft_or(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
+void		ft_xor(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
+void		ft_ldi(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
+void		ft_lldi(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
+void		ft_sti(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
+void		ft_lld(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
+void		ft_lfork(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
+void		ft_fork(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
+void		ft_zjmp(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
+void		ft_aff(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
 
 #endif

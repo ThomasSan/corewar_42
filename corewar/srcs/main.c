@@ -6,11 +6,31 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:24 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/25 17:07:50 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/28 17:37:11 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
+
+void			(*exec_op[17])(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]) = 
+{
+	ft_live,
+	ft_ld,
+	ft_st,
+	ft_add,
+	ft_sub,
+	ft_and,
+	ft_or,
+	ft_xor,
+	ft_zjmp,
+	ft_ldi,
+	ft_sti,
+	ft_fork,
+	ft_lld,
+	ft_lldi,
+	ft_lfork,
+	ft_aff
+};
 
 static int		get_arg(t_vm *vm, int ac, char **av)
 {
@@ -34,6 +54,7 @@ static int		get_arg(t_vm *vm, int ac, char **av)
 			vm->nb_champ++;
 		}
 	}
+	return (0);
 }
 
 int				main(int argc, char **argv)
@@ -45,6 +66,7 @@ int				main(int argc, char **argv)
 	{
 		ft_printf("help:\n-n : use displayer\n");
 		exit_corewar(&vm);
+		parse_exec_op(&vm, NULL);
 	}
 	return (0);
 }
