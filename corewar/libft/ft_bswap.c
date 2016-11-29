@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrcmp.c                                       :+:      :+:    :+:   */
+/*   ft_bswap.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/25 13:11:20 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/11/29 13:29:12 by cchameyr         ###   ########.fr       */
+/*   Created: 2016/11/29 13:22:31 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/11/29 13:27:19 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strrcmp(char *s1, char *s2)
+unsigned short		ft_bswap16(unsigned short value)
 {
-	int			i1;
-	int			i2;
+	return ((value >> 8) | (value << 8));
+}
 
-	i1 = ft_strlen(s1);
-	i2 = ft_strlen(s2);
-	while (s1[i1] == s2[i2] && i1 >= 0 && i2 >= 0)
-	{
-		i1--;
-		i2--;
-	}
-	return (s1[i1] - s2[i2]);
+unsigned int		ft_bswap32(unsigned int value)
+{
+	value = (value & 0x0000FFFF) << 16 | (value & 0xFFFF0000) >> 16;
+	return ((value & 0x00FF00FF) >> 8 | (value & 0xFF00FF00) << 8);
 }
