@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:24 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/29 13:49:12 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/29 15:55:27 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static int		get_arg(t_vm *vm, int ac, char **av)
 			get_champ(vm, &vm->champs[vm->nb_champ], av[i]);
 			vm->nb_champ++;
 		}
+		i++;
 	}
 	return (0);
 }
