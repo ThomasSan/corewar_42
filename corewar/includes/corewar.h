@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/29 13:47:26 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/29 16:24:48 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ void			init_vm(t_vm *vm);
 void			exit_corewar(t_vm *vm);
 void			exit_corewar_msg(t_vm *vm, char *msg);
 void			get_champ(t_vm *vm, t_champ *champ, char *path);
+
+void			display_champ(t_champ *champs, int number);
 
 // PARSE / EXEC 
 void		parse_exec_op(t_vm *vm, t_process *pro);
