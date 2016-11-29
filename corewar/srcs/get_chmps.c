@@ -6,13 +6,13 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 15:54:26 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/11/29 14:49:56 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/29 16:57:00 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-static int		get_header(unsigned int buff[MAX_COR_SIZE], t_champ *champ)
+static int		get_header(unsigned char buff[MAX_COR_SIZE], t_champ *champ)
 {
 	if (champ->len < sizeof(t_header))
 	{
@@ -37,8 +37,12 @@ static int		get_header(unsigned int buff[MAX_COR_SIZE], t_champ *champ)
 void			get_champ(t_vm *vm, t_champ *champ, char *path)
 {
 	int				fd;
-	unsigned int	buff[MAX_COR_SIZE];
+	int				i;
+	unsigned char	buff[MAX_COR_SIZE];
 
+	i = -1;
+	while (++i < MAX_COR_SIZE)
+		buff[i] = 0;
 	champ->number = vm->nb_champ + 1;
 	fd = open(path, O_RDONLY);
 	vm->champs[vm->nb_champ].len = read(fd, buff, MAX_COR_SIZE);
@@ -49,5 +53,5 @@ void			get_champ(t_vm *vm, t_champ *champ, char *path)
 	if (champ->len > CHAMP_MAX_SIZE)
 		exit_corewar_msg(vm, "ERROR - Program is too long\n"
 				"Faled to read champion !\n");
-	ft_memcpy(champ->data, &buff[sizeof(t_header) + 1], champ->len);
+	ft_memcpy(champ->data, &buff[sizeof(t_header)], champ->len);
 }

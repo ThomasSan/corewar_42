@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 11:45:09 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/11/25 17:27:07 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/29 16:45:00 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,16 @@ t_champ			*init_champ()
 {
 	t_champ		*champs;
 	int			i;
+	int			i2;
 
 	champs = (t_champ *)ft_memalloc(sizeof(t_champ) * MAX_PLAYERS);
 	i = -1;
 	while (++i <= MAX_PLAYERS)
-		bzero(champs->data, MAX_COR_SIZE);
+	{
+		i2 = -1;
+		while (++i2 < MAX_COR_SIZE)
+			champs->data[i] = 0;
+	}
 	return (champs);
 }
 
