@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:24 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/28 17:37:11 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/11/29 13:49:12 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,7 @@ static int		get_arg(t_vm *vm, int ac, char **av)
 		else if (!ft_strrncmp(av[i], ".cor", 4))
 		{
 			if (vm->nb_champ == 4)
-			{
-				ft_putstr("Too much champions guy !\n");
-				exit_corewar(vm);
-			}
+				exit_corewar_msg(vm, "Too Much Champions !\n");
 			get_champ(vm, &vm->champs[vm->nb_champ], av[i]);
 			vm->nb_champ++;
 		}
@@ -63,10 +60,7 @@ int				main(int argc, char **argv)
 
 	init_vm(&vm);
 	if (get_arg(&vm, argc, argv) == -1)
-	{
-		ft_printf("help:\n-n : use displayer\n");
-		exit_corewar(&vm);
-		parse_exec_op(&vm, NULL);
-	}
+		exit_corewar_msg(&vm, "help:\n-n : use displayer\n");
+	parse_exec_op(&vm, NULL);
 	return (0);
 }
