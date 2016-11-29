@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:24 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/29 15:55:27 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/29 16:08:54 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ static int		get_arg(t_vm *vm, int ac, char **av)
 		}
 		i++;
 	}
+	if (vm->nb_champ < 2)
+		exit_corewar_msg(vm, "Not enouth champions\n");
 	return (0);
 }
 
