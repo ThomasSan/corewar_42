@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/28 22:06:14 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/11/29 08:04:18 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct	s_champ
 typedef struct	s_process
 {
 	int					pc;
+	int					reg[REG_NUMBER];
 	int					curr_op;
 	bool				carry;
 	struct s_process	*next;
@@ -87,8 +88,8 @@ void		ft_sti(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
 void		ft_lld(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
 void		ft_lfork(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
 void		ft_fork(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
-void		ft_zjmp(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
-void		ft_aff(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
+void		ft_zjmp(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
+void		ft_aff(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 
 int		check_params(char opcode, char p_code[4], int p_val[4]);
 
