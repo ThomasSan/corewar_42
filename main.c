@@ -29,7 +29,11 @@ void	display_document(t_champ *head)
 {
 	while (head)
 	{
-		printf("head %s -> %d @ %d\n", head->line, head->type, head->address);
+		printf("head %s -> %d @ %d", head->line, head->type, head->address);
+		if (head->hex_value)
+			printf("-> # %s\n", head->hex_value);
+		else
+			printf("\n");
 		head = head->next;
 	}
 }
@@ -77,9 +81,13 @@ t_champ	*parse_doc(t_champ *head, int fd)
 			i  = label_index(line);
 			if (i > -1)
 			{
-				printf("label : %s -> %d\n", ft_strsub(line, 0, label_index(line)), label_index(line));
+				// printf("label : %s -> %d\n", ft_strsub(line, 0, label_index(line)), label_index(line));
 				head = get_document(head, ft_strsub(line, 0, i), LABELS);
 			}
+			if (ft_strstr(line, ".name ") == line)
+				head = get_document(head, ft_strsub(line, 7, ft_strlen(line) - 8), NAME);
+			if (ft_strstr(line, ".comment ") == line)
+				head = get_document(head, ft_strsub(line, 10, ft_strlen(line) - 11), COMMENT);
 			i = i == -1 ? 0 : i + 1;
 		}
 		while (line[i] && ft_isspace(line[i]))
@@ -104,6 +112,7 @@ int		main(int ac, char **av)
 	fd = open(av[1], O_RDONLY);
 	head = parse_doc(head, fd);
 	calculate_address(head);
+	calculate_value(head);
 	display_document(head);
 	return (0);
 }

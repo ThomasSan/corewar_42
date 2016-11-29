@@ -59,3 +59,38 @@ void		calculate_address(t_champ *head)
 		head = head->next;
 	}
 }
+
+char	*get_string_hex(char *str)
+{
+	int		i;
+	char	*dst;
+	char	*tmp;
+
+	i = 0;
+	if (!(dst = (char*)malloc(sizeof(char) * ft_strlen(str) * 2 + 1)))
+		return (NULL);
+	ft_bzero(dst, ft_strlen(str) * 2 + 1);
+	while (str[i])
+	{
+		tmp = str_itobase(str[i], 16);
+		dst = ft_strcat(dst, tmp);
+		i++;
+		free(tmp);
+		tmp = NULL;
+	}
+	return (dst);
+}
+
+void	calculate_value(t_champ *head)
+{
+	while (head)
+	{
+		if (head->type == NAME || head->type == COMMENT)
+			head->hex_value = get_string_hex(head->line);
+		else if (head->type == OP)
+			head->hex_value = str_itobase(get_op_code(head->line)+1, 16);
+		else
+			head->hex_value = NULL;
+		head = head->next;
+	}
+}

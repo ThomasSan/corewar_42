@@ -6,6 +6,8 @@
 # define REG 103
 # define DIR 104
 # define IND 105
+# define NAME 106
+# define COMMENT 107
 
 #include "get_next_line.h"
 #include "libft/libft.h"
@@ -27,6 +29,7 @@ typedef struct		s_champ
 	int				address;
 	int				type;
 	int				value;
+	char			*hex_value;
 	struct s_champ	*next;
 }					t_champ;
 
@@ -39,5 +42,11 @@ int					get_param_type(char *str);
 int					params_types(char *str);
 int					label_sizes(char *str);
 void				calculate_address(t_champ *head);
+void				calculate_value(t_champ *head);
+
+/*
+** Conversion Functions
+*/
+char				*str_itobase(int nb, int base);
 
 #endif
