@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:24 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/29 16:51:40 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/29 19:04:08 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ static int		get_arg(t_vm *vm, int ac, char **av)
 int				main(int argc, char **argv)
 {
 	t_vm	vm;
+	t_process	pro;
 
 	init_vm(&vm);
 	if (get_arg(&vm, argc, argv) == -1)
 		exit_corewar_msg(&vm, "help:\n-n : use displayer\n");
-//	parse_exec_op(&vm, NULL);
-	
+	parse_exec_op(&vm, &pro);
 	display_champ(vm.champs, 0);
 	return (0);
 }
