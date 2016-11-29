@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 17:18:35 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/28 17:33:47 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/11/29 11:48:43 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,5 @@ void		ft_sub(t_vm *vm, t_process *pr, char p_code[4], int p_val[4])
 
 void		ft_and(t_vm *vm, t_process *pr, char p_code[4], int p_val[4])
 {
-	(void)vm;
-	(void)pr;
-	(void)p_code;
-	(void)p_val;
+
 }

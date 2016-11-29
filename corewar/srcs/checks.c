@@ -6,13 +6,15 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 18:26:30 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/29 07:32:47 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/11/29 11:48:43 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
 extern t_op		op_tab[17];
+
+
 
 int		check_params(char opcode, char p_code[4], int p_val[4])
 {
