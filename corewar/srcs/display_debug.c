@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 12:16:39 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/11/30 15:38:49 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/30 16:11:47 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void			display_debug_champ(t_champ *champs, int number)
 	int		cpt;
 	
 	if (champs[number].pos == -1)
-		return ((void)ft_printf("ERROR : CHAMPION CAN'T BE READ\n"));
+		return ((void)ft_printf("ERROR : CHAMPION %d CAN'T BE READ\n", number));
 	ft_printf("\n----- CHAMPION %d -----\n", number);
 	ft_printf("magic number : %#x\n", champs[number].header.magic);
 	ft_printf("prog_name : %s\n", champs[number].header.prog_name);
