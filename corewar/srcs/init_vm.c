@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 11:45:09 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/11/30 15:05:34 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/30 15:38:41 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,17 @@ static t_ram		*init_ram(void)
 static t_champ		*init_champ()
 {
 	t_champ		*champs;
+	int			c;
 	int			i;
-	int			i2;
 
 	champs = (t_champ *)ft_memalloc(sizeof(t_champ) * MAX_PLAYERS);
-	i = -1;
-	while (++i <= MAX_PLAYERS)
+	c = -1;
+	while (++c <= MAX_PLAYERS)
 	{
-		i2 = -1;
-		while (++i2 < MAX_COR_SIZE)
-			champs->data[i] = 0;
+		i = -1;
+		while (++i < MAX_COR_SIZE)
+			champs[c].data[i] = 0;
+		champs[c].pos = -1;
 	}
 	return (champs);
 }

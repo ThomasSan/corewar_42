@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:24 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/30 14:57:49 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/30 15:34:48 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,10 @@ int				main(int argc, char **argv)
 	parse_exec_op(&vm, &pro);
 
 
-//	display_debug_champ(vm.champs, 0);
-	display_debug_ram(vm.ram);
+	display_debug_champ(vm.champs, 0);
+	display_debug_champ(vm.champs, 1);
+	display_debug_champ(vm.champs, 2);
+	display_debug_champ(vm.champs, 3);
+//	display_debug_ram(vm.ram);
 	return (0);
 }
