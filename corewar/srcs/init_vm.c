@@ -6,13 +6,13 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 11:45:09 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/11/30 12:34:12 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/30 15:05:34 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-static t_ram	*init_ram(void)
+static t_ram		*init_ram(void)
 {
 	t_ram	*ram;
 	int		i;
@@ -28,7 +28,7 @@ static t_ram	*init_ram(void)
 	return (ram);
 }
 
-t_champ			*init_champ()
+static t_champ		*init_champ()
 {
 	t_champ		*champs;
 	int			i;
@@ -45,10 +45,11 @@ t_champ			*init_champ()
 	return (champs);
 }
 
-void			init_vm(t_vm *vm)
+void				init_vm(t_vm *vm)
 {
 	vm->champs = init_champ();
 	vm->ram = init_ram();
+	vm->process = NULL;
 	vm->nb_champ = 0;
 	vm->option_graph = 0;
 }
