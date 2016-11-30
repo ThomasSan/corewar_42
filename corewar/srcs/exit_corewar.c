@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 12:55:29 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/11/30 14:57:52 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/30 16:10:05 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ void	exit_corewar(t_vm *vm)
 {
 	ft_memdel((void **)&vm->ram);
 	ft_memdel((void **)&vm->champs);
+	free_process(&vm->process);
 	exit(0);
 }

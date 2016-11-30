@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/30 15:17:16 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/30 16:10:00 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void			exit_corewar_msg(t_vm *vm, char *msg);
 void			get_champ(t_vm *vm, t_champ *champ, char *path);
 
 void			add_process(t_process **p, int pc, int curr_op, int carry);
+void			free_process(t_process **p);
 
 // DEBUG DISPLAYER
 void			display_debug_champ(t_champ *champs, int number);

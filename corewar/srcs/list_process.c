@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 15:06:44 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/11/30 15:14:08 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/30 16:09:08 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,20 @@ void				add_process(t_process **p, int pc, int curr_op, int carry)
 			pro = pro->next;
 		pro->next = new_process(pc, curr_op, carry);
 	}
+}
+
+void				free_process(t_process **p)
+{
+	t_process		*tmp;
+
+	if (*p == NULL)
+		return ;
+	tmp = *p;
+	while (tmp)
+	{
+		*p = tmp->next;
+		ft_memdel((void **)&tmp);
+		tmp = *p;
+	}
+	*p = NULL;
 }
