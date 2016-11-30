@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:24 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/30 12:33:23 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/30 14:57:49 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int		get_arg(t_vm *vm, int ac, char **av)
 			vm->option_graph = true;
 		else if (!ft_strrncmp(av[i], ".cor", 4))
 		{
-			if (vm->nb_champ == 4)
+			if (vm->nb_champ == MAX_PLAYERS)
 				exit_corewar_msg(vm, "Too Much Champions !\n");
 			get_champ(vm, &vm->champs[vm->nb_champ], av[i]);
 			vm->nb_champ++;
@@ -65,8 +65,12 @@ int				main(int argc, char **argv)
 	init_vm(&vm);
 	if (get_arg(&vm, argc, argv) == -1)
 		exit_corewar_msg(&vm, "help:\n-n : use displayer\n");
+
+	init_start(&vm);
 	parse_exec_op(&vm, &pro);
-	display_debug_champ(vm.champs, 0);
+
+
+//	display_debug_champ(vm.champs, 0);
 	display_debug_ram(vm.ram);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/30 13:29:07 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/30 15:05:29 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@
 # include "../libft/libft.h"
 # include "op.h"
 
-# define MAX_COR_SIZE	CHAMP_MAX_SIZE + PROG_NAME_LENGTH + COMMENT_LENGTH
+# define MAX_COR_SIZE		CHAMP_MAX_SIZE + PROG_NAME_LENGTH + COMMENT_LENGTH
+
+# define CARRY_ON_START		1
 
 typedef struct	s_ram
 {
@@ -58,6 +60,7 @@ typedef struct	s_cycle
 typedef struct	s_vm
 {
 	t_champ		*champs;
+	t_process	*process;
 	t_ram		*ram;
 	int			nb_champ;
 	bool		option_graph;
@@ -71,6 +74,7 @@ void			exit_corewar(t_vm *vm);
 void			exit_corewar_msg(t_vm *vm, char *msg);
 void			get_champ(t_vm *vm, t_champ *champ, char *path);
 
+void			add_process(t_process **p, int pc, int curr_op, int carry);
 
 // DEBUG DISPLAYER
 void			display_debug_champ(t_champ *champs, int number);
