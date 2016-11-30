@@ -151,7 +151,8 @@ void	write_program(t_prog *prog)
 	int		fd;
 
 	i = 0;
-	if ((fd = open("./bite.cor", O_APPEND | O_CREAT | O_RDWR, S_IRWXU)) == -1)
+	printf("file %s\n", prog->file);
+	if ((fd = open(prog->file, O_APPEND | O_CREAT | O_RDWR, S_IRWXU)) == -1)
 	{
 		printf("ERROR\n");
 		return ; // remplacer par function ERROR;
