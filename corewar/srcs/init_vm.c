@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 11:45:09 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/11/29 20:25:18 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/11/30 12:34:12 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static t_ram	*init_ram(void)
 	i = -1;
 	while (++i <= MEM_SIZE)
 	{
-		ram[i].value = 0xb;
+		ram[i].value = 0x00;
 		ram[i].owner = 0;
 		ram[i].executed = 0;
 	}

@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:24 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/30 12:21:10 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/30 12:33:23 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ int				main(int argc, char **argv)
 		exit_corewar_msg(&vm, "help:\n-n : use displayer\n");
 	parse_exec_op(&vm, &pro);
 	display_debug_champ(vm.champs, 0);
+	display_debug_ram(vm.ram);
 	return (0);
 }
