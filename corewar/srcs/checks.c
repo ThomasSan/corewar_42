@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 18:26:30 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/29 18:06:38 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/11/30 13:36:10 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		get_new_p_val(t_vm *vm, t_process *pro, char p_code, int p_val)
 	int		i;
 	// si c'est un registre, ca prends 1 octet, donc reg[p_val - 1] pour recup l'octet d'avant
 	if (p_code == REG_CODE && p_val <= REG_NUMBER)
-		return (pro->reg[p_val - 1]);
+		return (vm->champ[vm->ram[pro->pc].owner].reg[p_val - 1]);
 	// Si c'est sur 3 octets (IND_CODE) ou si value == op_code et qu'il prends un index (dont 3 octets)
 	else if (p_code == IND_CODE || (p_code == DIR_CODE && op_tab[vm->ram[pro->pc % MEM_SIZE].value].is_idx > 0))
 	{
@@ -51,7 +51,7 @@ int		check_params(char opcode, char p_code[4], int p_val[4])
 	while (i < op_tab[(int)opcode - 1].nb_arg)
 	{
 		// Toujours != 0 -- Si pb dans les types ca return 0
-		if ((op_tab[(int)opcode - 1].p_type[i] >> (p_code[i] - 1)) % 2 == 0)
+		if ((op_tab[(int)opcode].p_type[i] >> (p_code[i] - 1)) % 2 == 0)
 			return (0);
 		// Check si jamais il a le pcode mais la mauvaise value dans la mem
 		if (p_code[i] == REG_CODE && p_val[i] > 16)
