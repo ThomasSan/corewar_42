@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 16:11:24 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/30 12:21:36 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/11/30 14:59:04 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		parse_exec_op(t_vm *vm, t_process *pro)
 	int		next_op_pos;
 	int		prev_op_pos;
 
-	pro->pc = 2048;
+	pro->pc = 0;
 	next_op_pos = get_p_nfo(vm, pro, p_code, p_val);
 	prev_op_pos = pro->pc;
 	if (check_params(pro->curr_op, p_code, p_val))
