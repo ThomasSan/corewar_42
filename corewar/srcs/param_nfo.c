@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 16:09:16 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/30 12:05:11 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/11/30 14:55:53 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,8 @@ static int		get_p_val(int p_len, int p_val, t_vm *vm, int param_pos)
 	int		i;
 
 	i = -1;
-	ft_putendl_fd("LOL", 2);
 	while (++i < p_len)
 	{
-		dprintf(2, "%#X\n", p_len);
 	//	dprintf(2, "%#X\n", p_val);
 		p_val = p_val << 8;
 		p_val = p_val + vm->ram[(param_pos + i + MEM_SIZE) % MEM_SIZE].value;
