@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = assembleur
-SRC = main.c gnl.c parser.c conversion_tables.c int_to_hexa.c
+SRC = main.c gnl.c parser.c conversion_tables.c int_to_hexa.c labels.c
 
 OBJ = $(SRC:%.c=obj/%.o)
 

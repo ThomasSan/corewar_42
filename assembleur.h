@@ -33,6 +33,16 @@ typedef struct		s_champ
 	struct s_champ	*next;
 }					t_champ;
 
+typedef struct		s_prog
+{
+	char			*file;
+	char			*magic;
+	char			*name;
+	char			*size;
+	char			*comment;
+	char			*program;
+}					t_prog;
+
 /*
 ** Parsing functions
 */
@@ -42,11 +52,17 @@ int					get_param_type(char *str);
 int					params_types(char *str);
 int					label_sizes(char *str);
 void				calculate_address(t_champ *head);
-void				calculate_value(t_champ *head);
+void				calculate_value(t_champ *head, t_labels *labels);
+int					index_of(char *str, char c);
 
 /*
 ** Conversion Functions
 */
 char				*str_itobase(int nb, int base);
+char				*neg_itobase(int nb);
+int					binary_todec(char *bin);
+
+t_labels 			*parsing_champ(t_champ *head);
+void				display_labels(t_labels *head);
 
 #endif
