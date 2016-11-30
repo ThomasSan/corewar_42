@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 12:16:39 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/11/30 12:48:53 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/30 12:50:58 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	display_debug_champ(t_champ *champs, int number)
 	int		i;
 	int		cpt;
 
-	ft_printf("----- CHAMPION %d -----\n", number);
+	ft_printf("\n----- CHAMPION %d -----\n", number);
 	ft_printf("magic number : %#x\n", champs[number].header.magic);
 	ft_printf("prog_name : %s\n", champs[number].header.prog_name);
 	ft_printf("prog_size : %d\n", champs[number].header.prog_size);
 	ft_printf("comment : %s\n", champs[number].header.comment);
-	ft_putstr("----- CONTENT PROG -----\n");
+	ft_putstr("CONTENT PROG\n");
 	i = -1;
 	cpt = 0;
 	while (++i < champs[number].len)
@@ -44,7 +44,7 @@ void	display_debug_ram(t_ram *ram)
 
 	len = 1;
 	i = -1;
-	ft_putstr("----- RAM -----\n\n");
+	ft_putstr("\n----- RAM -----\n\n");
 	while (++i < MEM_SIZE)
 	{
 		if (ram[i].executed == 1)
