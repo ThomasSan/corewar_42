@@ -6,7 +6,7 @@
 #    By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/25 09:52:13 by ybeaure           #+#    #+#              #
-#    Updated: 2016/11/29 16:22:03 by cchameyr         ###   ########.fr        #
+#    Updated: 2016/11/30 12:17:20 by cchameyr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ FILES =		main.c \
 			parse_exec_op.c \
 			zjmp.c \
 			checks.c \
-			display_champ.c \
+			display_debug.c \
 
 SRCS =		$(addprefix srcs/, $(FILES))
 

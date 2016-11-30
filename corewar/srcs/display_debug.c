@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_champ.c                                    :+:      :+:    :+:   */
+/*   display_debug.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/29 16:12:26 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/11/29 16:55:43 by cchameyr         ###   ########.fr       */
+/*   Created: 2016/11/30 12:16:39 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/11/30 12:17:09 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-void	display_champ(t_champ *champs, int number)
+void	display_debug_champ(t_champ *champs, int number)
 {
 	int		i;
 	int		cpt;
