@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 16:11:24 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/30 14:59:04 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/11/30 17:13:38 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,10 @@ void		parse_exec_op(t_vm *vm, t_process *pro)
 		(exec_op[pro->curr_op])(vm, pro, p_code, p_val);
 		if (pro->curr_op != 9 || pro->carry)
 			pro->pc = pro->pc + next_op_pos;
-		ft_putnbr_fd(pro->pc, 2);
+		//ft_putnbr_fd(pro->pc, 2);
 	}
-	YOLO2
 	pro->pc = (pro->pc + MEM_SIZE) % MEM_SIZE;
 	pro->curr_op = vm->ram[pro->pc % MEM_SIZE].value <= 16 && (vm->ram[pro->pc % MEM_SIZE].value) ? vm->ram[pro->pc].value : 0;
-//	vm->ram[prev_op_pos % MEM_SIZE].exec = 0;
-//	vm->ram[pro->pc].exec = 1;
+	vm->ram[prev_op_pos % MEM_SIZE].executed = 0;
+	vm->ram[pro->pc].executed = 1;
 }

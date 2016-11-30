@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 16:09:16 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/30 14:55:53 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/11/30 16:40:24 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int		get_p_val(int p_len, int p_val, t_vm *vm, int param_pos)
 		p_val = p_val << 8;
 		p_val = p_val + vm->ram[(param_pos + i + MEM_SIZE) % MEM_SIZE].value;
 	}
-	ft_putnbr_fd(i, 2);
+//	ft_putnbr_fd(i, 2);
 	return (p_val);
 }
 
@@ -81,7 +81,7 @@ int		get_p_nfo(t_vm *vm, t_process *pro, char p_code[4], int p_val[4])
 		p_len = get_p_len(p_code[i], pro->curr_op);
 //	p_val[i] = get_p_val(p_len, p_val[i], vm, (pro->pc + param_pos) % MEM_SIZE);
 //		dprintf(2, "%#x\n", (pro->pc + param_pos) % MEM_SIZE);
-		p_val[i] = get_p_val(p_len, p_val[i], vm, 2050);
+		p_val[i] = get_p_val(p_len, p_val[i], vm, (pro->pc + param_pos) % MEM_SIZE);
 		param_pos = param_pos + p_len;
 	}
 //	dprintf(2, "%#X\n", p_val[0]);

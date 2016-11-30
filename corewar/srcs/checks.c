@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 18:26:30 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/30 14:58:05 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/11/30 16:14:16 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ int		check_params(char opcode, char p_code[4], int p_val[4])
 //			return (0);
 //		}
 		// Check si jamais il a le pcode mais la mauvaise value dans la mem
-		dprintf(2, "%#X\n\n", p_code[i]);
-		dprintf(2, "%#X\n\n", p_val[i]);
+	//	dprintf(2, "%#X\n\n", p_code[i]);
+	//	dprintf(2, "%#X\n\n", p_val[i]);
 		if (p_code[i] == REG_CODE && p_val[i] > 16)
 		{
-	dprintf(2, "%s\n", op_tab[(int)opcode - 1].comment);
+//	dprintf(2, "%s\n", op_tab[(int)opcode - 1].comment);
 			return (0);
 		}
 		i++;
