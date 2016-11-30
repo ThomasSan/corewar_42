@@ -6,13 +6,13 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 12:16:39 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/11/30 16:11:47 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/30 16:17:12 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-static void		display_reg(int reg[REG_NUMBER])
+void			display_debug_reg(int reg[REG_NUMBER])
 {
 	int		i;
 
@@ -30,10 +30,11 @@ void			display_debug_champ(t_champ *champs, int number)
 {
 	int		i;
 	int		cpt;
-	
+
 	if (champs[number].pos == -1)
-		return ((void)ft_printf("ERROR : CHAMPION %d CAN'T BE READ\n", number));
-	ft_printf("\n----- CHAMPION %d -----\n", number);
+		return ((void)ft_printf("ERROR : CHAMPION %d CAN'T BE READ\n",
+					number + 1));
+	ft_printf("\n----- CHAMPION %d -----\n", number + 1);
 	ft_printf("magic number : %#x\n", champs[number].header.magic);
 	ft_printf("prog_name : %s\n", champs[number].header.prog_name);
 	ft_printf("prog_size : %d\n", champs[number].header.prog_size);
@@ -44,14 +45,14 @@ void			display_debug_champ(t_champ *champs, int number)
 	while (++i < champs[number].len)
 	{
 		ft_printf("%.2x ", champs[number].data[i]);
-		if (cpt++ > 8)
+		if (cpt++ > 64)
 		{
 			write(1, "\n", 1);
 			cpt = 0;
 		}
 	}
 	write(1, "\n", 1);
-	display_reg(champs[number].reg);
+	display_debug_reg(champs[number].reg);
 }
 
 void			display_debug_ram(t_ram *ram)
