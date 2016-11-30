@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 13:19:35 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/11/30 15:40:04 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/11/30 17:17:55 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static void		init_process(t_vm *vm)
 	while (++c < vm->nb_champ)
 	{
 		add_process(&vm->process, jump, vm->ram[jump].value, CARRY_ON_START);
+		vm->ram[jump].executed = 1;
 		jump += MEM_SIZE / vm->nb_champ;
 	}
 }
