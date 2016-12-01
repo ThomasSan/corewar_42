@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 16:09:16 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/30 16:40:24 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/01 14:29:59 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ int		get_p_nfo(t_vm *vm, t_process *pro, char p_code[4], int p_val[4])
 	pro->curr_op = 10;
 	if (op_tab[pro->curr_op].is_p)
 	{
-	//	get_p_code(vm->ram[(pro->pc + 1) % MEM_SIZE].value, p_code);
+		get_p_code(vm->ram[(pro->pc + 1) % MEM_SIZE].value, p_code);
 	//	code actuel == 68 (pour les param de sti)
-		get_p_code(104, p_code);
+	//	get_p_code(104, p_code);
 		param_pos++;
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 16:11:24 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/30 17:24:09 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/01 17:15:37 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,19 @@ void		parse_exec_op(t_vm *vm, t_process *pro)
 	pro->pc = 0;
 	next_op_pos = get_p_nfo(vm, pro, p_code, p_val);
 	prev_op_pos = pro->pc;
+	dprintf(2, "%#X\n", pro->curr_op);
 	if (check_params(pro->curr_op, p_code, p_val))
 	{
+		dprintf(2, "%#X\n", pro->curr_op + 1);
+		ft_putendl_fd("YOLO", 2);
 		(exec_op[pro->curr_op])(vm, pro, p_code, p_val);
+		ft_putendl_fd("YOLO2", 2);
 		if (pro->curr_op != 9 || pro->carry)
-			pro->pc = pro->pc + next_op_pos;
-		//ft_putnbr_fd(pro->pc, 2);
+			pro->pc += next_op_pos;
 	}
-//	pro->pc = (pro->pc + MEM_SIZE) % MEM_SIZE;
-		ft_putnbr_fd(pro->pc, 2);
-	pro->curr_op = vm->ram[pro->pc % MEM_SIZE].value <= 16 && (vm->ram[pro->pc % MEM_SIZE].value) ? vm->ram[pro->pc].value : 0;
+	pro->pc = (pro->pc + MEM_SIZE) % MEM_SIZE;
+	pro->curr_op = vm->ram[pro->pc % MEM_SIZE].value < 17 && (vm->ram[pro->pc % MEM_SIZE].value) ? vm->ram[pro->pc].value : 0;
+	dprintf(2, "%#X\n", pro->pc);
 	vm->ram[prev_op_pos % MEM_SIZE].executed = 0;
 	vm->ram[pro->pc].executed = 1;
-	display_debug_ram(vm->ram);
 }
