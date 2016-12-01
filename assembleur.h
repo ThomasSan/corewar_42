@@ -29,6 +29,8 @@ typedef struct		s_champ
 	int				address;
 	int				type;
 	int				value;
+	int				encoding;
+	int				len;
 	char			*hex_value;
 	struct s_champ	*next;
 }					t_champ;

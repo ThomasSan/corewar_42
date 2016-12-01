@@ -31,8 +31,9 @@ void	display_document(t_champ *head)
 	while (head)
 	{
 		printf("head %s -> %d @ %d", head->line, head->type, head->address);
-		if (head->hex_value)
-			printf("-> # %s\n", head->hex_value);
+		if (head->type == OP || head->type == REG || 
+			head->type == DIR || head->type == IND)
+			printf("-> # %d / %d\n", head->value, head->value);
 		else
 			printf("\n");
 		head = head->next;
@@ -81,10 +82,7 @@ t_champ	*parse_doc(t_champ *head, int fd)
 		{
 			i  = label_index(line);
 			if (i > -1)
-			{
-				// printf("label : %s -> %d\n", ft_strsub(line, 0, label_index(line)), label_index(line));
 				head = get_document(head, ft_strsub(line, 0, i), LABELS);
-			}
 			if (ft_strstr(line, ".name ") == line)
 				head = get_document(head, ft_strsub(line, 7, ft_strlen(line) - 8), NAME);
 			if (ft_strstr(line, ".comment ") == line)
@@ -119,7 +117,7 @@ char	*get_program_size(t_champ *head)
 		head = head->next;
 	}
 	hex = str_itobase(size/2, 16);
-	while (i++ < 8 - (int)ft_strlen(hex))
+	while (i++ < 7 - (int)ft_strlen(hex))
 		dst[i] = '0';
 	tmp = dst;
 	dst = ft_strjoin(dst, hex);
@@ -137,31 +135,89 @@ int		write_in_file(char *str, int fd, int i)
 	{
 		write(fd, &str[j], 1);
 		j++;
-		if ((i + j) % 40 == 0)
+		if ((i + j) % (4*8) == 0)
 			write(fd, "\n", 1);
-		if ((i + j) % 4 == 0 && (i + j) % 40 != 0)
+		if ((i + j) % 4 == 0 && (i + j) % (4*8) != 0)
 			write(fd, " ", 1);
 	}
 	return (i+j);
 }
 
-void	write_program(t_prog *prog)
+void	write_program(t_prog *prog, t_champ *head)
 {
-	int		i;
 	int		fd;
 
-	i = 0;
-	printf("file %s\n", prog->file);
-	if ((fd = open(prog->file, O_APPEND | O_CREAT | O_RDWR, S_IRWXU)) == -1)
+	if ((fd = open(prog->file, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH)) == -1)
 	{
 		printf("ERROR\n");
 		return ; // remplacer par function ERROR;
 	}
-	i = write_in_file(prog->magic, fd, i);
-	i = write_in_file(prog->name, fd, i);
-	i = write_in_file(prog->size, fd, i);
-	i = write_in_file(prog->comment, fd, i);
-	i = write_in_file(prog->program, fd, i);
+	char *name;
+	char *comment;
+	int		magic;
+	int		file_len = 23;
+
+	magic = COREWAR_EXEC_MAGIC;
+	magic = ((magic >> 24) & 0xff) | ((magic << 8) & 0xff0000) |
+		((magic >> 8) & 0xff00) | ((magic << 24) & 0xff000000);
+	write(fd, (char*)&magic, 4);
+	name = (char*)malloc(sizeof(char) * PROG_NAME_LENGTH + 1);
+	ft_bzero(name, PROG_NAME_LENGTH);
+	name[0] = 'z';
+	name[1] = 'o';
+	name[2] = 'r';
+	name[3] = 'k';
+	write(fd, name, PROG_NAME_LENGTH);
+	comment = (char*)malloc(sizeof(char) * COMMENT_LENGTH + 1);
+	ft_bzero(comment, COMMENT_LENGTH);
+	comment[0] = 'I';
+	comment[1] = '\'';
+	comment[2] = 'M';
+	comment[3] = ' ';
+	comment[4] = 'A';
+	comment[5] = 'L';
+	comment[6] = 'I';
+	comment[7] = 'I';
+	comment[8] = 'I';
+	comment[9] = 'I';
+	comment[10] = 'V';
+	comment[11] = 'E';
+	write(fd, comment, COMMENT_LENGTH);
+	file_len = ((file_len >> 24) & 0xff) | ((file_len << 8) & 0xff0000) |
+		((file_len >> 8) & 0xff00) | ((file_len << 24) & 0xff000000);
+	write(fd, (char*)&file_len	, 4);
+	char tmp[14];
+	ft_bzero(tmp, 14);
+	tmp[0] = 11;
+	tmp[1] = 1%256;
+	tmp[2] = 15 / 256;
+	tmp[3] = 15 % 256;
+	tmp[4] = 1 / 256;
+	tmp[5] = 1 % 256;
+	// tmp[6];
+	// tmp[7];
+	// tmp[8];
+	// tmp[9];
+	// tmp[10];
+	// tmp[11];
+	// tmp[12];
+	// tmp[13];
+	write(fd, tmp, 6);
+	(void)head;
+	// while (head)
+	// {
+	// 	if (head->type == OP || head->type == REG || 
+	// 		head->type == DIR || head->type == IND)
+	// 		{
+
+	// 			printf("head->value %d ", head->value);
+	// 			head->value = ((head->value >> 24) & 0xff) | ((head->value << 8) & 0xff0000) |
+	// 	((head->value >> 8) & 0xff00) | ((head->value << 24) & 0xff000000);
+	// 			printf("head->value %d len %d\n", head->value, head->len);
+	// 			write(fd, (char*)&file_len	, 8);
+	// 		}
+	// 	head = head->next;
+	// }
 }
 
 char	*get_file(char *str)
@@ -197,8 +253,9 @@ char	*get_name(t_champ *head, int type)
 	char	*dst;
 	char	*tmp;
 
-	len = type == NAME ? PROG_NAME_LENGTH : COMMENT_LENGTH;
+	len = type == NAME ? PROG_NAME_LENGTH * 2 : COMMENT_LENGTH * 2;
 	i = 0;
+	len += 8;
 	if (!(tmp = (char*)malloc(sizeof(char) * len + 1)))
 		return (NULL);
 	while (head)
@@ -248,12 +305,13 @@ t_prog	*get_program(t_champ *head, char *name)
 	(void)name;
 	if (!(new = (t_prog*)malloc(sizeof(t_prog))))
 		return (NULL);
+	(void)head;
 	new->file = get_file(name);
-	new->magic = get_magic();
-	new->name = get_name(head, NAME);
-	new->comment = get_name(head, COMMENT);
-	new->size = get_program_size(head);
-	new->program = get_full_prog(head);
+	// new->magic = get_magic();
+	// new->name = get_name(head, NAME);
+	// new->comment = get_name(head, COMMENT);
+	// new->size = get_program_size(head);
+	// new->program = get_full_prog(head);
 	return (new);
 }
 
@@ -277,10 +335,9 @@ int		main(int ac, char **av)
 	calculate_address(head);
 	labels = parsing_champ(head);
 	calculate_value(head, labels);
-	// display_labels(labels);
 	display_document(head);
+	// display_labels(labels);
 	prog = get_program(head, av[1]);
-	(void)prog;
-	write_program(prog);
+	write_program(prog, head);
 	return (0);
 }

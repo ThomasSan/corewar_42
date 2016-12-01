@@ -80,22 +80,14 @@ char	*binary_encoding(t_champ *head)
 	return (str);
 }
 
-char	*join_binary_encoding(t_champ *head, char *str)
+int		join_binary_encoding(t_champ *head)
 {
 	char	*bin;
 	int		dec;
-	char	*hex;
-	char	*tmp;
 
 	bin = binary_encoding(head);
 	dec = binary_todec(bin);
-	hex = str_itobase(dec, 16);
-	tmp = str;
-	tmp = ft_strjoin(str, hex);
-	free(str);
-	free(bin);
-	free(hex);
-	return (tmp);
+	return (dec);
 }
 
 int		get_address(t_labels *labels, char *str)
@@ -113,84 +105,46 @@ int		get_address(t_labels *labels, char *str)
 	//si on ne trouve pas de matching labels
 }
 
-char 	*converting_labels(int address, char *str, t_labels *labels, int len)
+int 	converting_labels(t_champ *head, char *str, t_labels *labels, int len)
 {
-	char	*tmp;
-	char	*tmp1;
-	char	*dst;
 	int		add;
-	int		i;
 
-	i = 0;
-	if (!(dst = (char*)malloc(sizeof(char)* len + 1)) || get_address(labels, str) == -1)
-		return (NULL);
-	add = get_address(labels, str) - address;
-	if (add >= 0)
-		tmp = str_itobase(add, 16);
-	else
-		tmp = neg_itobase(add);
-	len -= ft_strlen(tmp);
-	while (i < len)
-	{
-		dst[i] = add >= 0 ? '0' : 'f';
-		i++;
-	}
-	tmp1 = dst;
-	dst = ft_strjoin(dst, tmp);
-	free(tmp1);
-	free(tmp);
-	return (dst);
+	add = get_address(labels, str) - head->address;
+	head->len = len;
+	return (add);
 }
 
-char 	*getting_direct_length(char *str, int len)
+int		getting_direct_length(t_champ *head, char *str, int len)
 {
-	int		i;
-	int		nb;
-	char	*hex;
-	char	*tmp;
-	char	*dst;
+	int ret;
 
-	i = 0;
-	nb = ft_atoi(str);
-	hex = str_itobase(nb, 16);
-	if (!(dst = (char*)malloc(sizeof(char) * len + 1)))
-		return (NULL);
-	len -= ft_strlen(hex);
-	while (i < len)
-	{
-		dst[i] = '0';
-		i++;
-	}
-	dst[i] = '\0';
-	tmp = dst;
-	dst = ft_strjoin(dst, hex);
-	free(hex);
-	free(tmp);
-	return (dst);
+	ret = ft_atoi(str);
+	head->len = len;
+	return (ret);
 }
 
-char	*params_values(t_champ *head, t_labels *labels, char *op)
+int		params_values(t_champ *head, t_labels *labels, char *op)
 {
-	int	len;
+	int len;
 
 	len = label_sizes(op);
 	if (head->type == REG)
-		return (str_itobase(ft_atoi(head->line + 1), 16));
+		return (ft_atoi(head->line + 1));
 	else if (head->type == DIR)
 	{
 		if (head->line[1] == LABEL_CHAR)
-			return (converting_labels(head->address, head->line + 2, labels, len * 2));
+			return (converting_labels(head, head->line + 2, labels, len * 2));
 		else
-			return (getting_direct_length(head->line + 1, len * 2));
+			return (getting_direct_length(head, head->line + 1, len * 2));
 	}
 	else if (head->type == IND)
 	{
 		if (head->line[0] == LABEL_CHAR)
-			return (converting_labels(head->address, head->line + 2, labels, 4));
+			return (converting_labels(head, head->line + 2, labels, 4));
 		else
-			return (getting_direct_length(head->line + 1, IND_SIZE));
+			return (getting_direct_length(head, head->line + 1, IND_SIZE));
 	}
-	return (NULL);
+	return (-1);
 }
 
 void	calculate_value(t_champ *head, t_labels *labels)
@@ -204,14 +158,21 @@ void	calculate_value(t_champ *head, t_labels *labels)
 		else if (head->type == OP)
 		{
 			last_op = head->line;
-			head->hex_value = str_itobase(get_op_code(head->line)+1, 16);
+			head->value = get_op_code(head->line) + 1;
 			if (params_types(last_op) == 2) // a une operation de conversion;
-				head->hex_value = join_binary_encoding(head, head->hex_value);
+			{
+				head->encoding = join_binary_encoding(head);
+			}
+			else
+				head->encoding = 0;
+
 		}
 		else if (head->type == LABELS)
 			head->hex_value = NULL;
 		else
-			head->hex_value = params_values(head, labels, last_op);
+		{
+			head->value = params_values(head, labels, last_op);
+		}
 		head = head->next;
 	}
 }
