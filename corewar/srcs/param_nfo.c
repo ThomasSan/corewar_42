@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 16:09:16 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/01 17:39:31 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/02 12:26:30 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static void		get_p_code(unsigned char bit, char p_code[4])
 	while (--i >= 0)
 	{
 		p_code[i] = bit % 4;
+	//	dprintf(2, "%#X\n\n", p_code[i]);
 		bit = bit >> 2;
 	}
 }
@@ -61,8 +62,8 @@ int		get_p_nfo(t_vm *vm, t_process *pro, char p_code[4], int p_val[4])
 	int		p_len;
 
 	param_pos = 1;
-	pro->curr_op = 11;
-	if (op_tab[pro->curr_op].is_p)
+//	pro->curr_op = 11;
+	if (op_tab[pro->curr_op - 1].is_p)
 	{
 		get_p_code(vm->ram[(pro->pc + 1) % MEM_SIZE].value, p_code);
 	//	code actuel == 68 (pour les param de sti)

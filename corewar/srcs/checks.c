@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 18:26:30 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/01 19:11:42 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/02 12:24:29 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ int		check_params(char opcode, char p_code[4], int p_val[4])
 		return (0);
 	while (++i < op_tab[(int)opcode].nb_arg)
 	{
-		dprintf(2, "%s %#x\n","p_type[i] =", op_tab[(int)opcode].p_type[i]);
-		dprintf(2, "%s %#x\n","p_code[i] =", p_code[i]);
-		dprintf(2, "%s %#x\n","p_code[i] - 1 =", p_code[i] - 1);
+//		dprintf(2, "%s %#x\n","p_type[i] =", op_tab[(int)opcode].p_type[i]);
+//		dprintf(2, "%s %#x\n","p_code[i] =", p_code[i]);
+//		dprintf(2, "%s %#x\n","p_code[i] - 1 =", p_code[i] - 1);
 		dprintf(2, "%s %#x\n","opcode] =", opcode);
 		if ((op_tab[(int)opcode].p_type[i] >> (p_code[i] - 1)) % 2 == 0)
 		{

@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:24 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/30 16:14:49 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/02 12:45:41 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,15 @@ int				main(int argc, char **argv)
 	display_debug_champ(vm.champs, 3);
 //	display_debug_ram(vm.ram);
 
-	parse_exec_op(&vm, &pro);
+//	pro.pc = 0;
+//	while (1)
+dprintf(2, "%s%#x\n", "pro->pc bfore = ", pro.pc);
+	while(1)
+	{
+		parse_exec_op(&vm, vm.process);
+		parse_exec_op(&vm, vm.process->next);
+		display_debug_ram(vm.ram);
+		usleep(900000);
+	}
 	return (0);
 }

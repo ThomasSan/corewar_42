@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 15:06:44 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/11/30 16:09:08 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/02 12:02:32 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static t_process	*new_process(int pc, int curr_op, int carry)
 
 	pro = (t_process *)ft_memalloc(sizeof(t_process));
 	pro->pc = pc;
+	dprintf(2, "%s%#X\n", "pc = ", pro->pc);
 	pro->curr_op = curr_op;
 	pro->carry = carry;
 	pro->next = NULL;
