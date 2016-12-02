@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 17:24:27 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/30 14:37:25 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/02 15:41:26 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ void		ft_aff(t_vm *vm, t_process *pro, char p_code[4], int p_val[4])
 	{
 		write(1, "aff : ", 6);
 		ft_putchar(vm->champs[vm->ram[pro->pc].owner].reg[p_val[0] - 1] % 256);
-		ft_putchar('\n');
+		write(1, "\n", 1);
 	}
 }
