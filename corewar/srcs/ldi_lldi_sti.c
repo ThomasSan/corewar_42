@@ -34,7 +34,7 @@ void		ft_ldi(t_vm *vm, t_process *pro, char p_code[4], int p_val[4])
 	}
 }
 
-void		ft_lldi(t_vm *vm, t_process *pr, char p_code[4], int p_val[4])
+void		ft_lldi(t_vm *vm, t_process *pro, char p_code[4], int p_val[4])
 {
 	int			add;
 	int			i;
