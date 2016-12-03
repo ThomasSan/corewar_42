@@ -28,9 +28,9 @@ void		ft_ldi(t_vm *vm, t_process *pro, char p_code[4], int p_val[4])
 			vm->champs[vm->ram[pro->pc].owner].reg[p_val[2] - 1] = vm->champs[vm->ram[pro->pc].owner].reg[p_val[2] - 1] << 8;
 			vm->champs[vm->ram[pro->pc].owner].reg[p_val[2] - 1] += vm->ram[(pro->pc + (add % IDX_MOD) + i + MEM_SIZE) % MEM_SIZE].value;
 		}
+		pro->carry = 0;
 		if (vm->champs[vm->ram[pro->pc].owner].reg[p_val[2] - 1])
 			pro->carry = 1;
-		pro->carry = 0;
 	}
 }
 
@@ -51,9 +51,9 @@ void		ft_lldi(t_vm *vm, t_process *pro, char p_code[4], int p_val[4])
 			vm->champs[vm->ram[pro->pc].owner].reg[p_val[2] - 1] += vm->ram[(pro->pc + add + i + MEM_SIZE) % MEM_SIZE].value;
 
 		}
+		pro->carry = 0;
 		if (vm->champs[vm->ram[pro->pc].owner].reg[p_val[2] - 1])
 			pro->carry = 1;
-		pro->carry = 0;
 	}
 }
 

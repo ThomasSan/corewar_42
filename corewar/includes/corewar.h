@@ -93,8 +93,8 @@ int		get_p_nfo(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 
 // OP
 void		ft_live(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
-void		ft_st(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
-void		ft_ld(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
+void		ft_st(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
+void		ft_ld(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 void		ft_and(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 void		ft_sub(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
 void		ft_add(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
