@@ -102,8 +102,8 @@ void		ft_or(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 void		ft_xor(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 void		ft_ldi(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 void		ft_lldi(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
-void		ft_sti(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
-void		ft_lld(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
+void		ft_sti(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
+void		ft_lld(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 void		ft_lfork(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
 void		ft_fork(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
 void		ft_zjmp(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
@@ -111,5 +111,6 @@ void		ft_aff(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 
 int		check_params(char opcode, char p_code[4], int p_val[4]);
 int		get_new_p_val(t_vm *vm, t_process *pro, char p_code, int p_val);
+int		get_new_lp_val(t_vm *vm, t_process *pro, char p_code, int p_val);
 
 #endif
