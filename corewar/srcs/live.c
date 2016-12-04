@@ -14,8 +14,10 @@
 
 void		ft_live(t_vm *vm, t_process *pr, char p_code[4], int p_val[4])
 {
-	(void)vm;
-	(void)pr;
-	(void)p_code;
-	(void)p_val;
+if (check_params(1, p_code, p_val))
+{
+//check_champs_nb
+
+ft_putstr("LOLOLOL");
+}
 }
