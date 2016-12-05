@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:24 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/02 12:45:41 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/05 16:05:12 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,14 @@ int				main(int argc, char **argv)
 dprintf(2, "%s%#x\n", "pro->pc bfore = ", pro.pc);
 	while(1)
 	{
+	dprintf(2, "%s %#x\n", "val =",vm.ram[0].value);
+	dprintf(2, "%s %#x\n", "owner =",vm.ram[0].owner);
+	dprintf(2, "%s %#x\n", "val =",vm.ram[1].value);
+	dprintf(2, "%s %#x\n", "owner =",vm.ram[1].owner);
+	dprintf(2, "%s %#x\n", "val =",vm.ram[2].value);
+	dprintf(2, "%s %#x\n", "owner =",vm.ram[2].owner);
+	dprintf(2, "%s %#x\n", "val =",vm.ram[3].value);
+	dprintf(2, "%s %#x\n", "owner =",vm.ram[3].owner);
 		parse_exec_op(&vm, vm.process);
 		parse_exec_op(&vm, vm.process->next);
 		display_debug_ram(vm.ram);

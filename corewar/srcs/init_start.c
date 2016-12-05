@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 13:19:35 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/02 12:05:19 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/05 16:16:28 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void		place_champ(t_vm *vm)
 		while (++i <= vm->champs[c].len)
 		{
 			vm->ram[jump + i].value = vm->champs[c].data[i];
-			vm->ram[jump + i].owner = i;
+			vm->ram[jump + i].owner = c;
 			vm->champs[c].pos = jump;
 		}
 		jump += MEM_SIZE / vm->nb_champ;

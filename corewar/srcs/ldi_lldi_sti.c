@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 17:20:46 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/01 17:16:18 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/05 15:28:33 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void		ft_sti(t_vm *vm, t_process *pro, char p_code[4], int p_val[4])
 	if (check_params(11, p_code, p_val))
 	{
 		display_debug_ram(vm->ram);
+		//	dprintf(2, "%s %d\n","1st pcowner =", vm->ram[pro->pc].owner);
 		registre = vm->champs[vm->ram[pro->pc].owner].reg[p_val[0] - 1];
 		add = p_code[1] == REG_CODE ? vm->champs[vm->ram[pro->pc].owner].reg[p_val[1] - 1] : (signed short)p_val[1];
 		add += p_code[2] == REG_CODE ? vm->champs[vm->ram[pro->pc].owner].reg[p_val[2] - 1] : (signed short)p_val[2];
@@ -77,6 +78,8 @@ void		ft_sti(t_vm *vm, t_process *pro, char p_code[4], int p_val[4])
 			calcul = (pro->pc + (add % IDX_MOD) + i + MEM_SIZE) % MEM_SIZE;	
 			vm->ram[calcul].value = registre % 256;
 			registre = registre >> 8;
+		//	dprintf(2, "%s %d\n","pro pcowner =", vm->ram[pro->pc].owner);
+		//	dprintf(2, "%s %d\n"," pcowner =", vm->ram[calcul].owner);
 			vm->ram[calcul].owner = vm->ram[pro->pc].owner;
 		}
 		display_debug_ram(vm->ram);
