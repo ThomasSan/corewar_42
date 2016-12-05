@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/30 16:17:32 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/05 21:36:53 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,19 +79,28 @@ void			exit_corewar(t_vm *vm);
 void			exit_corewar_msg(t_vm *vm, char *msg);
 void			get_champ(t_vm *vm, t_champ *champ, char *path);
 
+/*
+** LIST PROCESS
+*/
 void			add_process(t_process **p, int pc, int curr_op, int carry);
 void			free_process(t_process **p);
 
-// DEBUG DISPLAYER
+/*
+** DEBUG DISPLAYER
+*/
 void			display_debug_champ(t_champ *champs, int number);
 void			display_debug_ram(t_ram *ram);
 void			display_debug_reg(int reg[REG_NUMBER]);
 
-// PARSE / EXEC 
+/*
+** PARSE / EXEC
+*/
 void		parse_exec_op(t_vm *vm, t_process *pro);
 int		get_p_nfo(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 
-// OP
+/*
+** OP
+*/
 void		ft_live(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
 void		ft_st(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 void		ft_ld(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);

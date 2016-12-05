@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:24 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/05 16:43:20 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/05 21:40:54 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static int		get_arg(t_vm *vm, int ac, char **av)
 int				main(int argc, char **argv)
 {
 	t_vm	vm;
-	t_process	pro;
+	t_process	*pro;
 
 	init_vm(&vm);
 	if (get_arg(&vm, argc, argv) == -1)
@@ -72,25 +72,30 @@ int				main(int argc, char **argv)
 	display_debug_champ(vm.champs, 1);
 	display_debug_champ(vm.champs, 2);
 	display_debug_champ(vm.champs, 3);
-//	display_debug_ram(vm.ram);
+	//	display_debug_ram(vm.ram);
 
-//	pro.pc = 0;
-//	while (1)
-dprintf(2, "%s%#x\n", "pro->pc bfore = ", pro.pc);
+	//	pro.pc = 0;
+	//	while (1)
 	while(1)
 	{
-	dprintf(2, "%s %#x\n", "val =",vm.ram[0].value);
-	dprintf(2, "%s %#x\n", "owner =",vm.ram[0].owner);
-	dprintf(2, "%s %#x\n", "val =",vm.ram[1].value);
-	dprintf(2, "%s %#x\n", "owner =",vm.ram[1].owner);
-	dprintf(2, "%s %#x\n", "val =",vm.ram[2].value);
-	dprintf(2, "%s %#x\n", "owner =",vm.ram[2].owner);
-	dprintf(2, "%s %#x\n", "val =",vm.ram[3].value);
-	dprintf(2, "%s %#x\n", "owner =",vm.ram[3].owner);
-		parse_exec_op(&vm, vm.process);
-		parse_exec_op(&vm, vm.process->next);
+		dprintf(2, "%s %#x\n", "val =",vm.ram[0].value);
+		dprintf(2, "%s %#x\n", "owner =",vm.ram[0].owner);
+		dprintf(2, "%s %#x\n", "val =",vm.ram[1].value);
+		dprintf(2, "%s %#x\n", "owner =",vm.ram[1].owner);
+		dprintf(2, "%s %#x\n", "val =",vm.ram[2].value);
+		dprintf(2, "%s %#x\n", "owner =",vm.ram[2].owner);
+		dprintf(2, "%s %#x\n", "val =",vm.ram[3].value);
+		dprintf(2, "%s %#x\n", "owner =",vm.ram[3].owner);
+		
+		pro = vm.process;
+		while (pro)
+		{
+			parse_exec_op(&vm, pro);
+			pro = pro->next;
+		}
+
 		display_debug_ram(vm.ram);
-//		usleep(9000);
+		usleep(900000);
 	}
 	return (0);
 }
