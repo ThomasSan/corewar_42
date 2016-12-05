@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:24 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/05 16:05:12 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/05 16:43:20 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ dprintf(2, "%s%#x\n", "pro->pc bfore = ", pro.pc);
 		parse_exec_op(&vm, vm.process);
 		parse_exec_op(&vm, vm.process->next);
 		display_debug_ram(vm.ram);
-		usleep(900000);
+//		usleep(9000);
 	}
 	return (0);
 }
