@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 17:17:21 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/11/28 17:34:41 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/06 12:20:07 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ if (check_params(1, p_code, p_val))
 {
 //check_champs_nb
 
-ft_putstr("LOLOLOL");
+//ft_putstr("LOLOLOL");
 }
 }

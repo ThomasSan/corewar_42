@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/05 21:36:53 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/06 13:19:42 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct	s_cycle
 typedef struct	s_vm
 {
 	t_champ		*champs;
+	int			last_to_live;
 	t_process	*process;
 	t_ram		*ram;
 	t_cycle		cycle;
