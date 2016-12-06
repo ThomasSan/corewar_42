@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 12:16:39 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/11/30 16:17:12 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/06 13:39:39 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,17 @@ void			display_debug_ram(t_ram *ram)
 			len = 0;
 		}
 		len++;
+	}
+}
+
+void			display_debug_process(t_process *pro)
+{
+	while (pro)
+	{
+		ft_printf("----- PROCESS %d -----\npc : %c\ncurr_op : %d\n"
+				"cycle_to_exec : %d\ncarry : %d\n", pro->pc, pro->curr_op,
+				pro->cycle_to_exec, pro->carry);
+		ft_putstr("\n\n");
+		pro = pro->next;
 	}
 }

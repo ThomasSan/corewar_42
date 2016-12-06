@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/06 13:19:42 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/06 13:39:54 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct	s_process
 {
 	int					pc;
 	int					curr_op;
+	int					cycle_to_exec;
 	bool				carry;
 	struct s_process	*next;
 }				t_process;
@@ -92,6 +93,7 @@ void			free_process(t_process **p);
 void			display_debug_champ(t_champ *champs, int number);
 void			display_debug_ram(t_ram *ram);
 void			display_debug_reg(int reg[REG_NUMBER]);
+void			display_debug_process(t_process *pro);
 
 /*
 ** PARSE / EXEC
