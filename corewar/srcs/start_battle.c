@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 14:49:13 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/06 16:18:10 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/06 17:20:02 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ static int		update_cycle(t_vm *vm, t_cycle *cycle)
 {
 	t_process	*dead_pro;
 
+	cycle->cycles++;
 	if (cycle->cycles_before_die == cycle->cycle_to_die)
 	{
 		while ((dead_pro = get_dead_process(vm->process)))
@@ -82,14 +83,23 @@ static int		update_cycle(t_vm *vm, t_cycle *cycle)
 
 void			start_battle(t_vm *vm)
 {
-	int		game;
+	int			game;
+	t_process	*pro;
 
 	game = 1;
 	while (game)
 	{
-		exec_process(vm, vm->process);
+		pro = vm->process;
+		while (pro)
+		{
+			exec_process(vm, pro);
+			pro = pro->next;
+		}
 		game = update_cycle(vm, &vm->cycle);
-		display_debug_ram(vm->ram);
-		usleep(90000);
+//		display_debug_ram(vm->ram, vm->cycle.cycles);
+//		usleep(400000);
+		ft_printf("%d\n", vm->cycle.cycles);
 	}
+//	display_debug_ram(vm->ram, vm->cycle.cycles);
+	ft_printf("gagnant : %s\n", vm->champs[vm->last_to_live].header.prog_name);
 }

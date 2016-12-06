@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 15:06:44 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/06 16:11:52 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/06 17:21:15 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static t_process	*new_process(int pc, int curr_op, int carry)
 		pro->curr_op = 0;
 		pro->cycles_to_exec = 0;
 	}
+	static int		lol = 0;
+	ft_printf("MALLOC %d\n", lol++);
 	return (pro);
 }
 

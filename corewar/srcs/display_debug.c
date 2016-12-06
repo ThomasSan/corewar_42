@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 12:16:39 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/06 14:33:52 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/06 16:43:18 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,14 @@ void			display_debug_champ(t_champ *champs, int number)
 	display_debug_reg(champs[number].reg);
 }
 
-void			display_debug_ram(t_ram *ram)
+void			display_debug_ram(t_ram *ram, int cycle)
 {
 	int		len;
 	int		i;
 
 	len = 1;
 	i = -1;
-	ft_putstr("\n----- RAM -----\n\n");
+	ft_printf("\n----- RAM %d -----\n\n", cycle);
 	while (++i < MEM_SIZE)
 	{
 		if (ram[i].executed == 1)

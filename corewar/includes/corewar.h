@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/06 16:04:22 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/06 17:29:25 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void			remove_dead_process(t_process *dead_pro, t_vm *vm);
 ** DEBUG DISPLAYER
 */
 void			display_debug_champ(t_champ *champs, int number);
-void			display_debug_ram(t_ram *ram);
+void			display_debug_ram(t_ram *ram, int cycle);
 void			display_debug_reg(int reg[REG_NUMBER]);
 void			display_debug_process(t_process *pro);
 

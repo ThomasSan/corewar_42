@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 17:20:46 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/06 15:23:59 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/06 16:51:44 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,5 @@ void		ft_sti(t_vm *vm, t_process *pro, char p_code[4], int p_val[4])
 		//	dprintf(2, "%s %d\n"," pcowner =", vm->ram[calcul].owner);
 			vm->ram[calcul].owner = vm->ram[pro->pc].owner;
 		}
-		display_debug_ram(vm->ram);
 	}
 }
