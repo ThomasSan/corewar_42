@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/06 13:39:54 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/06 13:59:25 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct	s_cycle
 {
 	int		cycles;
 	int		cycle_to_die;
+	int		cycles_before_die;
 	int		cycle_delta;
 	int		nbr_live;
 	int		max_checks;
