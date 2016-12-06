@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 13:19:35 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/06 13:59:48 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/06 14:26:33 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ static void		place_champ(t_vm *vm)
 
 static void		init_process(t_vm *vm)
 {
-	int		jump;
-	int		c;
+	int			jump;
+	int			c;
 
 	jump = (MEM_SIZE / vm->nb_champ) * (vm->nb_champ - 1);
 	c = -1;

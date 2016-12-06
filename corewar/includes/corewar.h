@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/06 13:59:25 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/06 14:18:02 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ typedef struct	s_process
 {
 	int					pc;
 	int					curr_op;
-	int					cycle_to_exec;
+	int					cycles_to_exec;
+	int					lives;
 	bool				carry;
 	struct s_process	*next;
 }				t_process;
