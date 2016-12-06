@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 13:19:35 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/06 14:26:33 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/06 14:34:43 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,14 @@ static void		place_champ(t_vm *vm)
 
 static void		init_process(t_vm *vm)
 {
-	int			jump;
 	int			c;
 
-	jump = (MEM_SIZE / vm->nb_champ) * (vm->nb_champ - 1);
-	c = -1;
-	while (++c < vm->nb_champ)
+	c = vm->nb_champ;
+	while (c--)
 	{
-		add_process(&vm->process, jump, vm->ram[jump].value, CARRY_ON_START);
-		vm->ram[jump].executed = 1;
-		jump -= MEM_SIZE / vm->nb_champ;
+		add_process(&vm->process, vm->champs[c].pos,
+				vm->ram[vm->champs[c].pos].value, CARRY_ON_START);
+		vm->ram[vm->champs[c].pos].executed = 1;
 	}
 }
 

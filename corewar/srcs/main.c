@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:24 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/06 12:19:36 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/06 14:31:42 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,10 @@ int				main(int argc, char **argv)
 	display_debug_champ(vm.champs, 2);
 	display_debug_champ(vm.champs, 3);
 	//	display_debug_ram(vm.ram);
-
+	
+	YOLO
+	display_debug_process(vm.process);
+	exit(1);
 	//	pro.pc = 0;
 	//	while (1)
 	while(1)
