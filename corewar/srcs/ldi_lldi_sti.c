@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 17:20:46 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/05 15:28:33 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/06 15:23:59 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void		ft_sti(t_vm *vm, t_process *pro, char p_code[4], int p_val[4])
 
 	if (check_params(11, p_code, p_val))
 	{
-		display_debug_ram(vm->ram);
+		//display_debug_ram(vm->ram);
 		//	dprintf(2, "%s %d\n","1st pcowner =", vm->ram[pro->pc].owner);
 		registre = vm->champs[vm->ram[pro->pc].owner].reg[p_val[0] - 1];
 		add = p_code[1] == REG_CODE ? vm->champs[vm->ram[pro->pc].owner].reg[p_val[1] - 1] : (signed short)p_val[1];
