@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:24 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/06 14:49:56 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/06 16:14:24 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,23 +73,8 @@ int				main(int argc, char **argv)
 	display_debug_champ(vm.champs, 2);
 	display_debug_champ(vm.champs, 3);
 	//	display_debug_ram(vm.ram);
-	
 	display_debug_process(vm.process);
-	exit(1);
-	//	pro.pc = 0;
-	//	while (1);
-	
+
 	start_battle(&vm);
-	while(1)
-	{
-		pro = vm.process;
-			while (pro)
-			{
-				parse_exec_op(&vm, pro);
-				pro = pro->next;
-			}
-		display_debug_ram(vm.ram);
-		usleep(900000);
-	}
 	exit_corewar(&vm);
 }
