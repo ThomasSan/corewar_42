@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 15:06:44 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/06 14:21:13 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/06 16:11:52 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,41 @@ void				free_process(t_process **p)
 		tmp = *p;
 	}
 	*p = NULL;
+}
+
+t_process			*get_dead_process(t_process *pro)
+{
+	while (pro)
+	{
+		if (pro->lives == 0)
+			return (pro);
+		pro = pro->next;
+	}
+	return (NULL);
+}
+
+void				remove_dead_process(t_process *dead_pro, t_vm *vm)
+{
+	t_process	*pro;
+	t_process	*last;
+	t_process	*first;
+
+	pro = vm->process;
+	first = pro;
+	last = NULL;
+	while (pro)
+	{
+		if (pro == dead_pro)
+		{
+			if (last)
+				last->next = pro->next;
+			else
+				vm->process = pro->next;
+			vm->ram[pro->pc].executed = 0;
+			ft_memdel((void **)&pro);
+			return ;
+		}
+		last = pro;
+		pro = pro->next;
+	}
 }

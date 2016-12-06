@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/06 14:18:02 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/06 16:04:22 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct	s_cycle
 	int		cycles_before_die;
 	int		cycle_delta;
 	int		nbr_live;
-	int		max_checks;
+	int		checks_done;
 }				t_cycle;
 
 typedef struct	s_vm
@@ -82,12 +82,15 @@ void			init_start(t_vm *vm);
 void			exit_corewar(t_vm *vm);
 void			exit_corewar_msg(t_vm *vm, char *msg);
 void			get_champ(t_vm *vm, t_champ *champ, char *path);
+void			start_battle(t_vm *vm);
 
 /*
 ** LIST PROCESS
 */
 void			add_process(t_process **p, int pc, int curr_op, int carry);
 void			free_process(t_process **p);
+t_process		*get_dead_process(t_process *pro);
+void			remove_dead_process(t_process *dead_pro, t_vm *vm);
 
 /*
 ** DEBUG DISPLAYER

@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 13:19:35 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/06 14:34:43 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/06 15:24:22 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void		init_cycles(t_vm *vm)
 	vm->cycle.cycles = 0;
 	vm->cycle.cycle_delta = CYCLE_DELTA;
 	vm->cycle.nbr_live = NBR_LIVE;
-	vm->cycle.max_checks = MAX_CHECKS;
+	vm->cycle.checks_done = 0;
 	vm->cycle.cycle_to_die = CYCLE_TO_DIE;
 	vm->cycle.cycles_before_die = 0;
 	vm->last_to_live = vm->nb_champ - 1;
