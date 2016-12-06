@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 16:11:24 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/06 17:36:17 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/06 17:48:07 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,7 @@ void		parse_exec_op(t_vm *vm, t_process *pro)
 		//	dprintf(2, "%s %d\n","pro->pc.owner2 =", vm->ram[pro->pc].owner);
 		(exec_op[pro->curr_op - 1])(vm, pro, p_code, p_val);
 		if (pro->curr_op != 9 || pro->carry)
-		{
 			pro->pc += next_op_pos;
-			if (pro->curr_op - 1 == 11)
-			{
-				printf("%x\n", pro->pc);
-				exit(-1);
-			}
-		}
 	}
 	//	pro->pc = ((pro->pc + MEM_SIZE) % MEM_SIZE);
 	pro->curr_op = vm->ram[pro->pc % MEM_SIZE].value < 17 && (vm->ram[pro->pc % MEM_SIZE].value) ? vm->ram[pro->pc].value : 0;

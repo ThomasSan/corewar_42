@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 17:20:46 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/06 16:51:44 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/06 18:02:33 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,6 @@ void		ft_ldi(t_vm *vm, t_process *pro, char p_code[4], int p_val[4])
 			vm->champs[vm->ram[pro->pc].owner].reg[p_val[2] - 1] = vm->champs[vm->ram[pro->pc].owner].reg[p_val[2] - 1] << 8;
 			vm->champs[vm->ram[pro->pc].owner].reg[p_val[2] - 1] += vm->ram[(pro->pc + (add % IDX_MOD) + i + MEM_SIZE) % MEM_SIZE].value;
 		}
-		pro->carry = 0;
-		if (vm->champs[vm->ram[pro->pc].owner].reg[p_val[2] - 1])
-			pro->carry = 1;
 	}
 }
 
@@ -51,9 +48,10 @@ void		ft_lldi(t_vm *vm, t_process *pro, char p_code[4], int p_val[4])
 			vm->champs[vm->ram[pro->pc].owner].reg[p_val[2] - 1] += vm->ram[(pro->pc + add + i + MEM_SIZE) % MEM_SIZE].value;
 
 		}
-		pro->carry = 0;
 		if (vm->champs[vm->ram[pro->pc].owner].reg[p_val[2] - 1])
 			pro->carry = 1;
+		else
+			pro->carry = 0;
 	}
 }
 
@@ -78,8 +76,8 @@ void		ft_sti(t_vm *vm, t_process *pro, char p_code[4], int p_val[4])
 			calcul = (pro->pc + (add % IDX_MOD) + i + MEM_SIZE) % MEM_SIZE;	
 			vm->ram[calcul].value = registre % 256;
 			registre = registre >> 8;
-		//	dprintf(2, "%s %d\n","pro pcowner =", vm->ram[pro->pc].owner);
-		//	dprintf(2, "%s %d\n"," pcowner =", vm->ram[calcul].owner);
+			//	dprintf(2, "%s %d\n","pro pcowner =", vm->ram[pro->pc].owner);
+			//	dprintf(2, "%s %d\n"," pcowner =", vm->ram[calcul].owner);
 			vm->ram[calcul].owner = vm->ram[pro->pc].owner;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 14:49:13 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/06 17:20:02 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/06 18:09:44 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,8 @@ void			start_battle(t_vm *vm)
 			pro = pro->next;
 		}
 		game = update_cycle(vm, &vm->cycle);
-//		display_debug_ram(vm->ram, vm->cycle.cycles);
-//		usleep(400000);
+		display_debug_ram(vm->ram, vm->cycle.cycles);
+		usleep(20000);
 		ft_printf("%d\n", vm->cycle.cycles);
 	}
 //	display_debug_ram(vm->ram, vm->cycle.cycles);
