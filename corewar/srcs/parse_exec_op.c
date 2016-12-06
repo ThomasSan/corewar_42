@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 16:11:24 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/06 12:19:46 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/06 16:40:04 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void		parse_exec_op(t_vm *vm, t_process *pro)
 	}
 	pro->pc = (pro->pc + MEM_SIZE) % MEM_SIZE;
 	pro->curr_op = vm->ram[pro->pc % MEM_SIZE].value < 17 && (vm->ram[pro->pc % MEM_SIZE].value) ? vm->ram[pro->pc].value : 0;
+	pro->cycles_to_exec = vm->ram[pro->pc % MEM_SIZE].value < 17 && (vm->ram[pro->pc % MEM_SIZE].value) ? op_tab[pro->curr_op - 1].nb_cycle - 1 : 0;
 	vm->ram[prev_op_pos % MEM_SIZE].executed = 0;
 	vm->ram[pro->pc].executed = 1;
 }
