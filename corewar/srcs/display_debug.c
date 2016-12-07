@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 12:16:39 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/06 16:43:18 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/07 11:27:17 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void			display_debug_process(t_process *pro)
 	i = 0;
 	while (pro)
 	{
-		ft_printf("----- PROCESS %d -----\npc : %d\ncurr_op : %d\n"
+		ft_printf("----- PROCESS nº%d -----\npc : %d\ncurr_op : %d\n"
 				"cycle_to_exec : %d\ncarry : %d\n", ++i, pro->pc, pro->curr_op,
 				pro->cycles_to_exec, pro->carry);
 		ft_putstr("\n\n");
