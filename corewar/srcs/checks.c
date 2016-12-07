@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 18:26:30 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/07 15:48:01 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/07 15:51:00 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		get_new_p_val(t_vm *vm, t_process *pro, char p_code, int p_val)
 	int		ret;
 	int		i;
 
-	dprintf(2, "pcode dans new_p_val=%#x\n", p_code);
+//	dprintf(2, "pcode dans new_p_val=%#x\n", p_code);
 	if (p_code == REG_CODE && p_val <= REG_NUMBER)
 	{
 		return (pro->reg[p_val - 1]);
