@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/06 17:29:25 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/07 12:49:45 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 # define MAX_COR_SIZE		CHAMP_MAX_SIZE + PROG_NAME_LENGTH + COMMENT_LENGTH
 
-# define CARRY_ON_START		1
+# define CARRY_ON_START		0
 
 typedef struct	s_ram
 {

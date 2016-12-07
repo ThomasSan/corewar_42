@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 18:26:30 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/02 15:42:33 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/07 13:02:01 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@ int		get_new_p_val(t_vm *vm, t_process *pro, char p_code, int p_val)
 	int		ret;
 	int		i;
 
+	dprintf(2, "pcode dans new_p_val=%#x\n", p_code);
 	if (p_code == REG_CODE && p_val <= REG_NUMBER)
+	{
 		return (vm->champs[vm->ram[pro->pc].owner].reg[p_val - 1]);
+	}
 	else if (p_code == IND_CODE || (p_code == DIR_CODE &&
 				op_tab[vm->ram[pro->pc % MEM_SIZE].value].is_idx > 0))
 	{
