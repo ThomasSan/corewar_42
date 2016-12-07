@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 17:20:46 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/07 15:46:19 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/07 15:46:41 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ void		ft_sti(t_vm *vm, t_process *pro, char p_code[4], int p_val[4])
 
 	if (check_params(11, p_code, p_val))
 	{
-		registre = pro->reg[p_val[0] - 1]);
+		registre = pro->reg[p_val[0] - 1];
 		add = p_code[1] == REG_CODE ? pro->reg[p_val[1] - 1] : (signed short)p_val[1];
 		add += p_code[2] == REG_CODE ? pro->reg[p_val[2] - 1] : (signed short)p_val[2];
 		i = 4;
