@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 17:20:46 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/07 15:42:01 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/07 15:46:19 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,8 @@ void		ft_ldi(t_vm *vm, t_process *pro, char p_code[4], int p_val[4])
 		pro->reg[p_val[2] - 1] = 0;
 		while (++i < 4)
 		{
-			pro->reg[p_val2[2] - 1] = pro->reg[p_val[2] - 1] << 8;
-			pro->reg[p_val[2] - 1] += vm->ram[pro->pc + (add % IDX_MOD) + i + MEM_SIZE) % MEM_SIZE].value;
+			pro->reg[p_val[2] - 1] = pro->reg[p_val[2] - 1] << 8;
+			pro->reg[p_val[2] - 1] += vm->ram[(pro->pc + (add % IDX_MOD) + i + MEM_SIZE) % MEM_SIZE].value;
 		}
 	}
 }
