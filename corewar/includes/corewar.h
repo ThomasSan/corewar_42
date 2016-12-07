@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/07 12:49:45 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/07 13:34:58 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,12 +109,12 @@ int		get_p_nfo(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 /*
 ** OP
 */
-void		ft_live(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
+void		ft_live(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 void		ft_st(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 void		ft_ld(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 void		ft_and(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
-void		ft_sub(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
-void		ft_add(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
+void		ft_sub(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
+void		ft_add(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 void		ft_or(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 void		ft_xor(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 void		ft_ldi(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
@@ -122,7 +122,7 @@ void		ft_lldi(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 void		ft_sti(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 void		ft_lld(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 void		ft_lfork(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
-void		ft_fork(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
+void		ft_fork(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 void		ft_zjmp(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 void		ft_aff(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 

@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 14:49:13 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/07 13:06:01 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/07 13:38:27 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,11 @@ void			start_battle(t_vm *vm)
 			pro = pro->next;
 		}
 		game = update_cycle(vm, &vm->cycle);
-		display_debug_ram(vm->ram, vm->cycle.cycles);
-		usleep(20000);
-		ft_printf("%d\n", vm->cycle.cycles);
+//		display_debug_ram(vm->ram, vm->cycle.cycles);
+//		usleep(20000);
+//		ft_printf("%d\n", vm->cycle.cycles);
+	display_debug_ram(vm->ram, vm->cycle.cycles);
 	}
-//	display_debug_ram(vm->ram, vm->cycle.cycles);
+	//display_debug_ram(vm->ram, vm->cycle.cycles);
 	ft_printf("gagnant : %s\n", vm->champs[vm->last_to_live].header.prog_name);
 }
