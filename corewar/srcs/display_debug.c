@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 12:16:39 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/07 11:27:17 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/07 13:35:09 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,20 @@ void			display_debug_ram(t_ram *ram, int cycle)
 		if (ram[i].executed == 1)
 			ft_printf("\x1b[30m\x1b[47m%.2x\x1b[0m ", ram[i].value);
 		else
-			ft_printf("%.2x ", ram[i].value);
+		{
+			if (ram[i].owner == -1)
+				ft_printf("%.2x ", ram[i].value);
+			else if (ram[i].owner == 0)
+				ft_printf("\033[0;32m%.2x\033[0m ", ram[i].value);
+			else if (ram[i].owner == 1)
+				ft_printf("\033[0;34m%.2x\033[0m ", ram[i].value);
+			else if (ram[i].owner == 2)
+				ft_printf("\033[0;31m%.2x\033[0m ", ram[i].value);
+			else if (ram[i].owner == 3)
+				ft_printf("\033[0;35m%.2x\033[0m ", ram[i].value);
+			else
+				ft_printf("\033[0;34m%.2x\033[0m ", ram[i].value);
+		}
 		if (len >= 64)
 		{
 			write(1, "\n", 1);
