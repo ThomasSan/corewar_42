@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 13:19:35 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/06 15:24:22 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/07 15:29:39 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,24 @@ static void		place_champ(t_vm *vm)
 	}
 }
 
+static void		init_reg(t_vm *vm)
+{
+	t_process		*pro;
+	int				c;
+	int				i;
+
+	pro = vm->process;
+	c = vm->nb_champ;
+	while (pro)
+	{
+		i = 0;
+		pro->reg[0] = vm->champs[--c].number + 9;
+		while (++i < REG_NUMBER)
+			pro->reg[i] = 0;
+		pro = pro->next;
+	}
+}
+
 static void		init_process(t_vm *vm)
 {
 	int			c;
@@ -41,9 +59,10 @@ static void		init_process(t_vm *vm)
 	while (c--)
 	{
 		add_process(&vm->process, vm->champs[c].pos,
-				vm->ram[vm->champs[c].pos].value, CARRY_ON_START);
+				vm->ram[vm->champs[c].pos].value, NULL);
 		vm->ram[vm->champs[c].pos].executed = 1;
 	}
+	init_reg(vm);
 }
 
 static void		init_cycles(t_vm *vm)
@@ -57,25 +76,9 @@ static void		init_cycles(t_vm *vm)
 	vm->last_to_live = vm->nb_champ - 1;
 }
 
-static void		init_reg(t_vm *vm)
-{
-	int		c;
-	int		i;
-
-	c = -1;
-	while (++c < vm->nb_champ)
-	{
-		i = 0;
-		vm->champs[c].reg[0] = vm->champs[c].number + 9;
-		while (++i < REG_NUMBER)
-			vm->champs[c].reg[i] = 0;
-	}
-}
-
 void			init_start(t_vm *vm)
 {
 	place_champ(vm);
 	init_process(vm);
 	init_cycles(vm);
-	init_reg(vm);
 }

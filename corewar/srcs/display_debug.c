@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 12:16:39 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/07 13:35:09 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/07 15:34:45 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void			display_debug_champ(t_champ *champs, int number)
 		}
 	}
 	write(1, "\n", 1);
-	display_debug_reg(champs[number].reg);
 }
 
 void			display_debug_ram(t_ram *ram, int cycle)
@@ -102,6 +101,7 @@ void			display_debug_process(t_process *pro)
 				"cycle_to_exec : %d\ncarry : %d\n", ++i, pro->pc, pro->curr_op,
 				pro->cycles_to_exec, pro->carry);
 		ft_putstr("\n\n");
+		display_debug_reg(pro->reg);
 		pro = pro->next;
 	}
 }

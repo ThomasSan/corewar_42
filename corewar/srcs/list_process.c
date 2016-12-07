@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 15:06:44 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/07 13:24:45 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/07 16:04:43 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 extern t_op			op_tab[17];
 
-static t_process	*new_process(int pc, int curr_op, int carry)
+static t_process	*new_process(int pc, int curr_op, t_process *parent)
 {
 	t_process	*pro;
 
@@ -22,6 +22,17 @@ static t_process	*new_process(int pc, int curr_op, int carry)
 	pro->pc = pc;
 	pro->next = NULL;
 	pro->lives = 0;
+	if (parent)
+	{
+		pro->carry = parent->carry;
+//		parent->reg[5] = 0xDD;
+		ft_memcpy(pro->reg, parent->reg, REG_NUMBER);
+//		ft_printf("last reg : %#x\nnew reg : %#x\n", parent->reg[5], pro->reg[5]);
+//		exit(1);
+//		debug a faire ici :D
+	}
+	else
+		pro->carry = CARRY_ON_START;
 	if (curr_op <= 16 && curr_op > 0)
 	{
 		pro->curr_op = curr_op;
@@ -32,23 +43,23 @@ static t_process	*new_process(int pc, int curr_op, int carry)
 		pro->curr_op = 0;
 		pro->cycles_to_exec = 0;
 	}
-	static int		lol = 0;
-	ft_printf("MALLOC %d\n", lol++);
+//	static int		lol = 0;
+//	ft_printf("MALLOC %d\n", lol++);
 	return (pro);
 }
 
-void				add_process(t_process **p, int pc, int curr_op, int carry)
+void				add_process(t_process **p, int pc, int c_op, t_process *par)
 {
 	t_process		*pro;
 
 	if (*p == NULL)
-		*p = new_process(pc, curr_op, carry);
+		*p = new_process(pc, c_op, par);
 	else
 	{
 		pro = *p;
 		while (pro->next)
 			pro = pro->next;
-		pro->next = new_process(pc, curr_op, carry);
+		pro->next = new_process(pc, c_op, par);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/07 13:34:58 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/07 15:37:38 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct	s_champ
 	int				number;
 	int				color;
 	t_header		header;
-	int				reg[REG_NUMBER];
+//	int				reg[REG_NUMBER];
 	unsigned char	data[CHAMP_MAX_SIZE];
 	int				len;
 }				t_champ;
@@ -48,6 +48,7 @@ typedef struct	s_process
 {
 	int					pc;
 	int					curr_op;
+	int					reg[REG_NUMBER];
 	int					cycles_to_exec;
 	int					lives;
 	bool				carry;
@@ -87,7 +88,7 @@ void			start_battle(t_vm *vm);
 /*
 ** LIST PROCESS
 */
-void			add_process(t_process **p, int pc, int curr_op, int carry);
+void			add_process(t_process **p, int pc, int c_op, t_process *par);
 void			free_process(t_process **p);
 t_process		*get_dead_process(t_process *pro);
 void			remove_dead_process(t_process *dead_pro, t_vm *vm);

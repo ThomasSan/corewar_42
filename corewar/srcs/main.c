@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:24 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/06 18:08:30 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/07 15:36:42 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ static int		get_arg(t_vm *vm, int ac, char **av)
 			get_champ(vm, &vm->champs[vm->nb_champ], av[i]);
 			vm->nb_champ++;
 		}
+		else
+			exit_corewar_msg(vm, "Use a .cor file\n");
 		i++;
 	}
 	if (vm->nb_champ < 2)
