@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/07 15:37:38 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/09 17:10:22 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct	s_vm
 	t_cycle		cycle;
 	int			nb_champ;
 	bool		option_graph;
+	t_process	*A_supprimer;
 }				t_vm;
 
 

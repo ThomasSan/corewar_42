@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 12:16:39 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/07 15:34:45 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/09 17:17:19 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void			display_debug_reg(int reg[REG_NUMBER])
 	int		i;
 
 	i = -1;
+	write(1, "\n", 1);
 	while (++i < REG_NUMBER)
 		ft_printf("|    R%.2d   ", i + 1);
 	ft_putstr("|\n");
@@ -62,7 +63,8 @@ void			display_debug_ram(t_ram *ram, int cycle)
 	len = 1;
 	i = -1;
 	ft_printf("\n----- RAM %d -----\n\n", cycle);
-	while (++i < MEM_SIZE)
+	//while (++i < MEM_SIZE)
+	while(++i < 100)
 	{
 		if (ram[i].executed == 1)
 			ft_printf("\x1b[30m\x1b[47m%.2x\x1b[0m ", ram[i].value);
@@ -97,11 +99,12 @@ void			display_debug_process(t_process *pro)
 	i = 0;
 	while (pro)
 	{
-		ft_printf("----- PROCESS nº%d -----\npc : %d\ncurr_op : %d\n"
+		ft_printf("\n----- PROCESS nº%d -----\npc : %d\ncurr_op : %d\n"
 				"cycle_to_exec : %d\ncarry : %d\n", ++i, pro->pc, pro->curr_op,
 				pro->cycles_to_exec, pro->carry);
-		ft_putstr("\n\n");
+		ft_putstr("\n");
 		display_debug_reg(pro->reg);
 		pro = pro->next;
+		break;
 	}
 }
