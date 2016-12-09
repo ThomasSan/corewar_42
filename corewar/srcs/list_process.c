@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 15:06:44 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/07 16:04:43 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/09 15:22:25 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ extern t_op			op_tab[17];
 static t_process	*new_process(int pc, int curr_op, t_process *parent)
 {
 	t_process	*pro;
+	int			i;
 
 	pro = (t_process *)ft_memalloc(sizeof(t_process));
 	pro->pc = pc;
@@ -24,12 +25,10 @@ static t_process	*new_process(int pc, int curr_op, t_process *parent)
 	pro->lives = 0;
 	if (parent)
 	{
+		i = -1;
 		pro->carry = parent->carry;
-//		parent->reg[5] = 0xDD;
-		ft_memcpy(pro->reg, parent->reg, REG_NUMBER);
-//		ft_printf("last reg : %#x\nnew reg : %#x\n", parent->reg[5], pro->reg[5]);
-//		exit(1);
-//		debug a faire ici :D
+		while (++i < REG_NUMBER)
+			pro->reg[i] = parent->reg[i];
 	}
 	else
 		pro->carry = CARRY_ON_START;
@@ -43,8 +42,6 @@ static t_process	*new_process(int pc, int curr_op, t_process *parent)
 		pro->curr_op = 0;
 		pro->cycles_to_exec = 0;
 	}
-//	static int		lol = 0;
-//	ft_printf("MALLOC %d\n", lol++);
 	return (pro);
 }
 
