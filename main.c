@@ -167,7 +167,7 @@ void	write_program(t_prog *prog, t_champ *head)
 	name[1] = 'o';
 	name[2] = 'r';
 	name[3] = 'k';
-	write(fd, name, PROG_NAME_LENGTH);
+	write(fd, name, PROG_NAME_LENGTH + 4);
 	comment = (char*)malloc(sizeof(char) * COMMENT_LENGTH + 1);
 	ft_bzero(comment, COMMENT_LENGTH);
 	comment[0] = 'I';
@@ -182,10 +182,10 @@ void	write_program(t_prog *prog, t_champ *head)
 	comment[9] = 'I';
 	comment[10] = 'V';
 	comment[11] = 'E';
-	write(fd, comment, COMMENT_LENGTH);
 	file_len = ((file_len >> 24) & 0xff) | ((file_len << 8) & 0xff0000) |
 		((file_len >> 8) & 0xff00) | ((file_len << 24) & 0xff000000);
 	write(fd, (char*)&file_len	, 4);
+	write(fd, comment, COMMENT_LENGTH + 4);
 	char tmp[14];
 	ft_bzero(tmp, 14);
 	tmp[0] = 11;
