@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 17:20:46 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/07 15:46:41 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/09 13:46:59 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,9 +120,9 @@ void		ft_lldi(t_vm *vm, t_process *pro, char p_code[4], int p_val[4])
 			pro->reg[p_val[2] - 1] += vm->ram[(pro->pc + add + i + MEM_SIZE) % MEM_SIZE].value;
 		}
 		if (pro->reg[p_val[2] - 1])
-			pro->carry = 1;
-		else
 			pro->carry = 0;
+		else
+			pro->carry = 1;
 	}
 }
 
