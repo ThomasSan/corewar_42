@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_battle.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/06 14:49:13 by cchameyr          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2016/12/10 18:18:32 by ybeaure          ###   ########.fr       */
-=======
-/*   Updated: 2016/12/09 18:32:35 by cchameyr         ###   ########.fr       */
->>>>>>> e0a2ebede6bcc32c88a42d5a51a9b25f3970c73c
+/*   Created: 2016/12/10 19:03:26 by ybeaure           #+#    #+#             */
+/*   Updated: 2016/12/10 19:03:54 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +96,6 @@ void			start_battle(t_vm *vm)
 			pro = pro->next;
 		}
 		game = update_cycle(vm, &vm->cycle);
-<<<<<<< HEAD
-=======
 //		display_debug_ram(vm->ram, vm->cycle.cycles);
 //		usleep(21000);
 		//		ft_printf("%d\n", vm->cycle.cycles);
@@ -118,7 +112,6 @@ void			start_battle(t_vm *vm)
 		//			display_debug_ram(vm->ram, vm->cycle.cycles);
 		//			display_debug_process(vm->A_supprimer);
 		//			usleep(91000);
->>>>>>> e0a2ebede6bcc32c88a42d5a51a9b25f3970c73c
 	}
 	ft_printf("gagnant : %s\n", vm->champs[vm->last_to_live].header.prog_name);
 }

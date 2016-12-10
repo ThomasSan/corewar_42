@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/09 17:10:22 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/10 19:02:52 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ typedef struct	s_vm
 }				t_vm;
 
 
-void			(*exec_op[17])(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
+void			(*g_exec_op[17])(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
 void			init_vm(t_vm *vm);
 void			init_start(t_vm *vm);
 void			exit_corewar(t_vm *vm);
