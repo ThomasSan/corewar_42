@@ -6,13 +6,14 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:24 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/07 15:36:42 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/10 18:02:22 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-void			(*exec_op[17])(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]) = 
+void			(*g_exec_op[17])(t_vm *vm, t_process *pr, char p_code[4]
+		, int p_val[4]) =
 {
 	ft_live,
 	ft_ld,
@@ -61,22 +62,18 @@ static int		get_arg(t_vm *vm, int ac, char **av)
 
 int				main(int argc, char **argv)
 {
-	t_vm	vm;
+	t_vm		vm;
 	t_process	*pro;
 
 	init_vm(&vm);
 	if (get_arg(&vm, argc, argv) == -1)
 		exit_corewar_msg(&vm, "help:\n-n : use displayer\n");
-
 	init_start(&vm);
-
 	display_debug_champ(vm.champs, 0);
 	display_debug_champ(vm.champs, 1);
 	display_debug_champ(vm.champs, 2);
 	display_debug_champ(vm.champs, 3);
-	//	display_debug_ram(vm.ram);
 	display_debug_process(vm.process);
-
 	start_battle(&vm);
 	exit_corewar(&vm);
 }

@@ -6,13 +6,17 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 14:49:13 by cchameyr          #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2016/12/10 18:18:32 by ybeaure          ###   ########.fr       */
+=======
 /*   Updated: 2016/12/09 18:32:35 by cchameyr         ###   ########.fr       */
+>>>>>>> e0a2ebede6bcc32c88a42d5a51a9b25f3970c73c
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-extern t_op		op_tab[17];
+extern t_op		g_op_tab[17];
 
 static void		exec_process(t_vm *vm, t_process *pro)
 {
@@ -32,7 +36,7 @@ static void		exec_process(t_vm *vm, t_process *pro)
 				vm->ram[pro->pc % MEM_SIZE].value > 0)
 		{
 			pro->curr_op = vm->ram[pro->pc % MEM_SIZE].value;
-			pro->cycles_to_exec = op_tab[pro->curr_op - 1].nb_cycle - 1;
+			pro->cycles_to_exec = g_op_tab[pro->curr_op - 1].nb_cycle - 1;
 		}
 	}
 }
@@ -85,7 +89,6 @@ void			start_battle(t_vm *vm)
 {
 	int			game;
 	t_process	*pro;
-	int			i = 0;
 
 	game = 1;
 	while (game)
@@ -97,6 +100,8 @@ void			start_battle(t_vm *vm)
 			pro = pro->next;
 		}
 		game = update_cycle(vm, &vm->cycle);
+<<<<<<< HEAD
+=======
 //		display_debug_ram(vm->ram, vm->cycle.cycles);
 //		usleep(21000);
 		//		ft_printf("%d\n", vm->cycle.cycles);
@@ -113,7 +118,7 @@ void			start_battle(t_vm *vm)
 		//			display_debug_ram(vm->ram, vm->cycle.cycles);
 		//			display_debug_process(vm->A_supprimer);
 		//			usleep(91000);
+>>>>>>> e0a2ebede6bcc32c88a42d5a51a9b25f3970c73c
 	}
-	//display_debug_ram(vm->ram, vm->cycle.cycles);
 	ft_printf("gagnant : %s\n", vm->champs[vm->last_to_live].header.prog_name);
 }

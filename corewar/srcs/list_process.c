@@ -6,18 +6,17 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 15:06:44 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/09 15:22:25 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/10 18:05:16 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-extern t_op			op_tab[17];
+extern t_op			g_op_tab[17];
 
-static t_process	*new_process(int pc, int curr_op, t_process *parent)
+static t_process	*new_process(int pc, int curr_op, t_process *parent, int i)
 {
 	t_process	*pro;
-	int			i;
 
 	pro = (t_process *)ft_memalloc(sizeof(t_process));
 	pro->pc = pc;
@@ -25,7 +24,6 @@ static t_process	*new_process(int pc, int curr_op, t_process *parent)
 	pro->lives = 0;
 	if (parent)
 	{
-		i = -1;
 		pro->carry = parent->carry;
 		while (++i < REG_NUMBER)
 			pro->reg[i] = parent->reg[i];
@@ -35,7 +33,7 @@ static t_process	*new_process(int pc, int curr_op, t_process *parent)
 	if (curr_op <= 16 && curr_op > 0)
 	{
 		pro->curr_op = curr_op;
-		pro->cycles_to_exec = op_tab[curr_op - 1].nb_cycle;
+		pro->cycles_to_exec = g_op_tab[curr_op - 1].nb_cycle;
 	}
 	else
 	{
@@ -50,13 +48,13 @@ void				add_process(t_process **p, int pc, int c_op, t_process *par)
 	t_process		*pro;
 
 	if (*p == NULL)
-		*p = new_process(pc, c_op, par);
+		*p = new_process(pc, c_op, par, -1);
 	else
 	{
 		pro = *p;
 		while (pro->next)
 			pro = pro->next;
-		pro->next = new_process(pc, c_op, par);
+		pro->next = new_process(pc, c_op, par, -1);
 	}
 }
 

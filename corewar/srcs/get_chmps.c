@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 15:54:26 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/07 11:47:17 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/10 17:56:28 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ static int		get_header(unsigned char buff[MAX_COR_SIZE], t_champ *champ)
 	if (champ->header.comment[COMMENT_LENGTH - 1] != 0)
 		return (ft_printf("ERROR - Comment is too long\n"));
 	if (champ->len - sizeof(t_header) != champ->header.prog_size)
-		return (ft_printf("ERROR - Prog size and real prog size are"
-					"different\n"));
+		return (ft_printf("ERROR - Pg size and real Pg size are different\n"));
 	return (0);
 }
 

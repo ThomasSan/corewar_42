@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 11:45:09 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/07 13:23:38 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/10 17:56:59 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static t_ram		*init_ram(void)
 	return (ram);
 }
 
-static t_champ		*init_champ()
+static t_champ		*init_champ(void)
 {
 	t_champ		*champs;
 	int			c;
