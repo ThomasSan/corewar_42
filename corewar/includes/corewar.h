@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/10 19:02:52 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/11 16:52:03 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ typedef struct	s_champ
 	int				number;
 	int				color;
 	t_header		header;
-//	int				reg[REG_NUMBER];
 	unsigned char	data[CHAMP_MAX_SIZE];
 	int				len;
 }				t_champ;
@@ -123,7 +122,7 @@ void		ft_ldi(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 void		ft_lldi(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 void		ft_sti(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 void		ft_lld(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
-void		ft_lfork(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
+void		ft_lfork(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 void		ft_fork(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 void		ft_zjmp(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 void		ft_aff(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
