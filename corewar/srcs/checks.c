@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 18:26:30 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/10 17:34:30 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/11 18:10:39 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,27 +42,16 @@ int		get_new_p_val(t_vm *vm, t_process *pro, char p_code, int p_val)
 
 int		get_new_lp_val(t_vm *vm, t_process *pro, char p_code, int p_val)
 {
-	int		ret;
-	int		i;
+	int ret;
 
-	if (p_code == REG_CODE && p_val <= REG_NUMBER)
-		return (pro->reg[p_val - 1]);
-	else if (p_code == IND_CODE || (p_code == DIR_CODE &&
-				g_op_tab[vm->ram[pro->pc % MEM_SIZE].value].is_idx > 0))
-	{
-		ret = 0;
-		i = 0;
-		while (i != 3)
-		{
-			ret = ret << 8;
-			ret += vm->ram[(pro->pc + (signed short)p_val +
-					i + MEM_SIZE) % MEM_SIZE].value;
-			i++;
-		}
-		return (ret);
-	}
-	else
-		return (p_val);
+	ret = 0;
+	if (p_code == T_REG)
+		ret = pro->reg[p_val - 1];
+	else if (p_code == IND_CODE)
+		ret = vm->ram[ft_loop_memory(pro->pc + p_val)].value;
+	else if (p_code == T_DIR)
+		ret = p_val;
+	return (ret);
 }
 
 int		check_params(char opcode, char p_code[4], int p_val[4])

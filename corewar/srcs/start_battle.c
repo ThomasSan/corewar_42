@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 19:03:26 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/10 19:03:54 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/11 17:35:24 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void			start_battle(t_vm *vm)
 {
 	int			game;
 	t_process	*pro;
+	int			i = 0;
 
 	game = 1;
 	while (game)
@@ -96,22 +97,15 @@ void			start_battle(t_vm *vm)
 			pro = pro->next;
 		}
 		game = update_cycle(vm, &vm->cycle);
-//		display_debug_ram(vm->ram, vm->cycle.cycles);
-//		usleep(21000);
-		//		ft_printf("%d\n", vm->cycle.cycles);
-//		if (i++ == 25)
-//		{
-//			display_debug_ram(vm->ram, vm->cycle.cycles);
-///			display_debug_reg(vm->process->reg);
-///			usleep(21000);
-//			i = 0;
-//		}
-		//		if (vm->cycle.cycles > 12200)
-		//		{
-		//			ft_printf("curr_op ->%d\n", vm->A_supprimer->curr_op);
-		//			display_debug_ram(vm->ram, vm->cycle.cycles);
-		//			display_debug_process(vm->A_supprimer);
-		//			usleep(91000);
+		if (vm->option_graph)
+		{
+			if (i++ == 25)
+			{
+				display_debug_ram(vm->ram, vm->cycle.cycles);
+				usleep(21000);
+				i = 0;
+			}
+		}
 	}
 	ft_printf("gagnant : %s\n", vm->champs[vm->last_to_live].header.prog_name);
 }
