@@ -26,7 +26,7 @@ static void	get_p_code(unsigned char bit, char p_code[4])
 	}
 }
 
-static int	get_p_len(char p_code, char op_code)
+int		get_p_len(char p_code, char op_code)
 {
 	if (p_code == REG_CODE)
 		return (1);

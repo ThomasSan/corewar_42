@@ -25,7 +25,8 @@ void		ft_fork(t_vm *vm, t_process *pro, char p_code[4], int p_val[4])
 }
 
 void		ft_lfork(t_vm *vm, t_process *pro, char p_code[4], int p_val[4])
-{	int		pc;
+{	
+	int		pc;
 
 	if (check_params(15, p_code, p_val))
 	{

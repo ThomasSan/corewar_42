@@ -130,5 +130,6 @@ void		ft_aff(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 int		check_params(char opcode, char p_code[4], int p_val[4]);
 int		get_new_p_val(t_vm *vm, t_process *pro, char p_code, int p_val);
 int		get_new_lp_val(t_vm *vm, t_process *pro, char p_code, int p_val);
+int		get_p_len(char p_code, char op_code);
 
 #endif
