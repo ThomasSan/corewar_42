@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 17:15:12 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/10 17:58:57 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/12 16:37:56 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void		ft_ld(t_vm *vm, t_process *pro, char p_code[4], int p_val[4])
 	if (check_params(2, p_code, p_val))
 	{
 		pro->reg[p_val[1] - 1] = get_new_p_val(vm, pro, p_code[0], p_val[0]);
+		dprintf(2, "%#x\n", pro->reg[p_val[1] - 1]);
 		if (pro->reg[p_val[1] - 1])
 			pro->carry = 0;
 		else
