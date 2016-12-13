@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 13:19:35 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/13 14:25:42 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/13 15:57:20 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ static void		init_reg(t_vm *vm)
 	int				i;
 
 	pro = vm->process;
-	c = vm->nb_champ;
+	c = -1;
 	while (pro)
 	{
 		i = 0;
-		pro->reg[0] = vm->champs[--c].number + 9;
+		pro->reg[0] = vm->champs[++c].number + 9;
 		while (++i < REG_NUMBER)
 			pro->reg[i] = 0;
 		pro = pro->next;
