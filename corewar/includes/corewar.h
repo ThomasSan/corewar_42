@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/11 16:52:03 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/13 14:13:32 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ typedef struct	s_process
 	int					lives;
 	bool				carry;
 	struct s_process	*next;
+	struct s_process	*back;
+	struct s_process	*end;
 }				t_process;
 
 typedef struct	s_cycle
@@ -73,7 +75,6 @@ typedef struct	s_vm
 	t_cycle		cycle;
 	int			nb_champ;
 	bool		option_graph;
-	t_process	*A_supprimer;
 }				t_vm;
 
 

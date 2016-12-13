@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 13:19:35 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/07 15:29:39 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/13 14:25:42 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ static void		init_process(t_vm *vm)
 {
 	int			c;
 
-	c = vm->nb_champ;
-	while (c--)
+	c = -1;
+	while (++c < vm->nb_champ)
 	{
 		add_process(&vm->process, vm->champs[c].pos,
 				vm->ram[vm->champs[c].pos].value, NULL);

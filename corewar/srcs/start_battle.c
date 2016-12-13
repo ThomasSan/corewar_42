@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 19:03:26 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/11 17:35:24 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/13 14:20:07 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,11 @@ void			start_battle(t_vm *vm)
 	game = 1;
 	while (game)
 	{
-		pro = vm->process;
+		pro = vm->process->end;
 		while (pro)
 		{
 			exec_process(vm, pro);
-			pro = pro->next;
+			pro = pro->back;
 		}
 		game = update_cycle(vm, &vm->cycle);
 		if (vm->option_graph)
@@ -107,7 +107,7 @@ void			start_battle(t_vm *vm)
 			{
 				display_debug_ram(vm->ram, vm->cycle.cycles);
 			//	usleep(990000);
-				usleep(9000);
+				usleep(15000);
 				i = 0;
 			}
 		}

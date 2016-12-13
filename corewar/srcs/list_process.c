@@ -6,13 +6,30 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 15:06:44 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/12 16:30:59 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/13 14:19:45 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
 extern t_op			g_op_tab[17];
+
+static void			init_end_process(t_process *pro)
+{
+	t_process	*list;
+	t_process	*end;
+
+	list = pro;
+	while (list->next)
+		list = list->next;
+	end = list;
+	list = pro;
+	while (list)
+	{
+		list->end = end;
+		list = list->next;
+	}
+}
 
 static t_process	*new_process(int pc, int curr_op, t_process *parent, int i)
 {
@@ -46,15 +63,22 @@ static t_process	*new_process(int pc, int curr_op, t_process *parent, int i)
 void				add_process(t_process **p, int pc, int c_op, t_process *par)
 {
 	t_process		*pro;
+	t_process		*new;
 
 	if (*p == NULL)
+	{
 		*p = new_process(pc, c_op, par, -1);
+		(*p)->back = NULL;
+	}
 	else
 	{
 		pro = *p;
 		while (pro->next)
 			pro = pro->next;
-		pro->next = new_process(pc, c_op, par, -1);
+		new = new_process(pc, c_op, par, -1);
+		pro->next = new;
+		new->back = pro;
+		init_end_process(*p);
 	}
 }
 
@@ -99,11 +123,19 @@ void				remove_dead_process(t_process *dead_pro, t_vm *vm)
 		if (pro == dead_pro)
 		{
 			if (last)
+			{
 				last->next = pro->next;
+				if (last->next)
+					last->next->back = last;
+			}
 			else
+			{
 				vm->process = pro->next;
+				vm->process->back = NULL;
+			}
 			vm->ram[pro->pc].executed = 0;
 			ft_memdel((void **)&pro);
+			init_end_process(vm->process);
 			return ;
 		}
 		last = pro;
