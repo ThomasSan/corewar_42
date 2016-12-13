@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 19:03:26 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/13 16:00:58 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/13 16:47:30 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static void		exec_process(t_vm *vm, t_process *pro)
 	else
 	{
 		vm->ram[pro->pc].executed = 0;
-		pro->pc = (pro->pc + 1) % MEM_SIZE;
+		//pro->pc = (pro->pc + 1) % MEM_SIZE;
+		pro->pc = (pro->pc) % MEM_SIZE;
 		vm->ram[pro->pc].executed = 1;
 		if (vm->ram[pro->pc % MEM_SIZE].value <= 16 &&
 				vm->ram[pro->pc % MEM_SIZE].value > 0)
@@ -99,13 +100,14 @@ void			start_battle(t_vm *vm)
 		game = update_cycle(vm, &vm->cycle);
 		if (vm->option_graph)
 		{
-			if (i++ == 500)
+			if (++i == 2500)
 			{
 				display_debug_ram(vm->ram, vm->cycle.cycles);
 			//	usleep(990000);
 				usleep(15000);
 				i = 0;
 			}
+
 		}
 	}
 	ft_printf("gagnant : %s\n", vm->champs[vm->last_to_live].header.prog_name);
