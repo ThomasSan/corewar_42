@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 16:11:24 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/12 16:29:14 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/13 15:46:50 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,8 @@ void		parse_exec_op(t_vm *vm, t_process *pro)
 		if (pro->curr_op != 9 || !pro->carry)
 			pro->pc += next_op_pos;
 	}
-//	else
-//{
-
-//				display_debug_ram(vm->ram, vm->cycle.cycles);
-//		pro->pc += not_op(p_code, pro->curr_op) + 2;
-//exit(-1);
-//}
+	else
+		pro->pc += not_op(p_code, pro->curr_op) + 2;
 	pro->curr_op = vm->ram[pro->pc % MEM_SIZE].value < 17 && (vm->ram[pro->pc
 			% MEM_SIZE].value) ? vm->ram[pro->pc].value : 0;
 	pro->cycles_to_exec = vm->ram[pro->pc % MEM_SIZE].value < 17 &&

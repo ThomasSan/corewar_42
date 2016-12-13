@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 19:03:26 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/13 14:20:07 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/13 16:00:58 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,6 @@ static void		exec_process(t_vm *vm, t_process *pro)
 {
 	if (pro->curr_op)
 	{
-if (pro->curr_op == 15 && pro->cycles_to_exec == 999)
-{
-				display_debug_ram(vm->ram, vm->cycle.cycles);
-}
 		if (pro->cycles_to_exec <= 0)
 			parse_exec_op(vm, pro);
 		else
@@ -103,7 +99,7 @@ void			start_battle(t_vm *vm)
 		game = update_cycle(vm, &vm->cycle);
 		if (vm->option_graph)
 		{
-			if (i++ == 50)
+			if (i++ == 500)
 			{
 				display_debug_ram(vm->ram, vm->cycle.cycles);
 			//	usleep(990000);

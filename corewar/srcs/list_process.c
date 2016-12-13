@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 15:06:44 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/13 14:19:45 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/13 15:09:48 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static t_process	*new_process(int pc, int curr_op, t_process *parent, int i)
 	if (curr_op <= 16 && curr_op > 0)
 	{
 		pro->curr_op = curr_op;
-		pro->cycles_to_exec = g_op_tab[curr_op - 1].nb_cycle;
+		pro->cycles_to_exec = g_op_tab[curr_op - 1].nb_cycle - 1;
 	}
 	else
 	{
