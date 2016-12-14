@@ -6,14 +6,11 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 10:47:03 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/14 14:14:02 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/14 15:34:19 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
-
-// checker si il n'y a pas d'identifiant de champion identiques
-// checker la longeur de la chaine
 
 static int		check_ncodes(t_vm *vm)
 {
