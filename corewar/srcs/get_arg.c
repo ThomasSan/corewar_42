@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 10:47:03 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/14 13:04:56 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/14 14:14:02 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,16 @@ static int		check_ncodes(t_vm *vm)
 
 static int		n_option_on(t_vm *vm, char **av, int ac, int *i)
 {
-	if (++(*i) >= ac)
+	if (*i + 1 >= ac)
 		return (_ERROR_);
-	if (ft_strishexa(av[*i]))
+	if (ft_strishexa(av[++(*i)]))
 	{
 		if (ft_strstr(av[*i], "0x"))
 			vm->champs[vm->nb_champ].n_code = ft_atoi_base(&av[*i][2], 16);
 		else
 			vm->champs[vm->nb_champ].n_code = ft_atoi_base(av[*i], 16);
 		if (++(*i) >= ac)
-			exit_corewar_msg(vm, "ERROR - Precise a champion please\n");
+			exit_corewar_msg(vm, "ERROR - Precise a champion\n");
 		if (vm->nb_champ == MAX_PLAYERS)
 			exit_corewar_msg(vm, "Too much champions !\n");
 		get_champ(vm, &vm->champs[vm->nb_champ], av[*i]);
@@ -58,7 +58,7 @@ static int		n_option_on(t_vm *vm, char **av, int ac, int *i)
 	}
 	else
 	{
-		ft_printf("ERROR - \"%s\" isn't a valid number\n", av[*i]);
+		ft_printf("ERROR - [%s] isn't a valid number\n", av[*i]);
 		exit_corewar(vm);
 	}
 	return (_ERROR_);
