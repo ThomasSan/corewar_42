@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 15:54:26 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/10 17:56:28 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/14 13:46:20 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void			get_champ(t_vm *vm, t_champ *champ, char *path)
 	i = -1;
 	while (++i < MAX_COR_SIZE)
 		buff[i] = 0;
-	champ->number = vm->nb_champ + 1;
+	champ->number = vm->nb_champ;
 	if ((fd = open(path, O_RDONLY)) == -1)
 	{
 		ft_printf("ERROR - Cant read the source file :\n[%s]\n", path);

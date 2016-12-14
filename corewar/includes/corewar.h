@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/13 14:13:32 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/14 13:33:38 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct	s_champ
 {
 	int				pos;
 	int				number;
+	unsigned int	n_code;
 	int				color;
 	t_header		header;
 	unsigned char	data[CHAMP_MAX_SIZE];
@@ -81,6 +82,7 @@ typedef struct	s_vm
 void			(*g_exec_op[17])(t_vm *vm, t_process *pr, char p_code[4], int p_val[4]);
 void			init_vm(t_vm *vm);
 void			init_start(t_vm *vm);
+int				get_arg(t_vm *vm, int ac, char **av);
 void			exit_corewar(t_vm *vm);
 void			exit_corewar_msg(t_vm *vm, char *msg);
 void			get_champ(t_vm *vm, t_champ *champ, char *path);

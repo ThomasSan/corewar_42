@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:24 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/10 18:02:22 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/14 13:32:24 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,32 +33,7 @@ void			(*g_exec_op[17])(t_vm *vm, t_process *pr, char p_code[4]
 	ft_aff
 };
 
-static int		get_arg(t_vm *vm, int ac, char **av)
-{
-	int		i;
 
-	i = 1;
-	while (i < ac)
-	{
-		if (!ft_strcmp(av[i], "--help") || !ft_strcmp(av[i], "-h"))
-			return (-1);
-		if (!ft_strcmp(av[i], "-n"))
-			vm->option_graph = true;
-		else if (!ft_strrncmp(av[i], ".cor", 4))
-		{
-			if (vm->nb_champ == MAX_PLAYERS)
-				exit_corewar_msg(vm, "Too Much Champions !\n");
-			get_champ(vm, &vm->champs[vm->nb_champ], av[i]);
-			vm->nb_champ++;
-		}
-		else
-			exit_corewar_msg(vm, "Use a .cor file\n");
-		i++;
-	}
-	if (vm->nb_champ < 2)
-		exit_corewar_msg(vm, "Not enouth champions\n");
-	return (0);
-}
 
 int				main(int argc, char **argv)
 {
@@ -67,13 +42,12 @@ int				main(int argc, char **argv)
 
 	init_vm(&vm);
 	if (get_arg(&vm, argc, argv) == -1)
-		exit_corewar_msg(&vm, "help:\n-n : use displayer\n");
+		exit_corewar_msg(&vm, "help:\n-g : use displayer\n");
 	init_start(&vm);
 	display_debug_champ(vm.champs, 0);
 	display_debug_champ(vm.champs, 1);
 	display_debug_champ(vm.champs, 2);
 	display_debug_champ(vm.champs, 3);
-	display_debug_process(vm.process);
 	start_battle(&vm);
 	exit_corewar(&vm);
 }

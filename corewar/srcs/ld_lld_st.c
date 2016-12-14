@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 17:15:12 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/13 14:53:06 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/14 10:13:24 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void		ft_st(t_vm *vm, t_process *pro, char p_code[4], int p_val[4])
 		else
 		{
 			registre = pro->reg[p_val[0] - 1];
-			dprintf(2, "%#x\n", registre);
+//			dprintf(2, "%#x\n", registre);
 			i = 4;
 			while (--i >= 0)
 			{

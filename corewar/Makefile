@@ -6,13 +6,14 @@
 #    By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/25 09:52:13 by ybeaure           #+#    #+#              #
-#    Updated: 2016/12/06 14:49:36 by cchameyr         ###   ########.fr        #
+#    Updated: 2016/12/14 10:48:03 by cchameyr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =		corewar
 
 FILES =		main.c \
+			get_arg.c \
 			add_sub_and.c \
 			aff.c \
 			exit_corewar.c \

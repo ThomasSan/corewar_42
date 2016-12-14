@@ -6,13 +6,26 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 19:03:26 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/13 16:47:30 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/14 13:47:50 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
 extern t_op		g_op_tab[17];
+
+int				get_index_champ(t_vm *vm, t_champ *champs, int n_code)
+{
+	int		i;
+
+	i = -1;
+	while (++i < vm->nb_champ)
+	{
+		if (n_code == vm->champs[i].n_code)
+			return (vm->champs[i].number);
+	}
+	return (0);
+}
 
 static void		exec_process(t_vm *vm, t_process *pro)
 {
@@ -110,5 +123,7 @@ void			start_battle(t_vm *vm)
 
 		}
 	}
-	ft_printf("gagnant : %s\n", vm->champs[vm->last_to_live].header.prog_name);
+	ft_printf("gagnant : %s\n",
+			vm->champs[get_index_champ(
+				vm, vm->champs, vm->last_to_live)].header.prog_name);
 }
