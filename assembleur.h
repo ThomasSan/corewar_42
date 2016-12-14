@@ -40,7 +40,7 @@ typedef struct		s_prog
 	char			*file;
 	char			*magic;
 	char			*name;
-	char			*size;
+	int				size;
 	char			*comment;
 	char			*program;
 }					t_prog;

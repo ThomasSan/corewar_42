@@ -97,33 +97,35 @@ t_champ	*parse_doc(t_champ *head, int fd)
 	return (head);
 }
 
-char	*get_program_size(t_champ *head)
+int		get_program_size(t_champ *head)
 {
-	char	*dst;
-	char	*hex;
-	char	*tmp;
 	int		size;
-	int		i;
+	char	*op;
+	t_champ	*tmp;
 
 	size = 0;
-	i = -1;
-	if (!(dst = (char*)malloc(sizeof(char) * 9)))
-		return (NULL);
-	while (head)
+	tmp = head;
+	op = NULL;
+	while (tmp)
 	{
-		if (head->type == OP || head->type == REG || 
-			head->type == DIR || head->type == IND)
-			size += ft_strlen(head->hex_value);
-		head = head->next;
+		if (tmp->type == OP)
+		{
+			size += params_types(tmp->line) == 1 ? 2 : 4;
+			op = tmp->line;
+		}
+		if (tmp->type == REG)
+			size += 2;
+		if (tmp->type == DIR)
+			size += label_sizes(op);
+		if (tmp->type == OP || tmp->type == REG || 
+			tmp->type == DIR || tmp->type == IND)
+		{
+			size += ft_strlen(tmp->hex_value);
+
+		}
+		tmp = tmp->next;
 	}
-	hex = str_itobase(size/2, 16);
-	while (i++ < 7 - (int)ft_strlen(hex))
-		dst[i] = '0';
-	tmp = dst;
-	dst = ft_strjoin(dst, hex);
-	free(hex);
-	free(tmp);
-	return (dst);
+	return (size/2);
 }
 
 int		write_in_file(char *str, int fd, int i)
@@ -143,6 +145,23 @@ int		write_in_file(char *str, int fd, int i)
 	return (i+j);
 }
 
+void	write_magic(int fd)
+{
+	int		magic;
+
+	magic = COREWAR_EXEC_MAGIC;
+	magic = ((magic >> 24) & 0xff) | ((magic << 8) & 0xff0000) |
+	((magic >> 8) & 0xff00) | ((magic << 24) & 0xff000000);
+	write(fd, (char*)&magic, 4);
+}
+
+void	write_file_len(int file_len, int fd)
+{
+	file_len = ((file_len >> 24) & 0xff) | ((file_len << 8) & 0xff0000) |
+	((file_len >> 8) & 0xff00) | ((file_len << 24) & 0xff000000);
+	write(fd, (char*)&file_len	, 4);
+}
+
 void	write_program(t_prog *prog, t_champ *head)
 {
 	int		fd;
@@ -154,13 +173,8 @@ void	write_program(t_prog *prog, t_champ *head)
 	}
 	char *name;
 	char *comment;
-	int		magic;
-	int		file_len = 23;
 
-	magic = COREWAR_EXEC_MAGIC;
-	magic = ((magic >> 24) & 0xff) | ((magic << 8) & 0xff0000) |
-		((magic >> 8) & 0xff00) | ((magic << 24) & 0xff000000);
-	write(fd, (char*)&magic, 4);
+	write_magic(fd);
 	name = (char*)malloc(sizeof(char) * PROG_NAME_LENGTH + 1);
 	ft_bzero(name, PROG_NAME_LENGTH);
 	name[0] = 'z';
@@ -182,18 +196,17 @@ void	write_program(t_prog *prog, t_champ *head)
 	comment[9] = 'I';
 	comment[10] = 'V';
 	comment[11] = 'E';
-	file_len = ((file_len >> 24) & 0xff) | ((file_len << 8) & 0xff0000) |
-		((file_len >> 8) & 0xff00) | ((file_len << 24) & 0xff000000);
-	write(fd, (char*)&file_len	, 4);
+	write_file_len(prog->size, fd);
 	write(fd, comment, COMMENT_LENGTH + 4);
 	char tmp[14];
 	ft_bzero(tmp, 14);
 	tmp[0] = 11;
-	tmp[1] = 1%256;
-	tmp[2] = 15 / 256;
-	tmp[3] = 15 % 256;
-	tmp[4] = 1 / 256;
-	tmp[5] = 1 % 256;
+	tmp[1] = 104;
+	tmp[2] = 1 % 256;
+	tmp[3] = 15 / 256;
+	tmp[4] = 15 % 256;
+	tmp[5] = 1 / 256;
+	tmp[6] = 1 % 256;
 	// tmp[6];
 	// tmp[7];
 	// tmp[8];
@@ -202,7 +215,54 @@ void	write_program(t_prog *prog, t_champ *head)
 	// tmp[11];
 	// tmp[12];
 	// tmp[13];
-	write(fd, tmp, 6);
+	write(fd, tmp, 7);
+	(void)head;
+	tmp[0] = 6;
+	tmp[1] = 100;
+	tmp[2] = 1 % 256;
+	tmp[3] = 0 / (256 * 256 * 256);
+	tmp[4] = (0 - tmp[2] * 256 * 256 * 256) / (256 * 256);
+	tmp[5] = (0 - tmp[3] * 256 * 256) / 256;
+	tmp[6] = (0 - tmp[4] * 256) / 256;
+	tmp[7] = 1 % 256;
+	// tmp[6];
+	// tmp[7];
+	// tmp[8];
+	// tmp[9];
+	// tmp[10];
+	// tmp[11];
+	// tmp[12];
+	// tmp[13];
+	write(fd, tmp, 8);
+	(void)head;
+	int var = 1;
+	tmp[0] = 1;
+	tmp[1] = ((size_t)var) / (256 * 256 * 256);
+	tmp[2] = (((size_t)var) - tmp[1] * 256 * 256 * 256) / (256 * 256);
+	tmp[3] = (((size_t)var) - tmp[2] * 256 * 256) / 256;
+	tmp[4] = (((size_t)var) - tmp[3] * 256) / 256;
+	// tmp[6];
+	// tmp[7];
+	// tmp[8];
+	// tmp[9];
+	// tmp[10];
+	// tmp[11];
+	// tmp[12];
+	// tmp[13];
+	write(fd, tmp, 5);
+	int val = -5;
+	tmp[0] = 9;
+	tmp[1] = ((size_t)val) / 256;
+	tmp[2] = ((size_t)val) % 256;
+	// tmp[6];
+	// tmp[7];
+	// tmp[8];
+	// tmp[9];
+	// tmp[10];
+	// tmp[11];
+	// tmp[12];
+	// tmp[13];
+	write(fd, tmp, 3);
 	(void)head;
 	// while (head)
 	// {
@@ -307,10 +367,9 @@ t_prog	*get_program(t_champ *head, char *name)
 		return (NULL);
 	(void)head;
 	new->file = get_file(name);
-	// new->magic = get_magic();
 	// new->name = get_name(head, NAME);
 	// new->comment = get_name(head, COMMENT);
-	// new->size = get_program_size(head);
+	new->size = get_program_size(head);
 	// new->program = get_full_prog(head);
 	return (new);
 }
