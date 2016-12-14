@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 10:47:03 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/14 15:34:19 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/14 15:50:07 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,14 @@ static int		n_option_on(t_vm *vm, char **av, int ac, int *i)
 
 static int		n_option_off(t_vm *vm, char *path)
 {
+	static int		n_code = 0xFFFFFFFF;
+
 	if (!ft_strrncmp(path, ".cor", 4))
 	{
 		if (vm->nb_champ == MAX_PLAYERS)
 			exit_corewar_msg(vm, "Too much champions !\n");
 		get_champ(vm, &vm->champs[vm->nb_champ], path);
+		vm->champs[vm->nb_champ].n_code = n_code--;
 		vm->nb_champ++;
 		return (_SUCCESS_);
 	}
