@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 10:47:03 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/14 15:50:07 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/14 16:08:43 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,9 @@ int				get_arg(t_vm *vm, int ac, char **av)
 	{
 		if (!ft_strcmp(av[i], "--help") || !ft_strcmp(av[i], "-h"))
 			return (-1);
-		if (!ft_strcmp(av[i], "-g"))
+		if (!ft_strcmp(av[i], "-c"))
+			vm->option_cycle = true;
+		else if (!ft_strcmp(av[i], "-g"))
 			vm->option_graph = true;
 		else if (!ft_strcmp(av[i], "-n") && n_option_on(vm, av, ac, &i))
 			;

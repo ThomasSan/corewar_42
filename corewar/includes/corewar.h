@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/14 13:33:38 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/14 16:20:25 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct	s_champ
 	t_header		header;
 	unsigned char	data[CHAMP_MAX_SIZE];
 	int				len;
+	bool			used;
 }				t_champ;
 
 typedef struct	s_process
@@ -76,6 +77,7 @@ typedef struct	s_vm
 	t_cycle		cycle;
 	int			nb_champ;
 	bool		option_graph;
+	bool		option_cycle;
 }				t_vm;
 
 
@@ -87,6 +89,7 @@ void			exit_corewar(t_vm *vm);
 void			exit_corewar_msg(t_vm *vm, char *msg);
 void			get_champ(t_vm *vm, t_champ *champ, char *path);
 void			start_battle(t_vm *vm);
+int				get_index_champ(t_vm *vm, t_champ *champs, int n_code);
 
 /*
 ** LIST PROCESS
@@ -108,7 +111,7 @@ void			display_debug_process(t_process *pro);
 ** PARSE / EXEC
 */
 void		parse_exec_op(t_vm *vm, t_process *pro);
-int		get_p_nfo(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
+int			get_p_nfo(t_vm *vm, t_process *pro, char p_code[4], int p_val[4]);
 
 /*
 ** OP
