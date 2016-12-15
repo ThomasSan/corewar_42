@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 19:03:08 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/14 13:14:31 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/15 12:22:01 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void			display_debug_ram(t_ram *ram, int cycle)
 	i = -1;
 	ft_printf("\n----- RAM %d -----\n\n", cycle);
 	while (++i < MEM_SIZE)
-	//while(++i < 100)
 	{
 		if (ram[i].executed == 1)
 			ft_printf("\x1b[30m\x1b[47m%.2x\x1b[0m ", ram[i].value);
@@ -81,19 +80,16 @@ void			display_debug_ram(t_ram *ram, int cycle)
 				ft_printf("\033[0;31m%.2x\033[0m ", ram[i].value);
 			else if (ram[i].owner == 3)
 				ft_printf("\033[0;35m%.2x\033[0m ", ram[i].value);
-			else
-				ft_printf("\033[0;34m%.2x\033[0m ", ram[i].value);
 		}
-		if (len >= 64)
+		if (len++ >= 64)
 		{
 			write(1, "\n", 1);
 			len = 0;
 		}
-		len++;
 	}
 }
 
-void			display_debug_process(t_process *pro)
+void			display_debug_process(t_vm *vm, t_process *pro)
 {
 	int		i;
 
