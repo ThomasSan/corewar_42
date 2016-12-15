@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 19:03:08 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/15 12:24:00 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/15 16:18:43 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,15 +81,16 @@ void			display_debug_ram(t_ram *ram, int cycle)
 			else
 				ft_printf("%.2x ", ram[i].value);
 		}
-		if (len++ >= 64)
+		if (len >= 64)
 		{
 			write(1, "\n", 1);
 			len = 0;
 		}
+		len++;
 	}
 }
 
-void			display_debug_process(t_vm *vm, t_process *pro)
+void			display_debug_process(t_process *pro)
 {
 	int		i;
 

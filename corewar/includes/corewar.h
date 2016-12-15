@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:44 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/14 16:20:25 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/15 15:10:05 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct	s_process
 {
 	int					pc;
 	int					curr_op;
+	int					owner;
 	int					reg[REG_NUMBER];
 	int					cycles_to_exec;
 	int					lives;

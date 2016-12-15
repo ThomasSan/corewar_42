@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 18:26:30 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/13 16:17:53 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/15 15:52:41 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int		get_new_p_val(t_vm *vm, t_process *pro, char p_code, int p_val)
 	ret = 0;
 	if (p_code == T_REG)
 		ret = pro->reg[p_val - 1];
+
 	else if (p_code == IND_CODE)
 		ret = vm->ram[ft_loop_memory(pro->pc + (p_val % IDX_MOD))].value;
 	else if (p_code == T_DIR)

@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 16:11:24 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/13 16:26:27 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/15 15:59:15 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ static int	not_op(char p_code[4], char opcode)
 	}
 	return (0);
 }
-
-
 
 void		parse_exec_op(t_vm *vm, t_process *pro)
 {

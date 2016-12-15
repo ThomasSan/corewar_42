@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 15:06:44 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/13 15:09:48 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/15 15:58:13 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static t_process	*new_process(int pc, int curr_op, t_process *parent, int i)
 	if (parent)
 	{
 		pro->carry = parent->carry;
+		pro->owner = parent->owner;
 		while (++i < REG_NUMBER)
 			pro->reg[i] = parent->reg[i];
 	}

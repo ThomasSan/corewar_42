@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:44:24 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/14 13:32:24 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/12/15 15:58:25 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void			(*g_exec_op[17])(t_vm *vm, t_process *pr, char p_code[4]
 int				main(int argc, char **argv)
 {
 	t_vm		vm;
-	t_process	*pro;
 
 	init_vm(&vm);
 	if (get_arg(&vm, argc, argv) == -1)

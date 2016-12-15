@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 17:20:46 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/10 18:07:45 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/15 15:52:59 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void		ft_sti(t_vm *vm, t_process *pro, char p_code[4], int p_val[4])
 	int		registre;
 	int		calcul;
 
+
+
 	if (check_params(11, p_code, p_val))
 	{
 		registre = pro->reg[p_val[0] - 1];
@@ -80,7 +82,7 @@ void		ft_sti(t_vm *vm, t_process *pro, char p_code[4], int p_val[4])
 			calcul = (pro->pc + (add % IDX_MOD) + i + MEM_SIZE) % MEM_SIZE;
 			vm->ram[calcul].value = registre % 256;
 			registre = registre >> 8;
-			vm->ram[calcul].owner = vm->ram[pro->pc].owner;
+			vm->ram[calcul].owner = pro->owner;
 		}
 	}
 }
