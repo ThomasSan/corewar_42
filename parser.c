@@ -153,6 +153,7 @@ void	calculate_value(t_champ *head, t_labels *labels)
 
 	while (head)
 	{
+		head->encoding = 0;
 		if (head->type == NAME || head->type == COMMENT)
 			head->hex_value = get_string_hex(head->line);
 		else if (head->type == OP)
@@ -160,12 +161,7 @@ void	calculate_value(t_champ *head, t_labels *labels)
 			last_op = head->line;
 			head->value = get_op_code(head->line) + 1;
 			if (params_types(last_op) == 2) // a une operation de conversion;
-			{
 				head->encoding = join_binary_encoding(head);
-			}
-			else
-				head->encoding = 0;
-
 		}
 		else if (head->type == LABELS)
 			head->hex_value = NULL;
