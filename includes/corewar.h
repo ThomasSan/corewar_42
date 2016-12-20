@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 15:24:16 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/19 18:02:28 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/20 19:57:54 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,15 @@ typedef struct			s_process
 {
 	struct s_vm			*vm;
 	int					order;
+	int					alive;
+	int					carry;
+	int					execute;
+	int					curr_op;
+	int					pc;
+	int					last_pc;
+	int					inside;
 	int					numero;
+	int					number;
 	char				reg[REG_NUMBER][REG_SIZE];
 	struct s_champ		*c;
 
@@ -90,9 +98,15 @@ typedef struct			s_vm
 	t_champ				champ[MAX_PLAYERS];
 	t_lst				*lst_champs;
 	int					cycle_to_exec;
+	int					curr_cycle;
+	int					die_verif;
+	int					last_alive;
 	int					o_graphic;
+	char				memory[MEM_SIZE];
 	int					cycle_to_die;
 	int					print_live;
+	int					nbr_live;
+	int					nbr_check;
 	int					nbr_champs;
 	int					argc[16];
 	int					size_arg[16];
@@ -105,6 +119,19 @@ t_process	*read_file_content(char *file, int number, t_vm *vm, int i);
 //OTHERS
 void		ft_error(char *str);
 int			ft_isint(char *s_int, int *result);
+t_lst		*ft_lstnew_noalloc(void *data, size_t data_size);
+void		ft_lstadd_sorted(t_lst **alst, t_lst *elem, int (*cmp)(void *c1, void *c2));
+void	ft_lstdelin_memdel(t_lst **alst, t_lst *elem);
+//CREATE
+void		create_process(t_vm *vm, t_process *pro);
+//PLACe
+void		place_champions(t_vm *vm);
+void		get_new_pc(t_process *pro, int new);
+
+//FIND
+t_process	*find_pro_id(t_lst *elem, int id);
+//START_FIGHT
+int			start_fight(t_vm *vm);
 //OP
 
 void		op_add(t_process *pro, t_vm *vm, char **arg, char *type);

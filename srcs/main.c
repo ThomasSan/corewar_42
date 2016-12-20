@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 15:17:22 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/19 18:02:45 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/20 19:21:39 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,18 @@ void	check_args(int ac, char **av, t_vm *vm)
 int		main(int ac, char **av)
 {
 	t_vm		*vm;
+	int			fight;
 	if (ac <= 1)
 		ft_error("ERROR: Bad arg number");
 	vm = boot_vm();
 	check_args(ac, av, vm);
-	ft_putchar('c');
+	if (vm->nbr_champs <= 0)
+		ft_error("ERROR: Bad champ nbr");
+	place_champions(vm);
+	fight = 1;
+	//	if (vm->o_graphic)
+	//graphic
+	while ((fight = start_fight(vm)))
+		;
+	return (0);
 }

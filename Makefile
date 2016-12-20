@@ -6,7 +6,7 @@
 #    By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/19 15:16:40 by ybeaure           #+#    #+#              #
-#    Updated: 2016/12/19 17:25:22 by ybeaure          ###   ########.fr        #
+#    Updated: 2016/12/20 19:31:43 by ybeaure          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,9 @@ NAME =		corewar
 
 FILES =		main.c \
 			boot.c \
+			create.c \
+			find.c \
+			place.c \
 			read_file_content.c \
 			tools.c \
 			op_add.c\
@@ -31,6 +34,7 @@ FILES =		main.c \
 			op_sub.c\
 			op_xor.c\
 			op_zjmp.c\
+			start_fight.c \
 
 SRCS =		$(addprefix srcs/, $(FILES))
 
