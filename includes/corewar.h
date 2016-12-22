@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 15:24:16 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/20 19:57:54 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/22 17:11:12 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define IND_SIZE			2
 # define REG_SIZE			4
 # define DIR_SIZE			REG_SIZE
+
 
 # define REG_CODE			1
 # define DIR_CODE			2
@@ -71,6 +72,7 @@ typedef struct			s_process
 	int					carry;
 	int					execute;
 	int					curr_op;
+	int					last_op;
 	int					pc;
 	int					last_pc;
 	int					inside;
@@ -122,6 +124,11 @@ int			ft_isint(char *s_int, int *result);
 t_lst		*ft_lstnew_noalloc(void *data, size_t data_size);
 void		ft_lstadd_sorted(t_lst **alst, t_lst *elem, int (*cmp)(void *c1, void *c2));
 void	ft_lstdelin_memdel(t_lst **alst, t_lst *elem);
+//TOOLS2
+void		move_pc(t_process *pro, int new);
+int			idx_ram(int idx);
+int			check_p_val(char *reg);
+void		copy_registre(t_process *pro, int new, int old);
 //CREATE
 void		create_process(t_vm *vm, t_process *pro);
 //PLACe
@@ -132,6 +139,17 @@ void		get_new_pc(t_process *pro, int new);
 t_process	*find_pro_id(t_lst *elem, int id);
 //START_FIGHT
 int			start_fight(t_vm *vm);
+//EXEC
+void		exec_op(t_process *pro, t_vm *vm);
+//CASTS
+int			c_int(char *arr);
+int			c_int_rev(char *arr);
+short int	c_short_int(char *arr);
+int			c_single_int(char tab);
+//SWITCH
+int		get_new_p_val(t_process *pro, t_vm *vm, char *p_val, char p_type);
+int		get_new_p_val_noidx(t_process *pro, t_vm *vm, char *p_val, char p_type);
+int		get_new_p_val_sh(t_process *pro, t_vm *vm, char *p_val, char p_type);
 //OP
 
 void		op_add(t_process *pro, t_vm *vm, char **arg, char *type);

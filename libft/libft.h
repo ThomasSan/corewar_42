@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 14:22:25 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/12/20 17:32:05 by ybeaure          ###   ########.fr       */
+/*   Updated: 2016/12/22 15:48:26 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 # ifndef RETURN_STAT
 #  define RETURN_STAT
+#  define SIGN(x) ((x) < 0 ? (-1) : (1))
+#  define ABS(x) ((x) < 0 ? -(x) : (x))
 
 #  define _FAULT_		0x00
 #  define _ERROR_		0x00
