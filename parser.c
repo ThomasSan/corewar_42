@@ -50,6 +50,19 @@ char	*get_string_hex(char *str)
 	return (dst);
 }
 
+char	*fill_binary(char *str)
+{
+	char	*tmp;
+
+	while (ft_strlen(str) < 8)
+	{
+		tmp = str;
+		str = ft_strjoin(str, "0");
+		free(tmp);
+	}
+	return (str);
+}
+
 char	*binary_encoding(t_champ *head)
 {
 	const char	*reg = "01";
@@ -74,10 +87,7 @@ char	*binary_encoding(t_champ *head)
 			free(str_tmp);
 		tmp = tmp->next;
 	}
-	str_tmp = str;	
-	str = ft_strjoin(str, "00");
-	free(str_tmp);
-	return (str);
+	return (fill_binary(str));
 }
 
 int		join_binary_encoding(t_champ *head)

@@ -148,7 +148,6 @@ void	write_magic(int fd)
 	magic = COREWAR_EXEC_MAGIC;
 	magic = ((magic >> 24) & 0xff) | ((magic << 8) & 0xff0000) |
 	((magic >> 8) & 0xff00) | ((magic << 24) & 0xff000000);
-	printf("here\n");
 	write(fd, (char*)&magic, 4);
 }
 
@@ -213,20 +212,20 @@ void	write_commands(t_champ *head, int fd, int len)
 			len = 0;
 			tmp[len] = head->value;
 			len++;
-			printf("%s, %d", head->line, head->value);
+			// printf("%s, %d", head->line, head->value);
 			if (head->encoding)
 			{
-				printf(" || %d\n", head->encoding);
+				// printf(" || %d\n", head->encoding);
 				tmp[len] = head->encoding;
 				len++;
 			}
-			printf("\n");
+			// printf("\n");
 			op = head->line;
 		}
 		else if (head->type == REG || 
 		head->type == DIR || head->type == IND)
 		{
-			printf("%s %d\n", head->line, head->value);
+			// printf("%s %d\n", head->line, head->value);
 			len = fill_tmp(head, tmp, op, len);
 		}
 		head = head->next;
@@ -363,7 +362,7 @@ int		main(int ac, char **av)
 	calculate_address(head);
 	labels = parsing_champ(head);
 	calculate_value(head, labels);
-	display_document(head);
+	// display_document(head);
 	// display_labels(labels);
 	prog = get_program(head, av[1]);
 	write_program(prog, head);
