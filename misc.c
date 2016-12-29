@@ -1,40 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   misc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsanzey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/29 17:02:22 by tsanzey           #+#    #+#             */
-/*   Updated: 2016/12/29 17:02:24 by tsanzey          ###   ########.fr       */
+/*   Created: 2016/12/29 17:02:02 by tsanzey           #+#    #+#             */
+/*   Updated: 2016/12/29 17:02:04 by tsanzey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "assembleur.h"
+#include "op.h"
+#include <stdio.h>
 
-long		ft_atol(char *str)
+int		index_array(char const *array[], char *str, int length)
 {
-	int		sign;
-	long	val;
-	long	nb;
+	int i;
 
-	sign = 1;
-	nb = 0;
-	val = 0;
-	while (*str == ' ' || *str == '\n' || *str == '\v' || *str == '\r'
-			|| *str == '\t' || *str == '\f')
-		str++;
-	if (*str == '+' || *str == '-')
+	i = 0;
+	while (i < length)
 	{
-		if (*str == '-')
-			sign = -1;
-		str++;
+		if (ft_strcmp(array[i], str) == 0)
+			return (i);
+		i++;
 	}
-	while (*str >= '0' && *str <= '9')
-	{
-		nb = *str - '0';
-		val = (val * 10) + nb;
-		str++;
-	}
-	return (val * sign);
+	return (-1);
 }

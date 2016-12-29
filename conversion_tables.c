@@ -1,29 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   conversion_tables.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tsanzey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/12/29 17:04:34 by tsanzey           #+#    #+#             */
+/*   Updated: 2016/12/29 17:04:35 by tsanzey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "assembleur.h"
 #include "op.h"
 #include <stdio.h>
 
-int		index_in_2d_array(char const *array[], char *str, int length)
-{
-	int i;
-	
-	i = 0;
-	while (i < length)
-	{
-		if (ft_strcmp(array[i], str) == 0)
-			return (i);
-		i++;
-	}
-	return (-1);
-}
-
 int		label_sizes(char *str)
 {
-	const char	*size_of_two[] = {"zjmp", "ldi", "sti", "fork", "lldi", "lfork"};
+	const char	*size_of_two[] = {"zjmp", "ldi", "sti", "fork",
+	"lldi", "lfork"};
 	const char	*size_of_four[] = {"live", "ld", "and", "or", "xor", "lld"};
 
-	if (index_in_2d_array(size_of_two, str, 6) > -1)
+	if (index_array(size_of_two, str, 6) > -1)
 		return (2);
-	if (index_in_2d_array(size_of_four, str, 6) > -1)
+	if (index_array(size_of_four, str, 6) > -1)
 		return (4);
 	return (-1);
 }
@@ -32,7 +31,7 @@ int		params_types(char *str)
 {
 	const char *no_encoding[] = {"live", "zjmp", "fork", "lfork"};
 
-	if (index_in_2d_array(no_encoding, str, 4) > -1)
+	if (index_array(no_encoding, str, 4) > -1)
 		return (1);
 	return (2);
 }
@@ -43,7 +42,7 @@ int		get_op_code(char *str)
 	"zjmp", "ldi", "sti", "fork", "lld", "lldi", "lfork", "aff"};
 	int			index;
 
-	index = index_in_2d_array(op, str, 16);
+	index = index_array(op, str, 16);
 	if (index > -1)
 		return (index);
 	return (-1);

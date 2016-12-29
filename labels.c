@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   labels.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tsanzey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/12/29 17:04:03 by tsanzey           #+#    #+#             */
+/*   Updated: 2016/12/29 17:04:04 by tsanzey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "assembleur.h"
 #include "op.h"
 #include <stdio.h>
 
 int			index_of(char *str, char c)
 {
-	int 	i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -33,7 +45,7 @@ int			label_index(char *line)
 	return (-1);
 }
 
-t_labels	*get_labels(t_labels *head, int	address, char *name)
+t_labels	*get_labels(t_labels *head, int address, char *name)
 {
 	t_labels *tmp;
 	t_labels *new;
@@ -64,9 +76,9 @@ void		display_labels(t_labels *head)
 	}
 }
 
-t_labels 	*parsing_champ(t_champ *head)
+t_labels	*parsing_champ(t_champ *head)
 {
-	t_labels 	*labels;
+	t_labels	*labels;
 
 	labels = NULL;
 	while (head)

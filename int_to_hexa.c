@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   int_to_hexa.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tsanzey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/12/29 17:02:08 by tsanzey           #+#    #+#             */
+/*   Updated: 2016/12/29 17:02:09 by tsanzey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "assembleur.h"
 #include <stdio.h>
 
@@ -55,7 +67,7 @@ char	*fillnumbers(char *bin)
 		return (NULL);
 	i = 0;
 	len = 8 - ft_strlen(bin);
-	while(i < len)
+	while (i < len)
 	{
 		dst[i] = '0';
 		i++;
@@ -79,20 +91,6 @@ char	*negative(char *bin)
 		i++;
 	}
 	return (bin);
-}
-
-char	*neg_itobase(int nb)
-{
-	char		*str;
-	char		*tmp;
-	int			neg_nb;
-
-	tmp = str_itobase(-nb, 2);
-	tmp = fillnumbers(tmp);
-	tmp = negative(tmp);
-	neg_nb = binary_todec(tmp) + 1;
-	str = str_itobase(neg_nb, 16);
-	return (str);
 }
 
 int		binary_todec(char *bin)

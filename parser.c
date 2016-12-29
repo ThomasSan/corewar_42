@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tsanzey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/12/29 16:41:04 by tsanzey           #+#    #+#             */
+/*   Updated: 2016/12/29 16:41:05 by tsanzey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "assembleur.h"
 #include "op.h"
 #include <stdio.h>
 
-void		calculate_address(t_champ *head)
+void	calculate_address(t_champ *head)
 {
 	int		tmp;
 	int		i;
@@ -29,77 +41,6 @@ void		calculate_address(t_champ *head)
 	}
 }
 
-char	*get_string_hex(char *str)
-{
-	int		i;
-	char	*dst;
-	char	*tmp;
-
-	i = 0;
-	if (!(dst = (char*)malloc(sizeof(char) * ft_strlen(str) * 2 + 1)))
-		return (NULL);
-	ft_bzero(dst, ft_strlen(str) * 2 + 1);
-	while (str[i])
-	{
-		tmp = str_itobase(str[i], 16);
-		dst = ft_strjoin(dst, tmp);
-		i++;
-		free(tmp);
-		tmp = NULL;
-	}
-	return (dst);
-}
-
-char	*fill_binary(char *str)
-{
-	char	*tmp;
-
-	while (ft_strlen(str) < 8)
-	{
-		tmp = str;
-		str = ft_strjoin(str, "0");
-		free(tmp);
-	}
-	return (str);
-}
-
-char	*binary_encoding(t_champ *head)
-{
-	const char	*reg = "01";
-	const char	*dir = "10";
-	const char	*ind = "11";
-	char		*str;
-	char		*str_tmp;
-	t_champ		*tmp;
-
-	tmp = head->next;
-	str = "";
-	while (tmp && tmp->type != OP && tmp->type != LABELS)
-	{
-		str_tmp = str;
-		if (tmp->type == REG)
-			str = ft_strjoin(str, reg);
-		else if (tmp->type == DIR)
-			str = ft_strjoin(str, dir);
-		else if (tmp->type == IND)
-			str = ft_strjoin(str, ind);
-		if (ft_strlen(str_tmp) > 0)
-			free(str_tmp);
-		tmp = tmp->next;
-	}
-	return (fill_binary(str));
-}
-
-int		join_binary_encoding(t_champ *head)
-{
-	char	*bin;
-	int		dec;
-
-	bin = binary_encoding(head);
-	dec = binary_todec(bin);
-	return (dec);
-}
-
 int		get_address(t_labels *labels, char *str)
 {
 	t_labels *tmp;
@@ -111,26 +52,18 @@ int		get_address(t_labels *labels, char *str)
 			return (tmp->address);
 		tmp = tmp->next;
 	}
-	return (-1); // todo create ERROR FN 
-	//si on ne trouve pas de matching labels
+	return (-1);
 }
 
-int 	converting_labels(t_champ *head, char *str, t_labels *labels, int len)
+int		converting_labels(t_champ *head, char *str, t_labels *labels, int len)
 {
 	int		add;
 
 	add = get_address(labels, str) - head->address;
+	if (add == -1)
+		error_and_exit(-1, NULL);
 	head->len = len;
 	return (add);
-}
-
-int		getting_direct_length(t_champ *head, char *str, int len)
-{
-	int ret;
-
-	ret = ft_atoi(str);
-	head->len = len;
-	return (ret);
 }
 
 int		params_values(t_champ *head, t_labels *labels, char *op)
@@ -170,7 +103,7 @@ void	calculate_value(t_champ *head, t_labels *labels)
 		{
 			last_op = head->line;
 			head->value = get_op_code(head->line) + 1;
-			if (params_types(last_op) == 2) // a une operation de conversion;
+			if (params_types(last_op) == 2)
 				head->encoding = join_binary_encoding(head);
 		}
 		else if (head->type == LABELS)

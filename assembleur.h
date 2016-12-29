@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   assembleur.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tsanzey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/12/29 16:32:41 by tsanzey           #+#    #+#             */
+/*   Updated: 2016/12/29 16:32:43 by tsanzey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef ASSEMBLEUR_H
 # define ASSEMBLEUR_H
 
@@ -8,13 +20,17 @@
 # define IND 105
 # define NAME 106
 # define COMMENT 107
+# define ALL 108
+# define INDDIR 109
+# define INDREG 110
+# define DIRREG 111
 
-#include "get_next_line.h"
-#include "libft/libft.h"
-#include <stdlib.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+# include "get_next_line.h"
+# include "libft/libft.h"
+# include <stdlib.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 
 typedef struct		s_labels
 {
@@ -63,8 +79,25 @@ int					index_of(char *str, char c);
 char				*str_itobase(int nb, int base);
 char				*neg_itobase(int nb);
 int					binary_todec(char *bin);
-
-t_labels 			*parsing_champ(t_champ *head);
+int					argument_number(char *str);
+int					check_arg_type(char *str, int type, int i);
+int					index_array(char const *a[], char *s, int l);
+void				validity_checking(t_champ *head);
+t_labels			*parsing_champ(t_champ *head);
 void				display_labels(t_labels *head);
+char				*get_string_hex(char *str);
+/*
+** Bite
+*/
+t_prog				*get_program(t_champ *head, char *name);
+t_champ				*get_doc(t_champ *head, char *str, int type);
+int					getting_direct_length(t_champ *head, char *str, int len);
+int					join_binary_encoding(t_champ *head);
+void				error_and_exit(int err, char *str);
+/*
+** write functions
+*/
+void				write_magic(int fd);
+void				write_program(t_prog *prog, t_champ *head);
 
 #endif
