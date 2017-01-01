@@ -35,7 +35,7 @@ void		op_live(t_process *pro, t_vm *vm, char **p_val, char *p_type)
 		{
 			if (vm->champ[i].id == id && vm->champ[i].dead == 0)
 			{
-				vm->last_alive == i;
+				vm->last_alive = i;
 				if (!vm->o_graphic && vm->print_live == 1)
 					print_l(&(vm->champ[i]));
 			}
