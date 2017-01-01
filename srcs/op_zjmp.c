@@ -12,10 +12,14 @@
 
 #include "../includes/corewar.h"
 
-void		op_zjmp(t_process *pro, t_vm *vm, char **arg, char *type)
+void		op_zjmp(t_process *pro, t_vm *vm, char **p_val, char *p_type)
 {
-	(void)pro;
+	int		jump;
+
 	(void)vm;
-	(void)arg;
-	(void)type;
+	if (p_type[0] == DIR_CODE && pro->carry == 1)
+	{
+		jump = (int)c_short_int(p_val[0]) % IDX_MOD;
+		pro->pc = idx_ram(pro->last_pc + jump);
+	}
 }

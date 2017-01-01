@@ -12,10 +12,23 @@
 
 #include "../includes/corewar.h"
 
-void		op_sub(t_process *pro, t_vm *vm, char **arg, char *type)
+void		op_sub(t_process *pro, t_vm *vm, char **p_val, char *p_type)
 {
-	(void)pro;
+	int		dif;
+	int		n_pval;
+
 	(void)vm;
-	(void)arg;
-	(void)type;
+	if (p_type[0] == REG_CODE && p_type[1] == REG_CODE && p_type[2] == REG_CODE && check_p_val(p_val[1]) && check_p_val(p_val[2]))
+	{
+		dif = c_int(pro->reg[c_single_int(p_val[0][0]) - 1]) - c_int(pro->reg[c_single_int(p_val[1][0]) - 1]);
+		n_pval = c_single_int(p_val[2][0]);
+		pro->reg[n_pval - 1][0] = (char)dif;
+		pro->reg[n_pval - 1][1] = (char)(dif >> 8);
+		pro->reg[n_pval - 1][2] = (char)(dif >> 16);
+		pro->reg[n_pval - 1][3] = (char)(dif >> 24);
+		if (dif == 0)
+			pro->carry = 1;
+		else
+			pro->carry = 0;
+	}
 }

@@ -12,7 +12,7 @@
 
 #include "../includes/corewar.h"
 
-void		op_sti(t_process *pro, t_vm *vm, char **arg, char *type)
+void		op_sti(t_process *pro, t_vm *vm, char **p_val, char *p_type)
 {
 	int		p_val1;
 	int		p_val2;
