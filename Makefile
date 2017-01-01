@@ -6,7 +6,7 @@
 #    By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/19 15:16:40 by ybeaure           #+#    #+#              #
-#    Updated: 2016/12/22 17:10:38 by ybeaure          ###   ########.fr        #
+#    Updated: 2016/12/12 17:10:38 by ybeaure          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ OBJS =		$(SRCS:.c=.o)
 
 DEBUG =		-fsanitize=address
 
-FLAGS =		-Wall -Werror -Wextra $(DEBUG)
+FLAGS =		-Wall -Werror -Wextra
 
 CC =		gcc
 

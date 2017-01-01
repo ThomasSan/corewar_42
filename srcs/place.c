@@ -14,7 +14,7 @@
 
 void		get_new_pc(t_process *pro, int new)
 {
-	int			old;
+	int		old;
 	
 	old = pro->last_pc;
 	pro->last_pc = new;
@@ -23,7 +23,7 @@ void		get_new_pc(t_process *pro, int new)
 
 void		place_in_vm(t_vm *vm, t_champ *champ, int pc)
 {
-	int			size;
+	int		size;
 	char		*mem;
 	t_process	*pro;
 
