@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/20 19:21:58 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/20 19:43:39 by ybeaure          ###   ########.fr       */
+/*   Updated: 2017/01/02 16:35:29 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void		check_champ(t_process *pro, t_vm *vm, t_lst *elem)
 void		update_cycle(t_vm *vm)
 {
 	static int	last_update = -1;
+
 	if (last_update >= vm->curr_cycle)
 		return ;
 	last_update = vm->curr_cycle;

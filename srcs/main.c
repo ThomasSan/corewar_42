@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 15:17:22 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/20 19:21:39 by ybeaure          ###   ########.fr       */
+/*   Updated: 2017/01/02 16:32:00 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_error(char *str)
 	exit(-1);
 }
 
-int		check_number(t_lst	*lst, t_lst *elem, int number)
+int		check_number(t_lst *lst, t_lst *elem, int number)
 {
 	t_process	*pro;
 
@@ -83,6 +83,7 @@ int		main(int ac, char **av)
 {
 	t_vm		*vm;
 	int			fight;
+
 	if (ac <= 1)
 		ft_error("ERROR: Bad arg number");
 	vm = boot_vm();

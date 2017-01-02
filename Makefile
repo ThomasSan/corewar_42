@@ -6,7 +6,7 @@
 #    By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/19 15:16:40 by ybeaure           #+#    #+#              #
-#    Updated: 2016/12/12 17:10:38 by ybeaure          ###   ########.fr        #
+#    Updated: 2017/01/02 16:37:06 by ybeaure          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ FILES =		main.c \
 			read_file_content.c \
 			tools.c \
 			tools2.c \
+			tools3.c \
 			op_add.c\
 			op_aff.c\
 			op_and.c\

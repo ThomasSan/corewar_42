@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/20 18:02:14 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/20 19:17:47 by ybeaure          ###   ########.fr       */
+/*   Updated: 2017/01/02 16:42:30 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void		get_new_pc(t_process *pro, int new)
 {
 	int		old;
-	
+
 	old = pro->last_pc;
 	pro->last_pc = new;
 	//visual
@@ -23,7 +23,7 @@ void		get_new_pc(t_process *pro, int new)
 
 void		place_in_vm(t_vm *vm, t_champ *champ, int pc)
 {
-	int		size;
+	int			size;
 	char		*mem;
 	t_process	*pro;
 
@@ -58,14 +58,13 @@ void		order_champs(t_vm *vm, t_champ champ[MAX_PLAYERS])
 		vm->champ[i].first_pc->c = &(vm->champ[i]);
 		i++;
 	}
-
 }
 
 void		place_champions(t_vm *vm)
 {
 	int		vide;
 	int		i;
-	
+
 	vide = MEM_SIZE / vm->nbr_champs;
 	i = -1;
 	order_champs(vm, vm->champ);

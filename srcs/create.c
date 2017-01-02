@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/20 16:54:21 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/20 17:57:48 by ybeaure          ###   ########.fr       */
+/*   Updated: 2017/01/02 16:29:33 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int			compare_pro(void *c1, void *c2)
 
 void		create_process(t_vm *vm, t_process *pro)
 {
-	static int number = 0;
+	static int	number = 0;
 	t_lst		*new;
 
 	pro->number = number;

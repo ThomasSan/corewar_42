@@ -6,13 +6,13 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 15:21:54 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/19 15:55:40 by ybeaure          ###   ########.fr       */
+/*   Updated: 2017/01/02 16:39:06 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
 
-void		init_nbr_cycle_op(int nbr_cycle[16])
+void	init_nbr_cycle_op(int nbr_cycle[16])
 {
 	nbr_cycle[0] = 10;
 	nbr_cycle[1] = 5;
@@ -92,7 +92,7 @@ void	init_op(t_vm *vm)
 	vm->op_function[15] = op_aff;
 }
 
-t_vm		*boot_vm(void)
+t_vm	*boot_vm(void)
 {
 	t_vm		*vm;
 	int			i;
