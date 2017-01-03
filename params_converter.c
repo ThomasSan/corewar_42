@@ -23,7 +23,7 @@ int		argument_number(char *str)
 
 	if (index_array(one_arg, str, 5) > -1)
 		return (1);
-	if (index_array(two_arg, str, 2) > -1)
+	if (index_array(two_arg, str, 3) > -1)
 		return (2);
 	if (index_array(three_arg, str, 8) > -1)
 		return (3);

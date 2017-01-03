@@ -15,18 +15,28 @@
 #include <unistd.h>
 #include <stdio.h>
 
-void	display_document(t_champ *head)
+char	*trim_quotes(char *str)
 {
-	while (head)
+	char	*tmp;
+	int		count;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	count = str[0] == '"' ? 1 : 0;
+	count = str[ft_strlen(str) - 1] == '"' ? count++ : count;
+	if (!(tmp = (char*)malloc(sizeof(char) * (ft_strlen(str) - count + 1))))
+		return (NULL);
+	while (str[i])
 	{
-		printf("head %s -> %d @ %d", head->line, head->type, head->address);
-		if (head->type == OP || head->type == REG ||
-			head->type == DIR || head->type == IND)
-			printf("-> # %d / %d\n", head->value, head->value);
-		else
-			printf("\n");
-		head = head->next;
+		if ((i == 0 || i == (int)ft_strlen(str) - 1) && str[i] == '"')
+			i++;
+		tmp[j] = str[i];
+		i++;
+		j++;
 	}
+	return (tmp);
 }
 
 t_champ	*get_doc(t_champ *head, char *str, int type)
@@ -36,7 +46,11 @@ t_champ	*get_doc(t_champ *head, char *str, int type)
 
 	if (!(new = (t_champ*)malloc(sizeof(t_champ))))
 		return (NULL);
-	new->line = ft_strtrim(str);
+	str = ft_strtrim(str);
+	if (type == NAME || type == COMMENT)
+		new->line = trim_quotes(str);
+	else
+		new->line = ft_strdup(str);
 	new->type = type;
 	new->next = NULL;
 	if (!head)
@@ -94,10 +108,10 @@ t_champ	*parse_doc(t_champ *h, int fd)
 			i = label_index(l);
 			if (i > -1)
 				h = get_doc(h, ft_strsub(l, 0, i), LABELS);
-			if (ft_strstr(l, ".name ") == l)
-				h = get_doc(h, ft_strsub(l, 7, ft_strlen(l) - 8), NAME);
-			if (ft_strstr(l, ".comment ") == l)
-				h = get_doc(h, ft_strsub(l, 10, ft_strlen(l) - 11), COMMENT);
+			if (ft_strstr(l, ".name") == l)
+				h = get_doc(h, ft_strsub(l, 6, ft_strlen(l) - 6), NAME);
+			if (ft_strstr(l, ".comment") == l)
+				h = get_doc(h, ft_strsub(l, 9, ft_strlen(l) - 9), COMMENT);
 			i = i == -1 ? 0 : i + 1;
 		}
 		while (l[i] && ft_isspace(l[i]))
@@ -128,7 +142,6 @@ int		main(int ac, char **av)
 	calculate_address(head);
 	labels = parsing_champ(head);
 	calculate_value(head, labels);
-	display_document(head);
 	validity_checking(head);
 	prog = get_program(head, av[1]);
 	write_program(prog, head);

@@ -67,15 +67,6 @@ t_labels	*get_labels(t_labels *head, int address, char *name)
 	return (head);
 }
 
-void		display_labels(t_labels *head)
-{
-	while (head)
-	{
-		printf("label : %s -> %d\n", head->name, head->address);
-		head = head->next;
-	}
-}
-
 t_labels	*parsing_champ(t_champ *head)
 {
 	t_labels	*labels;

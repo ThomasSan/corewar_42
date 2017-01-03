@@ -100,7 +100,7 @@ int		get_program_size(t_champ *head)
 		if (tmp->type == DIR)
 			size += label_sizes(op) * 2;
 		if (tmp->type == IND)
-			size += 2;
+			size += 4;
 		tmp = tmp->next;
 	}
 	return (size / 2);

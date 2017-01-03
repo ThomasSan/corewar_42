@@ -14,6 +14,28 @@
 #include "op.h"
 #include <stdio.h>
 
+void	display_document(t_champ *head)
+{
+	while (head)
+	{
+		ft_putstr("head ");
+		ft_putstr(head->line);
+		ft_putstr(" -> ");
+		ft_putnbr(head->type);
+		ft_putstr(" @ ");
+		ft_putnbr(head->address);
+		if (head->type == OP || head->type == REG ||
+			head->type == DIR || head->type == IND)
+		{
+			ft_putstr(" # ");
+			ft_putnbr(head->value);
+		}
+		else
+			ft_putchar('\n');
+		head = head->next;
+	}
+}
+
 int		index_array(char const *array[], char *str, int length)
 {
 	int i;

@@ -85,7 +85,7 @@ int		params_values(t_champ *head, t_labels *labels, char *op)
 		if (head->line[0] == LABEL_CHAR)
 			return (converting_labels(head, head->line + 2, labels, 4));
 		else
-			return (getting_direct_length(head, head->line + 1, IND_SIZE));
+			return (getting_direct_length(head, head->line, IND_SIZE));
 	}
 	return (-1);
 }

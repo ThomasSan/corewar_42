@@ -87,13 +87,14 @@ t_labels			*parsing_champ(t_champ *head);
 void				display_labels(t_labels *head);
 char				*get_string_hex(char *str);
 /*
-** Bite
+** Misc
 */
 t_prog				*get_program(t_champ *head, char *name);
 t_champ				*get_doc(t_champ *head, char *str, int type);
 int					getting_direct_length(t_champ *head, char *str, int len);
 int					join_binary_encoding(t_champ *head);
 void				error_and_exit(int err, char *str);
+void				display_document(t_champ *head);
 /*
 ** write functions
 */
