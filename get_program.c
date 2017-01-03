@@ -15,6 +15,17 @@
 #include <unistd.h>
 #include <stdio.h>
 
+char	*get_dat_line(int type, char *str)
+{
+	char	*tmp;
+
+	if (type == NAME || type == COMMENT)
+		tmp = trim_quotes(str);
+	else
+		tmp = ft_strdup(str);
+	return (tmp);
+}
+
 char	*get_file(char *str)
 {
 	char *tmp;
@@ -26,31 +37,6 @@ char	*get_file(char *str)
 	tmp = dst;
 	dst = ft_strjoin(dst, ".cor");
 	free(tmp);
-	return (dst);
-}
-
-char	*get_full_prog(t_champ *head)
-{
-	char	*dst;
-	char	*tmp;
-
-	dst = NULL;
-	while (head)
-	{
-		if (head->type == OP || head->type == REG ||
-			head->type == DIR || head->type == IND)
-		{
-			if (dst)
-			{
-				tmp = dst;
-				dst = ft_strjoin(dst, head->hex_value);
-				free(tmp);
-			}
-			else
-				dst = ft_strdup(head->hex_value);
-		}
-		head = head->next;
-	}
 	return (dst);
 }
 

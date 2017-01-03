@@ -47,18 +47,15 @@ typedef struct		s_champ
 	int				value;
 	int				encoding;
 	int				len;
-	char			*hex_value;
 	struct s_champ	*next;
 }					t_champ;
 
 typedef struct		s_prog
 {
 	char			*file;
-	char			*magic;
 	char			*name;
 	int				size;
 	char			*comment;
-	char			*program;
 }					t_prog;
 
 /*
@@ -95,10 +92,15 @@ int					getting_direct_length(t_champ *head, char *str, int len);
 int					join_binary_encoding(t_champ *head);
 void				error_and_exit(int err, char *str);
 void				display_document(t_champ *head);
+char				*trim_quotes(char *str);
+char				*get_dat_line(int type, char *str);
 /*
 ** write functions
 */
 void				write_magic(int fd);
 void				write_program(t_prog *prog, t_champ *head);
-
+/*
+** free
+*/
+void				free_prog(t_prog *prog, t_champ *head, t_labels *labels);
 #endif

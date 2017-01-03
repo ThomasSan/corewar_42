@@ -43,14 +43,13 @@ t_champ	*get_doc(t_champ *head, char *str, int type)
 {
 	t_champ *new;
 	t_champ *tmp;
+	char	*tmp1;
 
 	if (!(new = (t_champ*)malloc(sizeof(t_champ))))
 		return (NULL);
+	tmp1 = str;
 	str = ft_strtrim(str);
-	if (type == NAME || type == COMMENT)
-		new->line = trim_quotes(str);
-	else
-		new->line = ft_strdup(str);
+	new->line = get_dat_line(type, str);
 	new->type = type;
 	new->next = NULL;
 	if (!head)
@@ -62,6 +61,8 @@ t_champ	*get_doc(t_champ *head, char *str, int type)
 			tmp = tmp->next;
 		tmp->next = new;
 	}
+	if (tmp1 != str)
+		free(tmp1);
 	free(str);
 	return (head);
 }
@@ -145,5 +146,6 @@ int		main(int ac, char **av)
 	validity_checking(head);
 	prog = get_program(head, av[1]);
 	write_program(prog, head);
+	free_prog(prog, head, labels);
 	return (0);
 }

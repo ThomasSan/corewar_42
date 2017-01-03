@@ -98,7 +98,7 @@ void	calculate_value(t_champ *head, t_labels *labels)
 	{
 		head->encoding = 0;
 		if (head->type == NAME || head->type == COMMENT)
-			head->hex_value = get_string_hex(head->line);
+			continue ;
 		else if (head->type == OP)
 		{
 			last_op = head->line;
@@ -107,7 +107,7 @@ void	calculate_value(t_champ *head, t_labels *labels)
 				head->encoding = join_binary_encoding(head);
 		}
 		else if (head->type == LABELS)
-			head->hex_value = NULL;
+			continue ;
 		else
 		{
 			head->value = params_values(head, labels, last_op);

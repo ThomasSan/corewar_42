@@ -45,6 +45,7 @@ int		get_op_code(char *str)
 	index = index_array(op, str, 16);
 	if (index > -1)
 		return (index);
+	free(str);
 	return (-1);
 }
 
