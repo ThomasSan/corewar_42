@@ -65,25 +65,27 @@ int		string_is_number(char *str)
 
 int		get_param_type(char *tmp)
 {
-	char *str;
+	char	*str;
+	int		ret;
 
+	ret = -1;
 	str = ft_strtrim(tmp);
 	free(tmp);
 	if (str[0] == 'r')
 	{
 		if (string_is_number(str))
-			return (REG);
+			ret = REG;
 	}
 	else if (str[0] == '%')
 	{
 		if (str[1] == ':' || string_is_number(str))
-			return (DIR);
+			ret = DIR;
 	}
 	else
 	{
 		if (str[0] == ':' || string_is_number(str))
-			return (IND);
+			ret = IND;
 	}
 	free(str);
-	return (-1);
+	return (ret);
 }
