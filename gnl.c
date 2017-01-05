@@ -74,6 +74,34 @@ char	*del_line(char *s, int i)
 	return (tmp);
 }
 
+char	*ft_strjoin2(char *s1, char *s2)
+{
+	char			*str;
+	unsigned int	i;
+	unsigned int	j;
+	unsigned int	len;
+
+	i = 0;
+	j = 0;
+	len = ft_strlen(s1) + ft_strlen(s2);
+	str = (char *)malloc(sizeof(str) * len + 1);
+	if (!str)
+		return (NULL);
+	while (s1[i])
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	while (s2[j])
+	{
+		str[i + j] = s2[j];
+		j++;
+	}
+	str[i + j] = '\0';
+	free(s1);
+	return (str);
+}
+
 int		get_line_len(int const fd, char **dst)
 {
 	int		i;
