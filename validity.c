@@ -43,6 +43,8 @@ void	name_checking(t_champ *head, int type)
 
 	count = 0;
 	max_len = type == NAME ? PROG_NAME_LENGTH : COMMENT_LENGTH;
+	if (!head->line)
+		error_and_exit(type, NULL);
 	while (head)
 	{
 		if (head->type == type)

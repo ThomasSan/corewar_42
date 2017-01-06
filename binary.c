@@ -90,5 +90,6 @@ int		join_binary_encoding(t_champ *head)
 
 	bin = binary_encoding(head, "01");
 	dec = binary_todec(bin);
+	free(bin);
 	return (dec);
 }

@@ -62,7 +62,7 @@ typedef struct		s_prog
 ** Parsing functions
 */
 int					label_index(char *line);
-int					get_op_code(char *str);
+int					get_op_code(char *str, int del);
 int					get_param_type(char *str);
 int					params_types(char *str);
 int					label_sizes(char *str);
@@ -94,6 +94,7 @@ void				error_and_exit(int err, char *str);
 void				display_document(t_champ *head);
 char				*trim_quotes(char *str);
 char				*get_dat_line(int type, char *str);
+char				*copy_str(char *dst, char *src, int len);
 /*
 ** write functions
 */

@@ -19,5 +19,6 @@ void	ft_putnbr(int n)
 
 	s = ft_itoa(n);
 	ft_putstr(s);
-	free(s);
+	if (n != 0)
+		free(s);
 }

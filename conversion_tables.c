@@ -36,14 +36,15 @@ int		params_types(char *str)
 	return (2);
 }
 
-int		get_op_code(char *str)
+int		get_op_code(char *str, int del)
 {
 	const char	*op[] = {"live", "ld", "st", "add", "sub", "and", "or", "xor",
 	"zjmp", "ldi", "sti", "fork", "lld", "lldi", "lfork", "aff"};
 	int			index;
 
 	index = index_array(op, str, 16);
-	free(str);
+	if (del)
+		free(str);
 	if (index > -1)
 		return (index);
 	return (-1);

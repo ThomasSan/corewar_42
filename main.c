@@ -25,17 +25,21 @@ char	*trim_quotes(char *str)
 	i = 0;
 	j = 0;
 	count = str[0] == '"' ? 1 : 0;
-	count = str[ft_strlen(str) - 1] == '"' ? count++ : count;
+	if (str[ft_strlen(str) - 1] == '"')
+		count++;
 	if (!(tmp = (char*)malloc(sizeof(char) * (ft_strlen(str) - count + 1))))
+		return (NULL);
+	if (ft_strlen(str) == 2 && count == 2)
 		return (NULL);
 	while (str[i])
 	{
-		if ((i == 0 || i == (int)ft_strlen(str) - 1) && str[i] == '"')
+		while ((i == 0 || i == (int)ft_strlen(str) - 1) && str[i] == '"')
 			i++;
 		tmp[j] = str[i];
 		i++;
 		j++;
 	}
+	tmp[j] = '\0';
 	return (tmp);
 }
 
@@ -61,9 +65,6 @@ t_champ	*get_doc(t_champ *head, char *str, int type)
 			tmp = tmp->next;
 		tmp->next = new;
 	}
-	if (tmp1 != str)
-		free(tmp1);
-	free(str);
 	return (head);
 }
 
@@ -77,7 +78,7 @@ t_champ	*parse_line(t_champ *head, char *line, int i, int type)
 	{
 		if (type == OP && ft_isspace(line[i]))
 		{
-			if (get_op_code(ft_strsub(line, start, i - start)) > -1)
+			if (get_op_code(ft_strsub(line, start, i - start), 1) > -1)
 			{
 				head = get_doc(head, ft_strsub(line, start, i - start), OP);
 				type = 0;
@@ -140,6 +141,7 @@ int		main(int ac, char **av)
 		return (0);
 	head = parse_doc(head, fd);
 	close(fd);
+	display_document(head);
 	calculate_address(head);
 	labels = parsing_champ(head);
 	calculate_value(head, labels);
@@ -147,5 +149,6 @@ int		main(int ac, char **av)
 	prog = get_program(head, av[1]);
 	write_program(prog, head);
 	free_prog(prog, head, labels);
+	// while (1);
 	return (0);
 }

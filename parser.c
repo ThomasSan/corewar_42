@@ -98,16 +98,16 @@ void	calculate_value(t_champ *head, t_labels *labels)
 	{
 		head->encoding = 0;
 		if (head->type == NAME || head->type == COMMENT)
-			continue ;
+			(void)last_op;
 		else if (head->type == OP)
 		{
 			last_op = head->line;
-			head->value = get_op_code(head->line) + 1;
+			head->value = get_op_code(head->line, 0) + 1;
 			if (params_types(last_op) == 2)
 				head->encoding = join_binary_encoding(head);
 		}
 		else if (head->type == LABELS)
-			continue ;
+			(void)last_op;
 		else
 		{
 			head->value = params_values(head, labels, last_op);

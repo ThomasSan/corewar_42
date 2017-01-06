@@ -90,11 +90,15 @@ void	write_commands(t_champ *head, int fd, int len)
 void	write_program(t_prog *prog, t_champ *head)
 {
 	int		fd;
+	char	tmp_name[PROG_NAME_LENGTH + 1];
+	char	tmp_comment[COMMENT_LENGTH + 1];
 
 	if ((fd = open(prog->file, O_WRONLY | O_CREAT | O_TRUNC, 0644)) == -1)
 		error_and_exit(-1, NULL);
 	write_magic(fd);
-	write(fd, prog->name, PROG_NAME_LENGTH + 4);
+	ft_strncpy(tmp_name, prog->name, PROG_NAME_LENGTH + 1);
+	ft_strncpy(tmp_comment, prog->comment, COMMENT_LENGTH + 1);
+	write(fd, tmp_name, PROG_NAME_LENGTH + 4);
 	write_file_len(prog->size, fd);
 	write(fd, prog->comment, COMMENT_LENGTH + 4);
 	write_commands(head, fd, 0);
