@@ -19,6 +19,8 @@ char	*get_dat_line(int type, char *str)
 {
 	char	*tmp;
 
+	if (ft_strlen(str) == 0)
+		error_and_exit(-1, NULL);
 	if (type == NAME || type == COMMENT)
 		tmp = trim_quotes(str);
 	else

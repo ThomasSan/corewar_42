@@ -141,7 +141,6 @@ int		main(int ac, char **av)
 		return (0);
 	head = parse_doc(head, fd);
 	close(fd);
-	display_document(head);
 	calculate_address(head);
 	labels = parsing_champ(head);
 	calculate_value(head, labels);
@@ -149,6 +148,5 @@ int		main(int ac, char **av)
 	prog = get_program(head, av[1]);
 	write_program(prog, head);
 	free_prog(prog, head, labels);
-	// while (1);
 	return (0);
 }
