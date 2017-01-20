@@ -27,3 +27,14 @@ int		index_array(char const *array[], char *str, int length)
 	}
 	return (-1);
 }
+
+int		line_type(char *str)
+{
+	if (label_index(str) > -1)
+		return (LABELS);
+	if (ft_strstr(str, ".name") == str)
+		return (NAME);
+	if (ft_strstr(str, ".comment") == str)
+		return (COMMENT);
+	return (OP);
+}

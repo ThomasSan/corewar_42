@@ -32,6 +32,13 @@ void	error_and_exit(int err, char *str)
 	}
 	if (err == -1)
 		ft_putendl_fd("Error", 2);
+	if (err == OP)
+	{
+		ft_putstr_fd("Operation is either missing or unknown around ", 2);
+		ft_putendl_fd(str, 2);
+	}
+	if (err == 11)
+		ft_putendl_fd("Input file error", 2);
 	exit(0);
 }
 

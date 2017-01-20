@@ -76,7 +76,7 @@ t_champ	*parse_line(t_champ *head, char *line, int i, int type)
 	start = i;
 	while (line[i++])
 	{
-		if (type == OP && ft_isspace(line[i]))
+		if (type == OP && (ft_isspace(line[i]) || line[i] == '\0'))
 		{
 			if (get_op_code(ft_strsub(line, start, i - start), 1) > -1)
 			{
@@ -97,7 +97,7 @@ t_champ	*parse_line(t_champ *head, char *line, int i, int type)
 	return (head);
 }
 
-t_champ	*parse_doc(t_champ *h, int fd)
+t_champ	*parse_doc(t_champ *h, int fd, int type)
 {
 	char	*l;
 	int		i;
@@ -115,10 +115,12 @@ t_champ	*parse_doc(t_champ *h, int fd)
 			if (ft_strstr(l, ".comment") == l)
 				h = get_doc(h, ft_strsub(l, 9, ft_strlen(l) - 9), COMMENT);
 			i = i == -1 ? 0 : i + 1;
+			while (l[i] && ft_isspace(l[i]))
+				i++;
+			type = line_type(l + i);
+			if (type == OP)
+				h = parse_line(h, l, i, OP);
 		}
-		while (l[i] && ft_isspace(l[i]))
-			i++;
-		h = parse_line(h, l, i, OP);
 		free(l);
 	}
 	return (h);
@@ -138,8 +140,8 @@ int		main(int ac, char **av)
 		return (0);
 	}
 	if ((fd = open(av[1], O_RDONLY)) == -1)
-		return (0);
-	head = parse_doc(head, fd);
+		error_and_exit(11, NULL);
+	head = parse_doc(head, fd, 0);
 	close(fd);
 	calculate_address(head);
 	labels = parsing_champ(head);

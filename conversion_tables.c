@@ -47,6 +47,7 @@ int		get_op_code(char *str, int del)
 		free(str);
 	if (index > -1)
 		return (index);
+	error_and_exit(OP, str);
 	return (-1);
 }
 

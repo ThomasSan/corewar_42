@@ -95,6 +95,7 @@ void				display_document(t_champ *head);
 char				*trim_quotes(char *str);
 char				*get_dat_line(int type, char *str);
 char				*copy_str(char *dst, char *src, int len);
+int					line_type(char *str);
 /*
 ** write functions
 */
