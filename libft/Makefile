@@ -6,7 +6,7 @@
 #    By: tsanzey <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/25 19:15:20 by tsanzey           #+#    #+#              #
-#    Updated: 2015/12/24 15:45:26 by tsanzey          ###   ########.fr        #
+#    Updated: 2017/01/24 14:13:26 by tsanzey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME=libft.a
 
 CC=gcc
 
-CFLAGS=-Wall -Wextra -Werror
+CFLAGS= -g -Wall -Wextra -Werror
 
 RM=rm -f
 

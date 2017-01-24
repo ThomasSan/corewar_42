@@ -96,6 +96,8 @@ char				*trim_quotes(char *str);
 char				*get_dat_line(int type, char *str);
 char				*copy_str(char *dst, char *src, int len);
 int					line_type(char *str);
+void				arg_validity(t_champ *head);
+int					string_is_number(char *str);
 /*
 ** write functions
 */

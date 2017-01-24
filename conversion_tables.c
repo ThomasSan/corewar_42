@@ -58,6 +58,8 @@ int		string_is_number(char *str)
 	i = 1;
 	while (str[i])
 	{
+		if (str[i] == '-' && i == 1)
+			i++;
 		if (!ft_isdigit(str[i]))
 			return (-1);
 		i++;
@@ -80,12 +82,12 @@ int		get_param_type(char *tmp)
 	}
 	else if (str[0] == '%')
 	{
-		if (str[1] == ':' || string_is_number(str))
+		if (str[1] == LABEL_CHAR || string_is_number(str))
 			ret = DIR;
 	}
 	else
 	{
-		if (str[0] == ':' || string_is_number(str))
+		if (str[0] == LABEL_CHAR || string_is_number(str))
 			ret = IND;
 	}
 	free(str);

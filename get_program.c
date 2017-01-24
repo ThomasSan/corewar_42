@@ -98,10 +98,8 @@ t_prog	*get_program(t_champ *head, char *name)
 {
 	t_prog *new;
 
-	(void)name;
 	if (!(new = (t_prog*)malloc(sizeof(t_prog))))
 		return (NULL);
-	(void)head;
 	new->file = get_file(name);
 	new->name = get_name(head, NAME);
 	new->comment = get_name(head, COMMENT);

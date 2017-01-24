@@ -59,9 +59,10 @@ int		converting_labels(t_champ *head, char *str, t_labels *labels, int len)
 {
 	int		add;
 
-	add = get_address(labels, str) - head->address;
+	add = get_address(labels, str);
 	if (add == -1)
 		error_and_exit(-1, NULL);
+	add -= head->address;
 	head->len = len;
 	return (add);
 }

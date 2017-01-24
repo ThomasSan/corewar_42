@@ -16,29 +16,20 @@
 
 void	error_and_exit(int err, char *str)
 {
-	if (err == NAME)
-		ft_putendl_fd("name error", 2);
-	if (err == COMMENT)
-		ft_putendl_fd("comment error", 2);
+	if (err == NAME || err == COMMENT)
+		ft_putendl_fd("name/comment error", 2);
 	if (err == 0)
-	{
-		ft_putstr_fd("arguments number error after ", 2);
-		ft_putendl_fd(str, 2);
-	}
+		ft_putendl_fd(ft_strjoin("arguments number error after ", str), 2);
 	if (err == 1)
-	{
-		ft_putstr_fd("wrong type of arguments after ", 2);
-		ft_putendl_fd(str, 2);
-	}
+		ft_putendl_fd(ft_strjoin("wrong type of arguments after ", str), 2);
 	if (err == -1)
 		ft_putendl_fd("Error", 2);
 	if (err == OP)
-	{
-		ft_putstr_fd("Operation is either missing or unknown around ", 2);
-		ft_putendl_fd(str, 2);
-	}
+		ft_putendl_fd(ft_strjoin("Operation is either missing or unknown around ", str), 2);
 	if (err == 11)
 		ft_putendl_fd("Input file error", 2);
+	if (err == ALL)
+		ft_putendl_fd(ft_strjoin("Argument error around ", str), 2);
 	exit(0);
 }
 
@@ -118,6 +109,7 @@ void	validity_checking(t_champ *head)
 {
 	name_checking(head, NAME);
 	name_checking(head, COMMENT);
+	arg_validity(head);
 	arg_numbers(head);
 	arg_types(head);
 }
