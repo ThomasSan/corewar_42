@@ -6,7 +6,7 @@
 /*   By: tsanzey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 14:32:07 by tsanzey           #+#    #+#             */
-/*   Updated: 2017/01/24 14:32:15 by tsanzey          ###   ########.fr       */
+/*   Updated: 2017/01/24 15:26:24 by tsanzey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int			is_a_label_char(char c)
 {
-	int 	i;
+	int		i;
 
 	i = 0;
 	while (LABEL_CHARS[i])
@@ -30,7 +30,7 @@ int			is_a_label_char(char c)
 
 int			check_ind(char *str)
 {
-	int 	i;
+	int		i;
 
 	i = 0;
 	while (str[i])
@@ -67,7 +67,7 @@ int			check_dir(char *str)
 int			check_reg(char *str)
 {
 	if (string_is_number(str) < 0)
-			error_and_exit(ALL, str);
+		error_and_exit(ALL, str);
 	return (0);
 }
 

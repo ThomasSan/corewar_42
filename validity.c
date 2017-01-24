@@ -6,7 +6,7 @@
 /*   By: tsanzey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/29 16:52:26 by tsanzey           #+#    #+#             */
-/*   Updated: 2016/12/29 16:52:30 by tsanzey          ###   ########.fr       */
+/*   Updated: 2017/01/24 15:27:01 by tsanzey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	error_and_exit(int err, char *str)
 	if (err == -1)
 		ft_putendl_fd("Error", 2);
 	if (err == OP)
-		ft_putendl_fd(ft_strjoin("Operation is either missing or unknown around ", str), 2);
+		ft_putendl_fd(ft_strjoin("Operation error around ", str), 2);
 	if (err == 11)
 		ft_putendl_fd("Input file error", 2);
 	if (err == ALL)
