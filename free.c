@@ -6,14 +6,13 @@
 /*   By: tsanzey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 13:03:53 by tsanzey           #+#    #+#             */
-/*   Updated: 2017/01/05 14:38:16 by tsanzey          ###   ########.fr       */
+/*   Updated: 2017/01/24 16:59:20 by tsanzey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assembleur.h"
 #include "op.h"
 #include <unistd.h>
-#include <stdio.h>
 
 void	free_labels(t_labels *labels)
 {
@@ -48,8 +47,6 @@ void	free_champ(t_champ *champ)
 void	free_pg(t_prog *prog)
 {
 	free(prog->file);
-	free(prog->name);
-	free(prog->comment);
 	free(prog);
 }
 

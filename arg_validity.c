@@ -6,13 +6,12 @@
 /*   By: tsanzey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 14:32:07 by tsanzey           #+#    #+#             */
-/*   Updated: 2017/01/24 15:26:24 by tsanzey          ###   ########.fr       */
+/*   Updated: 2017/01/24 16:58:08 by tsanzey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "op.h"
 #include "assembleur.h"
-#include <stdio.h>
 
 int			is_a_label_char(char c)
 {

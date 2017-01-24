@@ -6,14 +6,13 @@
 /*   By: tsanzey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/29 17:03:45 by tsanzey           #+#    #+#             */
-/*   Updated: 2016/12/29 17:03:59 by tsanzey          ###   ########.fr       */
+/*   Updated: 2017/01/24 16:59:45 by tsanzey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assembleur.h"
 #include "op.h"
 #include <unistd.h>
-#include <stdio.h>
 
 char	*get_dat_line(int type, char *str)
 {
@@ -30,10 +29,16 @@ char	*get_dat_line(int type, char *str)
 
 char	*get_file(char *str)
 {
-	char *tmp;
-	char *dst;
+	char	*tmp;
+	char	*dst;
+	int		len;
 
-	tmp = ft_strsub(str, 0, ft_strlen(str) - 2);
+	len = ft_strlen(str);
+	if (len < 2)
+		error_and_exit(11, NULL);
+	// if (str[len - 1] != 's' || str[len - 1] != '.')
+	// 	error_and_exit(11, NULL);
+	tmp = ft_strsub(str, 0, len - 2);
 	dst = ft_strjoin("./", tmp);
 	free(tmp);
 	tmp = dst;
@@ -42,11 +47,10 @@ char	*get_file(char *str)
 	return (dst);
 }
 
-char	*get_name(t_champ *head, int type)
+char	*get_name(t_champ *head, char *name, int type)
 {
 	int		i;
 	int		len;
-	char	*name;
 	char	*tmp;
 
 	i = 0;
@@ -57,8 +61,6 @@ char	*get_name(t_champ *head, int type)
 		head = head->next;
 	}
 	len = type == NAME ? PROG_NAME_LENGTH : COMMENT_LENGTH;
-	if (!(name = (char*)malloc(sizeof(char) * len + 1)))
-		return (NULL);
 	while (i < len)
 	{
 		name[i] = i < (int)ft_strlen(tmp) ? tmp[i] : 0;
@@ -101,8 +103,8 @@ t_prog	*get_program(t_champ *head, char *name)
 	if (!(new = (t_prog*)malloc(sizeof(t_prog))))
 		return (NULL);
 	new->file = get_file(name);
-	new->name = get_name(head, NAME);
-	new->comment = get_name(head, COMMENT);
+	get_name(head, new->name, NAME);
+	get_name(head, new->comment, COMMENT);
 	new->size = get_program_size(head);
 	return (new);
 }

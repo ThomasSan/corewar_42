@@ -6,35 +6,35 @@
 /*   By: tsanzey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/29 16:52:18 by tsanzey           #+#    #+#             */
-/*   Updated: 2017/01/24 14:14:46 by tsanzey          ###   ########.fr       */
+/*   Updated: 2017/01/24 17:01:53 by tsanzey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assembleur.h"
 #include "op.h"
 #include <unistd.h>
-#include <stdio.h>
 
 char	*trim_quotes(char *str)
 {
 	char	*tmp;
-	int		count;
 	int		i;
 	int		j;
 
 	i = 0;
-	j = 0;
-	count = str[0] == '"' ? 1 : 0;
+	j = str[0] == '"' ? 1 : 0;
 	if (str[ft_strlen(str) - 1] == '"')
-		count++;
-	if (!(tmp = (char*)malloc(sizeof(char) * (ft_strlen(str) - count + 1))))
+		j++;
+	if (!(tmp = (char*)malloc(sizeof(char) * (ft_strlen(str) - j + 1))))
 		return (NULL);
-	if (ft_strlen(str) == 2 && count == 2)
+	if (ft_strlen(str) == 2 && j == 2)
 		return (NULL);
+	j = 0;
 	while (str[i])
 	{
 		while ((i == 0 || i == (int)ft_strlen(str) - 1) && str[i] == '"')
 			i++;
+		if (!str[i])
+			break ;
 		tmp[j] = str[i];
 		i++;
 		j++;
@@ -147,7 +147,6 @@ int		main(int ac, char **av)
 	labels = parsing_champ(head);
 	validity_checking(head);
 	calculate_value(head, labels);
-	display_document(head);
 	prog = get_program(head, av[1]);
 	write_program(prog, head);
 	free_prog(prog, head, labels);

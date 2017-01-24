@@ -6,13 +6,12 @@
 /*   By: tsanzey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/29 16:52:26 by tsanzey           #+#    #+#             */
-/*   Updated: 2017/01/24 15:27:01 by tsanzey          ###   ########.fr       */
+/*   Updated: 2017/01/24 17:02:02 by tsanzey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assembleur.h"
 #include "op.h"
-#include <stdio.h>
 
 void	error_and_exit(int err, char *str)
 {

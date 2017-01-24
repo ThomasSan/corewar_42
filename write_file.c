@@ -6,14 +6,13 @@
 /*   By: tsanzey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/29 16:43:46 by tsanzey           #+#    #+#             */
-/*   Updated: 2016/12/29 16:43:48 by tsanzey          ###   ########.fr       */
+/*   Updated: 2017/01/24 17:01:47 by tsanzey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assembleur.h"
 #include "op.h"
 #include <unistd.h>
-#include <stdio.h>
 
 void	write_file_len(int file_len, int fd)
 {
@@ -90,16 +89,19 @@ void	write_commands(t_champ *head, int fd, int len)
 void	write_program(t_prog *prog, t_champ *head)
 {
 	int		fd;
-	char	tmp_name[PROG_NAME_LENGTH + 4];
-	char	tmp_comment[COMMENT_LENGTH + 4];
+	char	null[4];
 
+	null[0] = 0;
+	null[1] = 0;
+	null[2] = 0;
+	null[3] = 0;
 	if ((fd = open(prog->file, O_WRONLY | O_CREAT | O_TRUNC, 0644)) == -1)
 		error_and_exit(-1, NULL);
 	write_magic(fd);
-	ft_strncpy(tmp_name, prog->name, PROG_NAME_LENGTH + 4);
-	ft_strncpy(tmp_comment, prog->comment, COMMENT_LENGTH + 4);
-	write(fd, tmp_name, PROG_NAME_LENGTH + 4);
+	write(fd, prog->name, PROG_NAME_LENGTH);
+	write(fd, null, 4);
 	write_file_len(prog->size, fd);
-	write(fd, prog->comment, COMMENT_LENGTH + 4);
+	write(fd, prog->comment, COMMENT_LENGTH);
+	write(fd, null, 4);
 	write_commands(head, fd, 0);
 }

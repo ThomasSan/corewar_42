@@ -6,13 +6,12 @@
 /*   By: tsanzey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/29 16:41:09 by tsanzey           #+#    #+#             */
-/*   Updated: 2016/12/29 16:41:11 by tsanzey          ###   ########.fr       */
+/*   Updated: 2017/01/24 16:59:26 by tsanzey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assembleur.h"
 #include "op.h"
-#include <stdio.h>
 
 int		getting_direct_length(t_champ *head, char *str, int len)
 {

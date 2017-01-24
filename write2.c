@@ -6,14 +6,13 @@
 /*   By: tsanzey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/29 16:43:46 by tsanzey           #+#    #+#             */
-/*   Updated: 2016/12/29 16:43:48 by tsanzey          ###   ########.fr       */
+/*   Updated: 2017/01/24 17:01:39 by tsanzey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assembleur.h"
 #include "op.h"
 #include <unistd.h>
-#include <stdio.h>
 
 int		write_in_file(char *str, int fd, int i)
 {

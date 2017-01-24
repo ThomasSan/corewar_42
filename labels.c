@@ -6,13 +6,12 @@
 /*   By: tsanzey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/29 17:04:03 by tsanzey           #+#    #+#             */
-/*   Updated: 2016/12/29 17:04:04 by tsanzey          ###   ########.fr       */
+/*   Updated: 2017/01/24 17:00:03 by tsanzey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assembleur.h"
 #include "op.h"
-#include <stdio.h>
 
 int			index_of(char *str, char c)
 {

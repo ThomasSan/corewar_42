@@ -6,12 +6,11 @@
 /*   By: tsanzey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/29 17:02:08 by tsanzey           #+#    #+#             */
-/*   Updated: 2016/12/29 17:02:09 by tsanzey          ###   ########.fr       */
+/*   Updated: 2017/01/24 16:59:54 by tsanzey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assembleur.h"
-#include <stdio.h>
 
 int		length_in_base(int nb, int base)
 {

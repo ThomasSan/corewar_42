@@ -6,13 +6,12 @@
 /*   By: tsanzey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:38:09 by tsanzey           #+#    #+#             */
-/*   Updated: 2015/12/18 14:19:15 by tsanzey          ###   ########.fr       */
+/*   Updated: 2017/01/24 17:00:23 by tsanzey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 char	*ft_strdup(const char *s1)
 {

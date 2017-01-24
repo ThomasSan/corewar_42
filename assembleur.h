@@ -6,7 +6,7 @@
 /*   By: tsanzey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/29 16:32:41 by tsanzey           #+#    #+#             */
-/*   Updated: 2016/12/29 16:32:43 by tsanzey          ###   ########.fr       */
+/*   Updated: 2017/01/24 15:51:53 by tsanzey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define DIRREG 111
 
 # include "get_next_line.h"
+# include "op.h"
 # include "libft/libft.h"
 # include <stdlib.h>
 # include <sys/types.h>
@@ -53,9 +54,9 @@ typedef struct		s_champ
 typedef struct		s_prog
 {
 	char			*file;
-	char			*name;
+	char			name[PROG_NAME_LENGTH];
 	int				size;
-	char			*comment;
+	char			comment[COMMENT_LENGTH];
 }					t_prog;
 
 /*

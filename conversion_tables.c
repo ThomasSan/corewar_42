@@ -6,13 +6,12 @@
 /*   By: tsanzey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/29 17:04:34 by tsanzey           #+#    #+#             */
-/*   Updated: 2016/12/29 17:04:35 by tsanzey          ###   ########.fr       */
+/*   Updated: 2017/01/24 16:59:33 by tsanzey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assembleur.h"
 #include "op.h"
-#include <stdio.h>
 
 int		label_sizes(char *str)
 {

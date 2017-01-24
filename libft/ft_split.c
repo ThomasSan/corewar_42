@@ -6,13 +6,12 @@
 /*   By: tsanzey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 14:46:34 by tsanzey           #+#    #+#             */
-/*   Updated: 2015/11/30 17:41:38 by tsanzey          ###   ########.fr       */
+/*   Updated: 2017/01/24 17:00:36 by tsanzey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 static int		count_word(const char *s)
 {
