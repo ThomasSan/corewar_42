@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 16:39:54 by ybeaure           #+#    #+#             */
-/*   Updated: 2016/12/19 16:59:36 by ybeaure          ###   ########.fr       */
+/*   Updated: 2017/01/24 13:28:39 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ void		read_cor_file(int fd, t_process *pro, char *file, int i)
 		ft_error("Failed to read");
 	if (read(fd, vm->champ[i].memory, vm->champ[i].size) != vm->champ[i].size)
 		ft_error("Bad memory");
+	ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n", i + 1,
+			vm->champ[i].size, vm->champ[i].name, vm->champ[i].comment);
 }
 
 t_process	*read_file_content(char *file, int number, t_vm *vm, int i)

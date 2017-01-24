@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/20 18:02:14 by ybeaure           #+#    #+#             */
-/*   Updated: 2017/01/02 16:42:30 by ybeaure          ###   ########.fr       */
+/*   Updated: 2017/01/24 13:28:11 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void		get_new_pc(t_process *pro, int new)
 
 	old = pro->last_pc;
 	pro->last_pc = new;
-	//visual
 }
 
 void		place_in_vm(t_vm *vm, t_champ *champ, int pc)

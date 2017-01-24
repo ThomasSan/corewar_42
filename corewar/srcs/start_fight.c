@@ -6,7 +6,7 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/20 19:21:58 by ybeaure           #+#    #+#             */
-/*   Updated: 2017/01/02 16:35:29 by ybeaure          ###   ########.fr       */
+/*   Updated: 2017/01/24 13:30:28 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void		check_champ(t_process *pro, t_vm *vm, t_lst *elem)
 		vm->champ[pro->order].pc_number -= 1;
 		vm->nbr_champs -= 1;
 		get_new_pc(pro, -1);
-		//graphic
 		ft_lstdelin_memdel(&vm->lst_champs, elem);
 	}
 }
@@ -90,7 +89,8 @@ int			start_fight(t_vm *vm)
 
 	if (vm->nbr_champs <= 0)
 	{
-		ft_printf("Player  %d(%s) won\n", vm->champ[vm->last_alive].id,
+		ft_printf("Contestant %d, \"%s\", has won !\n",
+				vm->champ[vm->last_alive].id,
 				vm->champ[vm->last_alive].name);
 		return (0);
 	}
