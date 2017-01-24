@@ -14,6 +14,20 @@
 #include "op.h"
 #include <stdio.h>
 
+void	display_document(t_champ *head)
+{
+	while (head)
+	{
+		printf("head %s -> %d @ %d", head->line, head->type, head->address);
+		if (head->type == OP || head->type == REG ||
+			head->type == DIR || head->type == IND)
+			printf("-> # %d / %d\n", head->value, head->value);
+		else
+			printf("\n");
+		head = head->next;
+	}
+}
+
 int		index_array(char const *array[], char *str, int length)
 {
 	int i;

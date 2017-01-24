@@ -145,8 +145,9 @@ int		main(int ac, char **av)
 	close(fd);
 	calculate_address(head);
 	labels = parsing_champ(head);
-	calculate_value(head, labels);
 	validity_checking(head);
+	calculate_value(head, labels);
+	display_document(head);
 	prog = get_program(head, av[1]);
 	write_program(prog, head);
 	free_prog(prog, head, labels);
