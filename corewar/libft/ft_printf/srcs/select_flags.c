@@ -15,13 +15,13 @@
 int		select_flags(t_specify *spec, char type)
 {
 	if (type == '#')
-		spec->sharp = true;
+		spec->sharp = True;
 	else if (type == '+')
-		spec->positive_sign = true;
+		spec->positive_sign = True;
 	else if (type == '-')
-		spec->negative_sign = true;
+		spec->negative_sign = True;
 	else if (type == ' ')
-		spec->space = true;
+		spec->space = True;
 	else
 		return (_ERROR_);
 	return (_SUCCESS_);

@@ -29,9 +29,9 @@ void		op_sti(t_process *pro, t_vm *vm, char **p_val, char *p_type)
 		tmp = (p_val1 + p_val2) % IDX_MOD;
 		tmp = pro->last_pc + tmp;
 		i = c_single_int(p_val[0][0]) - 1;
-		vm->memory[idx_ram(tmp)] = (char)pro->reg[i][3];
-		vm->memory[idx_ram(tmp + 1)] = (char)pro->reg[i][2];
-		vm->memory[idx_ram(tmp + 2)] = (char)pro->reg[i][1];
-		vm->memory[idx_ram(tmp + 3)] = (char)pro->reg[i][0];
+		vm->ram[idx_ram(tmp)].offset = (char)pro->reg[i][3];
+		vm->ram[idx_ram(tmp + 1)].offset = (char)pro->reg[i][2];
+		vm->ram[idx_ram(tmp + 2)].offset = (char)pro->reg[i][1];
+		vm->ram[idx_ram(tmp + 3)].offset = (char)pro->reg[i][0];
 	}
 }

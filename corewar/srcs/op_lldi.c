@@ -29,10 +29,10 @@ void		op_lldi(t_process *pro, t_vm *vm, char **p_val, char *p_type)
 		tmp = (p_val1 + p_val2);
 		tmp = pro->last_pc + tmp;
 		i = c_single_int(p_val[2][0]) - 1;
-		pro->reg[i][0] = (char)vm->memory[idx_ram(tmp + 3)];
-		pro->reg[i][1] = (char)vm->memory[idx_ram(tmp + 2)];
-		pro->reg[i][2] = (char)vm->memory[idx_ram(tmp + 1)];
-		pro->reg[i][3] = (char)vm->memory[idx_ram(tmp)];
+		pro->reg[i][0] = (char)vm->ram[idx_ram(tmp + 3)].offset;
+		pro->reg[i][1] = (char)vm->ram[idx_ram(tmp + 2)].offset;
+		pro->reg[i][2] = (char)vm->ram[idx_ram(tmp + 1)].offset;
+		pro->reg[i][3] = (char)vm->ram[idx_ram(tmp)].offset;
 		if (*((int*)pro->reg[i]) == 0)
 			pro->carry = 1;
 		else

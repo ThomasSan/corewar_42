@@ -16,9 +16,9 @@ static int		put_sign(t_data *data, t_specify *spec, long long n)
 {
 	if (n >= 0)
 	{
-		if (spec->positive_sign == true)
+		if (spec->positive_sign == True)
 			data->ret += write(1, "+", 1);
-		else if (spec->space == true)
+		else if (spec->space == True)
 			data->ret += write(1, " ", 1);
 	}
 	else
@@ -32,13 +32,13 @@ void			before_printing_d(t_data *data, t_specify *spec, long long n)
 	int		sign_printed;
 
 	sign_printed = 0;
-	if (spec->positive_sign == true || spec->space == true || n < 0)
+	if (spec->positive_sign == True || spec->space == True || n < 0)
 		spec->sign = 1;
 	calculate_fields(spec, spec->nb_len, &spec->n_dot, &spec->n_field);
-	if (spec->negative_sign == false)
+	if (spec->negative_sign == False)
 	{
 		pad_field = ' ';
-		if (spec->dot == false && spec->zero_pad == true)
+		if (spec->dot == False && spec->zero_pad == True)
 		{
 			pad_field = '0';
 			sign_printed = put_sign(data, spec, n);
@@ -54,7 +54,7 @@ void			before_printing_d(t_data *data, t_specify *spec, long long n)
 
 void			after_printing_d(t_data *data, t_specify *spec)
 {
-	if (spec->negative_sign == true)
+	if (spec->negative_sign == True)
 	{
 		while (--spec->n_field >= 0)
 			data->ret += write(1, " ", 1);
@@ -70,7 +70,7 @@ void			help_putnbr(t_data *data, long long n)
 	}
 	else
 	{
-		if (!(data->spec.dot == true && data->spec.dot_value == 0 && n == 0))
+		if (!(data->spec.dot == True && data->spec.dot_value == 0 && n == 0))
 			ft_putnbr_ll(ft_absll(n));
 		else if (data->spec.field_width > 0)
 			write(1, " ", 1);

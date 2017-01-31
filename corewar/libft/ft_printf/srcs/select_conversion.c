@@ -39,13 +39,13 @@ static int		conversion_a(t_specify *spec, char type)
 
 static int		conversion_b(t_specify *spec, char type)
 {
-	if (type == 's' && spec->lenght_l == false)
+	if (type == 's' && spec->lenght_l == False)
 		spec->fct_call = &call_putstr;
 	else if (type == 'd' || type == 'i')
 		spec->fct_call = &call_putnbr;
 	else if (type == 'D')
 		spec->fct_call = &call_putnbr_l;
-	else if (type == 'c' && spec->lenght_l == false)
+	else if (type == 'c' && spec->lenght_l == False)
 		spec->fct_call = &call_putchar;
 	else if (type == 'x')
 	{
@@ -66,9 +66,9 @@ static int		conversion_b(t_specify *spec, char type)
 
 static int		conversion_c(t_specify *spec, char type)
 {
-	if ((type == 'S') || (type == 's' && spec->lenght_l == true))
+	if ((type == 'S') || (type == 's' && spec->lenght_l == True))
 		spec->fct_call = &call_putwstr;
-	else if (type == 'C' || (type == 'c' && spec->lenght_l == true))
+	else if (type == 'C' || (type == 'c' && spec->lenght_l == True))
 		spec->fct_call = &call_putwchar;
 	else if (type == '%')
 		spec->fct_call = &call_percent;

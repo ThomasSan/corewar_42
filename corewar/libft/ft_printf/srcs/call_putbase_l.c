@@ -14,9 +14,9 @@
 
 static void		select_cast(t_data *d, t_specify *spec, unsigned long long *n)
 {
-	if (spec->lenght_ll == true)
+	if (spec->lenght_ll == True)
 		*n = va_arg(*d->ap, long long);
-	else if (spec->lenght_z == true)
+	else if (spec->lenght_z == True)
 		*n = va_arg(*d->ap, size_t);
 	else
 		*n = va_arg(*d->ap, unsigned long long);
@@ -37,7 +37,7 @@ void			call_putbase_l(t_data *data)
 	spec->nb_len = ft_strlen(str);
 	spec->sharp_mode = sharp_specify(spec, n);
 	before_printing_b(data, spec);
-	if (!(spec->dot == true && spec->dot_value == 0 && n == 0))
+	if (!(spec->dot == True && spec->dot_value == 0 && n == 0))
 		data->ret += write(1, str, spec->nb_len);
 	after_printing_d(data, spec);
 	ft_memdel((void **)&str);

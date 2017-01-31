@@ -25,7 +25,7 @@ void		print_ram(t_vm *vm)
 			ft_putstr("0x");
 		if (i % 64 == 0)
 			ft_printf("%#.4x : ", i);
-		ft_printf("%.2hhx ", vm->memory[i]);
+		ft_printf("%.2hhx ", vm->ram[i].offset);
 		if (i % 64 == 63)
 			ft_putchar('\n');
 	}
@@ -88,26 +88,32 @@ int			start_fight(t_vm *vm)
 {
 	t_lst		*tmp;
 
-	if (vm->nbr_champs <= 0)
+	if (clock() > vm->processed_time && vm->paused == 0)
 	{
-		ft_printf("Player  %d(%s) won\n", vm->champ[vm->last_alive].id,
-				vm->champ[vm->last_alive].name);
+		if (vm->nbr_champs <= 0)
+		{
+			ft_printf("Player  %d(%s) won\n", vm->champ[vm->last_alive].id,
+					vm->champ[vm->last_alive].name);
+			return (0);
+		}
+		if (vm->curr_cycle >= vm->cycle_to_exec && vm->cycle_to_exec >= 0)
+		{
+			print_ram(vm);
+			return (0);
+		}
+		vm->die_verif += 1;
+		vm->curr_cycle += 1;
+		tmp = vm->lst_champs;
+		while (tmp)
+		{
+			exec_op((t_process*)tmp->data, vm);
+			tmp = tmp->next;
+		}
+		if (vm->die_verif >= vm->cycle_to_die)
+			check_live(vm);
+		vm->processed_time += vm->speed;
+	}
+	if (vm->o_graphic && !display(vm))
 		return (0);
-	}
-	if (vm->curr_cycle >= vm->cycle_to_exec && vm->cycle_to_exec >= 0)
-	{
-		print_ram(vm);
-		return (0);
-	}
-	vm->die_verif += 1;
-	vm->curr_cycle += 1;
-	tmp = vm->lst_champs;
-	while (tmp)
-	{
-		exec_op((t_process*)tmp->data, vm);
-		tmp = tmp->next;
-	}
-	if (vm->die_verif >= vm->cycle_to_die)
-		check_live(vm);
 	return (1);
 }

@@ -21,18 +21,18 @@ static void		init_data(t_data *data, va_list *ap, char *format)
 
 static void		init_specify(t_specify *spec)
 {
-	spec->sharp = false;
-	spec->positive_sign = false;
-	spec->negative_sign = false;
-	spec->space = false;
-	spec->zero_pad = false;
-	spec->lenght_l = false;
-	spec->lenght_ll = false;
-	spec->lenght_h = false;
-	spec->lenght_hh = false;
-	spec->lenght_j = false;
-	spec->lenght_z = false;
-	spec->dot = false;
+	spec->sharp = False;
+	spec->positive_sign = False;
+	spec->negative_sign = False;
+	spec->space = False;
+	spec->zero_pad = False;
+	spec->lenght_l = False;
+	spec->lenght_ll = False;
+	spec->lenght_h = False;
+	spec->lenght_hh = False;
+	spec->lenght_j = False;
+	spec->lenght_z = False;
+	spec->dot = False;
 	spec->dot_value = 0;
 	spec->field_width = 0;
 	spec->base = 10;

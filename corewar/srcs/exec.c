@@ -41,7 +41,7 @@ char		*cpy_val(t_vm *vm, int len, int idx)
 	i = -1;
 	while (++i < len)
 	{
-		p_val[i] = vm->memory[idx_ram(idx)];
+		p_val[i] = vm->ram[idx_ram(idx)].offset;
 		idx++;
 	}
 	return (p_val);
@@ -88,7 +88,7 @@ void		exec_op(t_process *pro, t_vm *vm)
 	ft_bzero(p_type, 4);
 	ft_bzero(p_val, 4 * sizeof(char*));
 	if (pro->curr_op == 0)
-		pro->curr_op = vm->memory[pro->pc];
+		pro->curr_op = vm->ram[pro->pc].offset;
 	get_new_pc(pro, pro->pc);
 	if (pro->curr_op > 0 && pro->curr_op <= 16 && pro->execute <
 			vm->nbr_cycle[pro->curr_op - 1] - 1)
@@ -101,7 +101,7 @@ void		exec_op(t_process *pro, t_vm *vm)
 	pro->last_op = pro->curr_op;
 	if (pro->curr_op > 0 && pro->curr_op < 17)
 	{
-		get_p_type(vm->memory[pro->pc], p_type, pro->curr_op, pro);
+		get_p_type(vm->ram[pro->pc].offset, p_type, pro->curr_op, pro);
 		get_p_val(pro, vm, p_type, p_val);
 		vm->op_function[pro->curr_op - 1](pro, vm, p_val, p_type);
 		free_val(p_val);

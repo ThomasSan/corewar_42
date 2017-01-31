@@ -17,10 +17,10 @@ void	before_printing_s(t_data *data, t_specify *spec)
 	char	pad_field;
 
 	spec->n_field = spec->field_width - spec->nb_len;
-	if (spec->negative_sign == false)
+	if (spec->negative_sign == False)
 	{
 		pad_field = ' ';
-		if (spec->zero_pad == true)
+		if (spec->zero_pad == True)
 			pad_field = '0';
 		while (--spec->n_field >= 0)
 			data->ret += write(1, &pad_field, 1);
@@ -29,7 +29,7 @@ void	before_printing_s(t_data *data, t_specify *spec)
 
 void	after_printing_s(t_data *data, t_specify *spec)
 {
-	if (spec->negative_sign == true)
+	if (spec->negative_sign == True)
 	{
 		while (--spec->n_field >= 0)
 			data->ret += write(1, " ", 1);

@@ -29,10 +29,10 @@ int		get_new_p_val_noidx(t_process *pro, t_vm *vm, char *p_val, char p_type)
 		tmp = c_short_int(p_val);
 		pc = pro->last_pc + tmp;
 		ft_bzero(tab, 4);
-		tab[0] = (char)vm->memory[idx_ram(pc + 3)];
-		tab[1] = (char)vm->memory[idx_ram(pc + 3)];
-		tab[2] = (char)vm->memory[idx_ram(pc + 2)];
-		tab[3] = (char)vm->memory[idx_ram(pc)];
+		tab[0] = (char)vm->ram[idx_ram(pc + 3)].offset;
+		tab[1] = (char)vm->ram[idx_ram(pc + 3)].offset;
+		tab[2] = (char)vm->ram[idx_ram(pc + 2)].offset;
+		tab[3] = (char)vm->ram[idx_ram(pc)].offset;
 		n_pval = *((int*)tab);
 	}
 	return (n_pval);
@@ -55,10 +55,10 @@ int		get_new_p_val(t_process *pro, t_vm *vm, char *p_val, char p_type)
 		tmp = c_short_int(p_val) % IDX_MOD;
 		pc = pro->last_pc + tmp;
 		ft_bzero(tab, 4);
-		tab[0] = (char)vm->memory[idx_ram(pc + 3)];
-		tab[1] = (char)vm->memory[idx_ram(pc + 3)];
-		tab[2] = (char)vm->memory[idx_ram(pc + 2)];
-		tab[3] = (char)vm->memory[idx_ram(pc)];
+		tab[0] = (char)vm->ram[idx_ram(pc + 3)].offset;
+		tab[1] = (char)vm->ram[idx_ram(pc + 3)].offset;
+		tab[2] = (char)vm->ram[idx_ram(pc + 2)].offset;
+		tab[3] = (char)vm->ram[idx_ram(pc)].offset;
 		n_pval = *((int*)tab);
 	}
 	return (n_pval);
@@ -81,10 +81,10 @@ int		get_new_p_val_sh(t_process *pro, t_vm *vm, char *p_val, char p_type)
 		tmp = c_short_int(p_val) % IDX_MOD;
 		pc = pro->last_pc + tmp;
 		ft_bzero(tab, 4);
-		tab[0] = (char)vm->memory[idx_ram(pc + 3)];
-		tab[1] = (char)vm->memory[idx_ram(pc + 2)];
-		tab[2] = (char)vm->memory[idx_ram(pc + 1)];
-		tab[3] = (char)vm->memory[idx_ram(pc)];
+		tab[0] = (char)vm->ram[idx_ram(pc + 3)].offset;
+		tab[1] = (char)vm->ram[idx_ram(pc + 2)].offset;
+		tab[2] = (char)vm->ram[idx_ram(pc + 1)].offset;
+		tab[3] = (char)vm->ram[idx_ram(pc)].offset;
 		n_pval = *((int*)tab);
 	}
 	return (n_pval);

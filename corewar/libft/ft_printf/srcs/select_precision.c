@@ -20,7 +20,7 @@ static void		help_dot(t_data *d, t_specify *spec, int index1, int *i)
 	*i += 1 - index1;
 	if (value < 0)
 	{
-		spec->dot = false;
+		spec->dot = False;
 		spec->dot_value = 0;
 		return ;
 	}
@@ -32,7 +32,7 @@ static void		select_dot(t_data *d, t_specify *spec, char *format, int *i)
 	int		index1;
 
 	index1 = 0;
-	spec->dot = true;
+	spec->dot = True;
 	if (format[index1] == '0')
 		*i += ++index1;
 	if (ft_isdigit(format[index1]))
@@ -52,7 +52,7 @@ static void		select_dot(t_data *d, t_specify *spec, char *format, int *i)
 static void		select_field_width(t_data *d, t_specify *spec, char *f, int *i)
 {
 	if (*f == '0')
-		spec->zero_pad = true;
+		spec->zero_pad = True;
 	else if (*f >= '1' && *f <= '9')
 	{
 		spec->field_width = ft_atoi(f);
@@ -65,7 +65,7 @@ static void		select_field_width(t_data *d, t_specify *spec, char *f, int *i)
 		if (spec->field_width < 0)
 		{
 			spec->field_width = -spec->field_width;
-			spec->negative_sign = true;
+			spec->negative_sign = True;
 		}
 	}
 }

@@ -32,7 +32,7 @@ void		place_in_vm(t_vm *vm, t_champ *champ, int pc)
 	mem = champ->memory;
 	pro->pc = pc;
 	get_new_pc(pro, pc);
-	ft_memcpy(&vm->memory[pc], mem, size);
+	ft_memcpy(&vm->ram[pc].offset, mem, size);
 }
 
 void		order_champs(t_vm *vm, t_champ champ[MAX_PLAYERS])

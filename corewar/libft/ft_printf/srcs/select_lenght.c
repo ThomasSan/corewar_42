@@ -15,13 +15,13 @@
 static int		select_lenght_help(t_specify *spec, char t)
 {
 	if (t == 'l')
-		spec->lenght_l = true;
+		spec->lenght_l = True;
 	else if (t == 'h')
-		spec->lenght_h = true;
+		spec->lenght_h = True;
 	else if (t == 'j')
-		spec->lenght_ll = true;
+		spec->lenght_ll = True;
 	else if (t == 'z')
-		spec->lenght_z = true;
+		spec->lenght_z = True;
 	else
 		return (_ERROR_);
 	return (_SUCCESS_);
@@ -31,13 +31,13 @@ int				select_lenght(t_specify *spec, char *format, int *i)
 {
 	if (!ft_strncmp(format, "ll", 2))
 	{
-		spec->lenght_ll = true;
+		spec->lenght_ll = True;
 		*i += 1;
 		return (_SUCCESS_);
 	}
 	else if (!ft_strncmp(format, "hh", 2))
 	{
-		spec->lenght_hh = true;
+		spec->lenght_hh = True;
 		*i += 1;
 		return (_SUCCESS_);
 	}

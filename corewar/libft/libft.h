@@ -28,8 +28,8 @@
 
 typedef enum		e_bool
 {
-	false,
-	true
+	False,
+	True
 }					t_bool;
 
 typedef struct		s_pt

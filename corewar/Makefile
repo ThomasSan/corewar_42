@@ -14,6 +14,7 @@ NAME =		corewar
 
 FILES =		main.c \
 			boot.c \
+			display.c \
 			exec.c \
 			create.c \
 			casts.c \
@@ -47,9 +48,11 @@ OBJS =		$(SRCS:.c=.o)
 
 DEBUG =		-fsanitize=address
 
-FLAGS =		-Wall -Werror -Wextra
+GFLAG =		-lncurses
 
-CC =		gcc
+FLAGS =		-Wall -Werror -Wextra -g
+
+CC =		clang-3.5
 
 all: libft/libft.a $(NAME)
 
@@ -60,7 +63,7 @@ $(%.o): $(%.c)
 	$(CC) $(FLAGS) -o $@ -c $^
 
 $(NAME): $(OBJS)
-	$(CC) $(FLAGS) -o $@ $^ -Llibft -lft
+	$(CC) $(FLAGS) -o $@ $^ -Llibft -lft $(GFLAG)
 
 clean:
 	@make -C ./libft/ clean

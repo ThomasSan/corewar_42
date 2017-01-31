@@ -14,7 +14,7 @@
 
 int		sharp_specify(t_specify *spec, unsigned long long n)
 {
-	if (spec->sharp == true)
+	if (spec->sharp == True)
 	{
 		if (spec->base == HEXA_BASE)
 		{

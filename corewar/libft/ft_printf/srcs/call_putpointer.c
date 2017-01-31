@@ -19,9 +19,9 @@ static void		before_printing_p(t_data *data, t_specify *spec)
 	pad_field = ' ';
 	calculate_fields(spec, spec->nb_len, &spec->n_dot, &spec->n_field);
 	data->spec.n_field -= 2;
-	if (spec->negative_sign == false)
+	if (spec->negative_sign == False)
 	{
-		if (spec->dot == false && spec->zero_pad == true)
+		if (spec->dot == False && spec->zero_pad == True)
 		{
 			pad_field = '0';
 			data->ret += write(1, "0x", 2);
@@ -49,7 +49,7 @@ void			call_putpointer(t_data *data)
 	ft_lowerstr(str);
 	data->spec.nb_len = ft_strlen(str);
 	before_printing_p(data, &data->spec);
-	if (!(data->spec.dot == true && data->spec.dot_value == 0 && n == 0))
+	if (!(data->spec.dot == True && data->spec.dot_value == 0 && n == 0))
 		data->ret += write(1, str, data->spec.nb_len);
 	after_printing_d(data, &data->spec);
 	ft_memdel((void **)&str);

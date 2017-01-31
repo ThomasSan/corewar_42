@@ -24,7 +24,7 @@ static int		put_sharp_specify(t_specify *spec)
 	{
 		if (spec->n != 0 && spec->dot_value <= spec->nb_len)
 			return (write(1, "0", 1));
-		if (!(spec->dot == true && spec->dot_value == 0 && spec->n == 0))
+		if (!(spec->dot == True && spec->dot_value == 0 && spec->n == 0))
 			return (_ERROR_);
 		return (write(1, "0", 1));
 	}
@@ -41,9 +41,9 @@ void			before_printing_b(t_data *data, t_specify *spec)
 		spec->n_field -= 2;
 	else if (spec->sharp_mode == SHARP_OCTAL)
 		spec->n_field -= 1;
-	if (spec->negative_sign == false)
+	if (spec->negative_sign == False)
 	{
-		if (spec->dot == false && spec->zero_pad == true)
+		if (spec->dot == False && spec->zero_pad == True)
 		{
 			pad_field = '0';
 			data->ret += put_sharp_specify(spec);

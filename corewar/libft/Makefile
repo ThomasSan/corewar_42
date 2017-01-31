@@ -46,7 +46,7 @@ NAME	= libft.a
 
 FT_PRINTF = ft_printf/ft_printf.a
 
-FLAGS	= -Wextra -Werror -Wall
+FLAGS	= -Wextra -Werror -Wall -g
 
 RM		= rm -f
 

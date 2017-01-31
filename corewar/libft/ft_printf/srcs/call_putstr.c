@@ -22,7 +22,7 @@ void	call_putstr(t_data *data)
 	if (!str)
 		str = "(null)";
 	spec->nb_len = ft_strlen(str);
-	if (spec->dot == true && spec->dot_value < spec->nb_len)
+	if (spec->dot == True && spec->dot_value < spec->nb_len)
 		spec->nb_len = spec->dot_value;
 	before_printing_s(data, spec);
 	data->ret += ft_putnstr(str, spec->nb_len);

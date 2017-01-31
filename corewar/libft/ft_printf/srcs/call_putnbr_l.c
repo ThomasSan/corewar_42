@@ -18,9 +18,9 @@ void	call_putnbr_l(t_data *data)
 	t_specify	*spec;
 
 	spec = &data->spec;
-	if (spec->lenght_z == true)
+	if (spec->lenght_z == True)
 		n = va_arg(*data->ap, size_t);
-	else if (spec->lenght_ll == true)
+	else if (spec->lenght_ll == True)
 		n = va_arg(*data->ap, long long);
 	else
 		n = va_arg(*data->ap, long);

@@ -101,6 +101,9 @@ t_vm	*boot_vm(void)
 	vm->cycle_to_exec = -1;
 	vm->cycle_to_die = CYCLE_TO_DIE;
 	vm->print_live = 1;
+	vm->processed_time = 0;
+	vm->paused = 0;
+	vm->speed = 100000 / CYCLE_PER_SEC;
 	init_nbr_cycle_op(vm->nbr_cycle);
 	init_argc_op(vm->argc);
 	init_size_arg_op(vm->size_arg);

@@ -43,7 +43,7 @@ CC = 				gcc
 
 NAME =				ft_printf.a
 
-FLAGS =				 -Wextra -Werror -Wall
+FLAGS =				 -Wextra -Werror -Wall -g
 
 RM =				rm -f
 
