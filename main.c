@@ -6,7 +6,7 @@
 /*   By: tsanzey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/29 16:52:18 by tsanzey           #+#    #+#             */
-/*   Updated: 2017/01/24 17:01:53 by tsanzey          ###   ########.fr       */
+/*   Updated: 2017/02/07 09:25:15 by tsanzey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,26 +20,15 @@ char	*trim_quotes(char *str)
 	int		i;
 	int		j;
 
-	i = 0;
+	i = ft_strlen(str) - 1;
 	j = str[0] == '"' ? 1 : 0;
-	if (str[ft_strlen(str) - 1] == '"')
+	while (i >= 0 && ft_isspace(str[i]))
+		i--;
+	if (str[i] == '"' && i > 0)
 		j++;
-	if (!(tmp = (char*)malloc(sizeof(char) * (ft_strlen(str) - j + 1))))
-		return (NULL);
-	if (ft_strlen(str) == 2 && j == 2)
-		return (NULL);
-	j = 0;
-	while (str[i])
-	{
-		while ((i == 0 || i == (int)ft_strlen(str) - 1) && str[i] == '"')
-			i++;
-		if (!str[i])
-			break ;
-		tmp[j] = str[i];
-		i++;
-		j++;
-	}
-	tmp[j] = '\0';
+	if (j != 2)
+		error_and_exit(NAME, NULL);
+	tmp = ft_strsub(str, 1, i - 1);
 	return (tmp);
 }
 
@@ -47,11 +36,9 @@ t_champ	*get_doc(t_champ *head, char *str, int type)
 {
 	t_champ *new;
 	t_champ *tmp;
-	char	*tmp1;
 
 	if (!(new = (t_champ*)malloc(sizeof(t_champ))))
 		return (NULL);
-	tmp1 = str;
 	str = ft_strtrim(str);
 	new->line = get_dat_line(type, str);
 	new->type = type;

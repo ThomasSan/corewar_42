@@ -6,7 +6,7 @@
 /*   By: tsanzey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/29 17:03:45 by tsanzey           #+#    #+#             */
-/*   Updated: 2017/01/24 16:59:45 by tsanzey          ###   ########.fr       */
+/*   Updated: 2017/02/07 10:01:04 by tsanzey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ char	*get_file(char *str)
 	len = ft_strlen(str);
 	if (len < 2)
 		error_and_exit(11, NULL);
-	// if (str[len - 1] != 's' || str[len - 1] != '.')
-	// 	error_and_exit(11, NULL);
+	if (str[len - 1] != 's' || str[len - 2] != '.')
+		error_and_exit(11, NULL);
 	tmp = ft_strsub(str, 0, len - 2);
 	dst = ft_strjoin("./", tmp);
 	free(tmp);
