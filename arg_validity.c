@@ -32,13 +32,26 @@ int			check_ind(char *str)
 	int		i;
 
 	i = 0;
-	while (str[i])
+	if (str[i] == LABEL_CHAR)
 	{
-		if (i == 0 && str[i] == LABEL_CHAR)
-			continue ;
-		if (!is_a_label_char(str[i]))
-			error_and_exit(ALL, str);
-		i++;
+		while (str[i])
+		{
+			if (!is_a_label_char(str[i]))
+				error_and_exit(ALL, str);
+			i++;
+		}
+	}
+	else
+	{
+		while (str[i])
+		{
+			if (i == 0 && str[i] == '-')
+				i++;
+			else if (str[i] >= '0' && str[i] <= '9')
+				i++;
+			else
+				error_and_exit(ALL, str);
+		}
 	}
 	return (0);
 }

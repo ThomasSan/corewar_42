@@ -23,6 +23,8 @@ void	error_and_exit(int err, char *str)
 		ft_putendl_fd(ft_strjoin("wrong type of arguments after ", str), 2);
 	if (err == -1)
 		ft_putendl_fd("Error", 2);
+	if (err == -3)
+		ft_putendl_fd("Couldn't create .cor", 2);
 	if (err == OP)
 		ft_putendl_fd(ft_strjoin("Operation error around ", str), 2);
 	if (err == 11)

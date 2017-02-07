@@ -95,8 +95,8 @@ void	write_program(t_prog *prog, t_champ *head)
 	null[1] = 0;
 	null[2] = 0;
 	null[3] = 0;
-	if ((fd = open(prog->file, O_WRONLY | O_CREAT | O_TRUNC, 0644)) == -1)
-		error_and_exit(-1, NULL);
+	if ((fd = open(prog->file + 2, O_WRONLY | O_CREAT | O_TRUNC, 0644)) == -1)
+		error_and_exit(-3, NULL);
 	write_magic(fd);
 	write(fd, prog->name, PROG_NAME_LENGTH);
 	write(fd, null, 4);
