@@ -17,18 +17,26 @@
 char	*trim_quotes(char *str)
 {
 	char	*tmp;
+	int		l;
 	int		i;
 	int		j;
 
-	i = ft_strlen(str) - 1;
-	j = str[0] == '"' ? 1 : 0;
-	while (i >= 0 && ft_isspace(str[i]))
-		i--;
-	if (str[i] == '"' && i > 0)
-		j++;
+	l = ft_strlen(str) - 1;
+	i = 0;
+	j = 0;
+	while (l >= 0 && ft_isspace(str[l]))
+		l--;
+	if (str[l] != '"')
+		error_and_exit(NAME, NULL);
+	while (str[i])
+	{
+		if (str[i] == '"')
+			j++;
+		i++;
+	}
 	if (j != 2)
 		error_and_exit(NAME, NULL);
-	tmp = ft_strsub(str, 1, i - 1);
+	tmp = ft_strsub(str, 1, l - 1);
 	return (tmp);
 }
 
