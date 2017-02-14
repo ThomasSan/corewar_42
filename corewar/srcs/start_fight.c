@@ -6,30 +6,11 @@
 /*   By: ybeaure <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/20 19:21:58 by ybeaure           #+#    #+#             */
-/*   Updated: 2017/01/02 16:35:29 by ybeaure          ###   ########.fr       */
+/*   Updated: 2017/01/24 13:30:28 by ybeaure          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar.h"
-
-void		print_ram(t_vm *vm)
-{
-	int		i;
-
-	if (vm->o_graphic)
-		return ;
-	i = -1;
-	while (++i < MEM_SIZE)
-	{
-		if (i == 0)
-			ft_putstr("0x");
-		if (i % 64 == 0)
-			ft_printf("%#.4x : ", i);
-		ft_printf("%.2hhx ", vm->ram[i].offset);
-		if (i % 64 == 63)
-			ft_putchar('\n');
-	}
-}
 
 void		check_champ(t_process *pro, t_vm *vm, t_lst *elem)
 {
@@ -83,31 +64,36 @@ void		check_live(t_vm *vm)
 	}
 }
 
-int			start_fight(t_vm *vm)
+int			fight_loop(t_vm *vm)
 {
 	t_lst		*tmp;
 
-	if (clock() > vm->processed_time && vm->paused == 0)
+	if (vm->nbr_champs <= 0)
+		return (0);
+	if (vm->curr_cycle >= vm->cycle_to_exec && vm->cycle_to_exec >= 0)
 	{
-		if (vm->nbr_champs <= 0)
-			return (0);
-		if (vm->curr_cycle >= vm->cycle_to_exec && vm->cycle_to_exec >= 0)
-		{
-			print_ram(vm);
-			return (0);
-		}
-		vm->die_verif += 1;
-		vm->curr_cycle += 1;
-		tmp = vm->lst_champs;
-		while (tmp)
-		{
-			exec_op((t_process*)tmp->data, vm);
-			tmp = tmp->next;
-		}
-		if (vm->die_verif >= vm->cycle_to_die)
-			check_live(vm);
-		vm->processed_time += vm->speed;
+		print_ram(vm);
+		return (0);
 	}
+	vm->die_verif += 1;
+	vm->curr_cycle += 1;
+	tmp = vm->lst_champs;
+	while (tmp)
+	{
+		exec_op((t_process*)tmp->data, vm);
+		tmp = tmp->next;
+	}
+	if (vm->die_verif >= vm->cycle_to_die)
+		check_live(vm);
+	vm->processed_time += vm->speed;
+	return (1);
+}
+
+int			start_fight(t_vm *vm)
+{
+	if (clock() > vm->processed_time && vm->paused == 0)
+		if (!fight_loop(vm))
+			return (0);
 	if (vm->o_graphic && !display(vm))
 		return (0);
 	return (1);

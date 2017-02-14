@@ -14,6 +14,7 @@ NAME =		corewar
 
 FILES =		main.c \
 			boot.c \
+			check_args.c \
 			display.c \
 			display_tools.c \
 			exec.c \

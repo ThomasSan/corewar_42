@@ -12,6 +12,25 @@
 
 #include "../includes/corewar.h"
 
+void			print_ram(t_vm *vm)
+{
+	int		i;
+
+	if (vm->o_graphic)
+		return ;
+	i = -1;
+	while (++i < MEM_SIZE)
+	{
+		if (i == 0)
+			ft_putstr("0x");
+		if (i % 64 == 0)
+			ft_printf("%#.4x : ", i);
+		ft_printf("%.2hhx ", vm->ram[i].offset);
+		if (i % 64 == 63)
+			ft_putchar('\n');
+	}
+}
+
 long long int	ft_atol(const char *str)
 {
 	long long int	result;

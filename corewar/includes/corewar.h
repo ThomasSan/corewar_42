@@ -146,11 +146,15 @@ void					box_around(int y, int x, int h, int w);
 void					init_color_pairs(int nbr_champs);
 void					print_mem_value(t_memory *ram, int i);
 t_vm					*boot_vm(void);
-t_process				*read_file_content(char *file, int number, t_vm *vm, int i);
+t_process				*read_file_content(char *file, int number,
+							t_vm *vm, int i);
+void					check_args(int ac, char **av, t_vm *vm);
+void					print_ram(t_vm *vm);
 void					ft_error(char *str);
 int						ft_isint(char *s_int, int *result);
 t_lst					*ft_lstnew_noalloc(void *data, size_t data_size);
-void					ft_lstadd_sorted(t_lst **alst, t_lst *elem, int (*cmp)(void *c1, void *c2));
+void					ft_lstadd_sorted(t_lst **alst, t_lst *elem,
+							int (*cmp)(void *c1, void *c2));
 void					ft_lstdelin_memdel(t_lst **alst, t_lst *elem);
 void					move_pc(t_process *pro, int new);
 int						idx_ram(int idx);
@@ -166,23 +170,42 @@ int						c_int(char *arr);
 int						c_int_rev(char *arr);
 short int				c_short_int(char *arr);
 int						c_single_int(char tab);
-int						get_new_p_val(t_process *pro, t_vm *vm, char *p_val, char p_type);
-int						get_new_p_val_noidx(t_process *pro, t_vm *vm, char *p_val, char p_type);
-int						get_new_p_val_sh(t_process *pro, t_vm *vm, char *p_val, char p_type);
-void					op_add(t_process *pro, t_vm *vm, char **p_val, char *p_type);
-void					op_aff(t_process *pro, t_vm *vm, char **p_val, char *p_type);
-void					op_and(t_process *pro, t_vm *vm, char **p_val, char *p_type);
-void					op_fork(t_process *pro, t_vm *vm, char **p_val, char *p_type);
-void					op_lfork(t_process *pro, t_vm *vm, char **p_val, char *p_type);
-void					op_ld(t_process *pro, t_vm *vm, char **p_val, char *p_type);
-void					op_ldi(t_process *pro, t_vm *vm, char **p_val, char *p_type);
-void					op_live(t_process *pro, t_vm *vm, char **p_val, char *p_type);
-void					op_lld(t_process *pro, t_vm *vm, char **p_val, char *p_type);
-void					op_lldi(t_process *pro, t_vm *vm, char **p_val, char *p_type);
-void					op_or(t_process *pro, t_vm *vm, char **p_val, char *p_type);
-void					op_xor(t_process *pro, t_vm *vm, char **p_val, char *p_type);
-void					op_st(t_process *pro, t_vm *vm, char **p_val, char *p_type);
-void					op_sti(t_process *pro, t_vm *vm, char **p_val, char *p_type);
-void					op_sub(t_process *pro, t_vm *vm, char **p_val, char *p_type);
-void					op_zjmp(t_process *pro, t_vm *vm, char **p_val, char *p_type);
+int						get_new_p_val(t_process *pro, t_vm *vm, char *p_val,
+							char p_type);
+int						get_new_p_val_noidx(t_process *pro, t_vm *vm,
+							char *p_val, char p_type);
+int						get_new_p_val_sh(t_process *pro, t_vm *vm,
+							char *p_val, char p_type);
+void					op_add(t_process *pro, t_vm *vm,
+							char **p_val, char *p_type);
+void					op_aff(t_process *pro, t_vm *vm,
+							char **p_val, char *p_type);
+void					op_and(t_process *pro, t_vm *vm,
+							char **p_val, char *p_type);
+void					op_fork(t_process *pro, t_vm *vm,
+							char **p_val, char *p_type);
+void					op_lfork(t_process *pro, t_vm *vm,
+							char **p_val, char *p_type);
+void					op_ld(t_process *pro, t_vm *vm,
+							char **p_val, char *p_type);
+void					op_ldi(t_process *pro, t_vm *vm,
+							char **p_val, char *p_type);
+void					op_live(t_process *pro, t_vm *vm,
+							char **p_val, char *p_type);
+void					op_lld(t_process *pro, t_vm *vm,
+							char **p_val, char *p_type);
+void					op_lldi(t_process *pro, t_vm *vm,
+							char **p_val, char *p_type);
+void					op_or(t_process *pro, t_vm *vm,
+							char **p_val, char *p_type);
+void					op_xor(t_process *pro, t_vm *vm,
+							char **p_val, char *p_type);
+void					op_st(t_process *pro, t_vm *vm,
+							char **p_val, char *p_type);
+void					op_sti(t_process *pro, t_vm *vm,
+							char **p_val, char *p_type);
+void					op_sub(t_process *pro, t_vm *vm,
+							char **p_val, char *p_type);
+void					op_zjmp(t_process *pro, t_vm *vm,
+							char **p_val, char *p_type);
 #endif
