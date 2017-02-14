@@ -25,7 +25,6 @@
 # define REG_SIZE		4
 # define DIR_SIZE		REG_SIZE
 
-
 # define REG_CODE		1
 # define DIR_CODE		2
 # define IND_CODE		3
@@ -73,10 +72,10 @@
 
 typedef struct			s_lst
 {
-	void			*data;
-	size_t			data_size;
+	void				*data;
+	size_t				data_size;
 	struct s_lst		*next;
-}				t_lst;
+}						t_lst;
 
 typedef struct			s_process
 {
@@ -90,8 +89,8 @@ typedef struct			s_process
 	int					pc;
 	int					last_pc;
 	int					inside;
-	int					numero; //numero du champ
-	int					number; //numero du process
+	int					numero;
+	int					number;
 	char				reg[REG_NUMBER][REG_SIZE];
 	struct s_champ		*c;
 }						t_process;
@@ -133,15 +132,19 @@ typedef struct			s_vm
 	int					nbr_live;
 	int					nbr_check;
 	int					nbr_champs;
-	int					nb_champs;
 	int					argc[16];
 	int					size_arg[16];
 	int					nbr_cycle[16];
-	void				(*op_function[16])(t_process *pro, struct s_vm *vm, char **arg, char *type);
+	void				(*op_function[16])(t_process *pro,
+							struct s_vm *vm, char **arg, char *type);
 }						t_vm;
 
 void					init_display();
 int						display(t_vm *vm);
+char					*convert_dec_to_hex(int dec);
+void					box_around(int y, int x, int h, int w);
+void					init_color_pairs(int nbr_champs);
+void					print_mem_value(t_memory *ram, int i);
 t_vm					*boot_vm(void);
 t_process				*read_file_content(char *file, int number, t_vm *vm, int i);
 void					ft_error(char *str);
@@ -179,7 +182,7 @@ void					op_lldi(t_process *pro, t_vm *vm, char **p_val, char *p_type);
 void					op_or(t_process *pro, t_vm *vm, char **p_val, char *p_type);
 void					op_xor(t_process *pro, t_vm *vm, char **p_val, char *p_type);
 void					op_st(t_process *pro, t_vm *vm, char **p_val, char *p_type);
-void					op_sti(t_process *pro, t_vm *vm, char **p_Val, char *p_type);
+void					op_sti(t_process *pro, t_vm *vm, char **p_val, char *p_type);
 void					op_sub(t_process *pro, t_vm *vm, char **p_val, char *p_type);
 void					op_zjmp(t_process *pro, t_vm *vm, char **p_val, char *p_type);
 #endif

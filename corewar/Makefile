@@ -15,6 +15,7 @@ NAME =		corewar
 FILES =		main.c \
 			boot.c \
 			display.c \
+			display_tools.c \
 			exec.c \
 			create.c \
 			casts.c \
@@ -52,7 +53,7 @@ GFLAG =		-lncurses
 
 FLAGS =		-Wall -Werror -Wextra -g
 
-CC =		clang-3.5
+CC =		gcc
 
 all: libft/libft.a $(NAME)
 

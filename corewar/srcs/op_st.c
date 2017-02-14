@@ -27,6 +27,10 @@ void		op_st(t_process *pro, t_vm *vm, char **p_val, char *p_type)
 		vm->ram[idx_ram(pc + 2)].offset = pro->reg[reg][1];
 		vm->ram[idx_ram(pc + 1)].offset = pro->reg[reg][2];
 		vm->ram[idx_ram(pc)].offset = pro->reg[reg][3];
+		vm->ram[idx_ram(pc)].owner_id = pro->numero;
+		vm->ram[idx_ram(pc + 1)].owner_id = pro->numero;
+		vm->ram[idx_ram(pc + 2)].owner_id = pro->numero;
+		vm->ram[idx_ram(pc + 3)].owner_id = pro->numero;
 	}
 	else if (p_type[0] == 1 && check_p_val(p_val[0]) && p_type[1] == 1 &&
 			check_p_val(p_val[0]))

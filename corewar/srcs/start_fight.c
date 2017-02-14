@@ -40,7 +40,6 @@ void		check_champ(t_process *pro, t_vm *vm, t_lst *elem)
 		vm->champ[pro->order].pc_number -= 1;
 		vm->nbr_champs -= 1;
 		get_new_pc(pro, -1);
-		//graphic
 		ft_lstdelin_memdel(&vm->lst_champs, elem);
 	}
 }
@@ -91,11 +90,7 @@ int			start_fight(t_vm *vm)
 	if (clock() > vm->processed_time && vm->paused == 0)
 	{
 		if (vm->nbr_champs <= 0)
-		{
-			ft_printf("Player  %d(%s) won\n", vm->champ[vm->last_alive].id,
-					vm->champ[vm->last_alive].name);
 			return (0);
-		}
 		if (vm->curr_cycle >= vm->cycle_to_exec && vm->cycle_to_exec >= 0)
 		{
 			print_ram(vm);

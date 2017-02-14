@@ -55,13 +55,12 @@ void	check_args(int ac, char **av, t_vm *vm)
 	int		i;
 	int		tmp;
 
-	i = 1;
-	while (i < ac)
+	i = 0;
+	while (++i < ac)
 	{
 		if (!ft_strcmp("-d", av[i]))
 		{
 			if (i >= ac - 1 || !ft_isint(av[i + 1], &tmp) || tmp < 0)
-				
 				ft_error("-d needs to be followed by an int");
 			vm->cycle_to_exec = tmp;
 			i++;
@@ -79,29 +78,6 @@ void	check_args(int ac, char **av, t_vm *vm)
 			vm->print_live = 0;
 		else
 			create_champion(vm, av[i], 1);
-		i++;
-	}
-}
-
-void	debug(t_vm *vm)
-{
-	t_lst	*tmp;
-	int		i;
-	int		j;
-
-	i = 0;
-	tmp = vm->lst_champs;
-	while (tmp) {
-		printf("numero champ : %d\n", ((t_process*)(tmp->data))->numero);
-		while (i < REG_NUMBER) {
-			j = 0;
-			while (j < REG_SIZE) {
-				printf("reg: %d\n", ((t_process*)(tmp->data))->reg[i][j]);
-				j++;
-			}
-			i++;
-		}
-		tmp = tmp->next;
 	}
 }
 
@@ -123,7 +99,8 @@ int		main(int ac, char **av)
 	while ((fight = start_fight(vm)))
 		;
 	if (vm->o_graphic)
-		endwin();			/* End curses mode		  */
-	debug(vm);
+		endwin();
+	ft_printf("Player  %d(%s) won\n", vm->champ[vm->last_alive].id,
+					vm->champ[vm->last_alive].name);
 	return (0);
 }

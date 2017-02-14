@@ -18,7 +18,6 @@ void		get_new_pc(t_process *pro, int new)
 
 	old = pro->last_pc;
 	pro->last_pc = new;
-	//visual
 }
 
 void		place_in_vm(t_vm *vm, t_champ *champ, int pc)
@@ -26,13 +25,20 @@ void		place_in_vm(t_vm *vm, t_champ *champ, int pc)
 	int			size;
 	char		*mem;
 	t_process	*pro;
+	int			i;
 
+	i = 0;
 	pro = find_pro_id(vm->lst_champs, champ->id);
 	size = champ->size;
 	mem = champ->memory;
 	pro->pc = pc;
 	get_new_pc(pro, pc);
-	ft_memcpy(&vm->ram[pc].offset, mem, size);
+	while (i < size)
+	{
+		vm->ram[pc + i].offset = mem[i];
+		vm->ram[pc + i].owner_id = champ->id;
+		i++;
+	}
 }
 
 void		order_champs(t_vm *vm, t_champ champ[MAX_PLAYERS])

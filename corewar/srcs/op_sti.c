@@ -33,5 +33,9 @@ void		op_sti(t_process *pro, t_vm *vm, char **p_val, char *p_type)
 		vm->ram[idx_ram(tmp + 1)].offset = (char)pro->reg[i][2];
 		vm->ram[idx_ram(tmp + 2)].offset = (char)pro->reg[i][1];
 		vm->ram[idx_ram(tmp + 3)].offset = (char)pro->reg[i][0];
+		vm->ram[idx_ram(tmp)].owner_id = pro->numero;
+		vm->ram[idx_ram(tmp + 1)].owner_id = pro->numero;
+		vm->ram[idx_ram(tmp + 2)].owner_id = pro->numero;
+		vm->ram[idx_ram(tmp + 3)].owner_id = pro->numero;
 	}
 }
